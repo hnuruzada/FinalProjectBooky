@@ -1,0 +1,360 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+}
+
+
+@section CSS{
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+}
+
+<section class="page-title">
+    <div class="container">
+        <div class="title">
+            <h1>BOOK DETAILS</h1>
+        </div>
+    </div>
+</section>
+<section class="book-content">
+    <div class="container">
+        <div class="rsp-book-img">
+            <img src="~/Assets/images/book16.jpg" alt="">
+        </div>
+        <div class="cover">
+            <div class="book">
+                <label for="page-1" class="book__page book__page--1">
+                    <img src="~/Assets/images/book16.jpg" alt="">
+                </label>
+
+                <label for="page-2" class="book__page book__page--4">
+                    <div class="page__content">
+                        <h1 class="page__content-title">I</h1>
+                        <div class="page__content-text">
+                            <p>
+                                His name was Gaal Dornick and he was just a country boy who had never seen Trantor
+                                before. That is, not in real life. He had seen it many times on the hyper-video, and
+                                occasionally in tremendous three-dimensional newscasts covering an Imperial
+                                Coronation or the opening of a Galactic Council. Even though he had lived all his
+                                life on the world of Synnax, which circled a star at the edges of the Blue Drift, he
+                                was not cut off from civilization, you see. At that time, no place in the Galaxy
+                                was.
+                            </p>
+                            <p>
+                                His name was Gaal Dornick and he was just a country boy who had never seen Trantor
+                                before. That is, not in real life. He had seen it many times on the hyper-video, and
+                                occasionally in tremendous three-dimensional newscasts covering an Imperial
+                                Coronation or the opening of a Galactic Council. Even though he had lived all his
+                                life on the world of Synnax, which circled a star at the edges of the Blue Drift, he
+                                was not cut off from civilization, you see. At that time, no place in the Galaxy
+                                was.
+                            </p>
+
+
+                        </div>
+                        <div class="page__number">3</div>
+                    </div>
+                </label>
+
+                <!-- Resets the page -->
+                <input type="radio" name="page" id="page-1" />
+
+                <!-- Goes to the second page -->
+                <input type="radio" name="page" id="page-2" />
+                <label class="book__page book__page--2">
+                    <div class="book__page-front">
+                        <div class="page__content">
+                            <h1 class="page__content-book-title">Foundation</h1>
+                            <h2 class="page__content-author">Isaac Asimov</h2>
+
+                            <p class="page__content-credits">
+                                Introduction by
+                                <span>Paul Krugman</span>
+                            </p>
+
+                            <p class="page__content-credits">
+                                Illustrations by
+                                <span>Alex Wells</span>
+                            </p>
+
+                            <div class="page__content-copyright">
+                                <p>The Folio Society</p>
+                                <p>London - MMXII</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book__page-back">
+                        <div class="page__content">
+                            <h1 class="page__content-title">Contents</h1>
+                            <table class="page__content-table">
+                                <tr>
+                                    <td align="left">Part I</td>
+                                    <td align="left">The Psycohistorians</td>
+                                    <td align="right">3</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Part II</td>
+                                    <td align="left">The Encyclopedists</td>
+                                    <td align="right">43</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Part III</td>
+                                    <td align="left">The Mayors</td>
+                                    <td align="right">87</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Part IV</td>
+                                    <td align="left">The Traders</td>
+                                    <td align="right">147</td>
+                                </tr>
+                                <tr>
+                                    <td align="left">Part V</td>
+                                    <td align="left">The Merchant Princes</td>
+                                    <td align="right">173</td>
+                                </tr>
+                            </table>
+
+                            <div class="page__number">2</div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="book-details">
+            <div class="details">
+                <h1>Book Name</h1>
+                <ul>
+                    <li>Author: <span>Author Name</span> </li>
+                    <li>Category: <span>Historical,Action</span></li>
+                    <li>SkuCode: <span>1524324</span></li>
+                    <li>Language: <span>English</span></li>
+                    <li>Page: <span>250</span></li>
+                    <li>Publish: <span>1997</span></li>
+                    <li>Price: <span>$100</span></li>
+                </ul>
+            </div>
+            <div class="Add-Cart">
+                <div class="quantity">
+                    <button class="btn minus-btn disabled" type="button">-</button>
+                    <input type="text" id="quantity" value="1">
+                    <button class="btn plus-btn" type="button">+</button>
+                </div>
+                <div class="btn-cart">
+                    <button type="submit">Add To Cart</button>
+                </div>
+            </div>
+            <div class="buy-it-now">
+                <button type="submit">Buy It Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="tabs">
+    <div class="container">
+        <div class="tabset">
+            <!-- Tab 1 -->
+            <input type="radio" name="tabset" id="tab1" aria-controls="description" checked>
+            <label for="tab1">DESCRIPTION</label>
+            <!-- Tab 2 -->
+            <input type="radio" name="tabset" id="tab2" aria-controls="bookInformation">
+            <label for="tab2">INFORMATION</label>
+            <!-- Tab 3 -->
+            <input type="radio" name="tabset" id="tab3" aria-controls="reviews">
+            <label for="tab3">REVIEWS(0)</label>
+
+            <div class="tab-panels">
+                <div id="description" class="tab-panel">
+                    <h2>Book Summary</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolorem ut deserunt
+                        soluta libero voluptatum mollitia illum sapiente aut natus enim vitae reiciendis,
+                        magnam, laborum quidem fugiat molestias officiis. Sit eum tenetur tempore ipsam
+                        molestias doloribus mollitia incidunt dolore, doloremque ducimus aliquam laborum magnam
+                        aperiam, atque officia deserunt odio! Velit!
+                    </p>
+                </div>
+                <div id="bookInformation" class="tab-panel">
+
+                    <p><strong>Book:</strong> Book Name</p>
+                    <p><strong>Author:</strong> Author Name</p>
+                    <p><strong>Page:</strong> 250</p>
+                    <p><strong>Category:</strong> Action,Criminal</p>
+                    <p><strong>Date:</strong> 1993</p>
+
+                </div>
+
+                <div id="reviews" class="tab-panel">
+                    <div id="comments">
+                        <h2 class="reviews-title">Reviews</h2>
+                        <ul class="commentlist">
+                            <li class="comment-even">
+                                <div id="comment-1" class="comment_container">
+                                    <div class="comment-text">
+                                        <p class="info">
+                                            <span class="author">Joshua Garcia </span>
+                                            <span class="time">27.04.2018</span>
+                                        </p>
+                                        <div class="description">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                                                commodo ligula eget dolor. Aenean massa. Cum sociis Theme
+                                                natoque penatibus et magnis dis parturient montes, nascetur
+                                                ridiculus mus.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="comment-odd">
+                                <div id="comment-2" class="comment_container">
+                                    <div class="comment-text">
+                                        <p class="info">
+                                            <span class="author">Joan Stanley </span>
+                                            <span class="time">27.04.2018</span>
+                                        </p>
+                                        <div class="description">
+                                            <p>
+                                                Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
+                                                sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
+                                                Nam quam nunc, blandit vel, luctus pulvinar, hendrerit
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="reviewform">
+                        <div class="reviewtitle">
+                            <h1>Add a review</h1>
+                            <div class="form">
+                                <form>
+                                    <div class="input">
+
+                                        <p>Your review *</p>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+
+                                    <div class="input">
+                                        <label for="exampleInputPassword1" class="form-label">Name*</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1">
+                                    </div>
+                                    <div class="input">
+                                        <label for="exampleInputEmail1" class="form-label">Email*</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                               aria-describedby="emailHelp">
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            Save my name, email,and website in this browser for the next time I comment.
+                                        </label>
+                                    </div>
+                                    <button type="submit" class="btn">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="related-books">
+
+    <div class="container">
+        <div class="related-title">
+            <h1>RELATED BOOKS</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="~/Assets/images/book16.jpg">
+                            <a href=""><h3>Book Name</h3></a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <div class="content-info">
+                                <span>Author Name</span>
+                                <span>100$</span>
+                            </div>
+                            <a href="#">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="~/Assets/images/book17.jpg">
+                            <a href=""><h3>Book Name</h3></a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <div class="content-info">
+                                <span>Author Name</span>
+                                <span>100$</span>
+                            </div>
+                            <a href="#">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="~/Assets/images/book18.jpg">
+                            <a href=""><h3>Book Name</h3></a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <div class="content-info">
+                                <span>Author Name</span>
+                                <span>100$</span>
+                            </div>
+                            <a href="#">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <img src="~/Assets/images/book19.jpg">
+                            <a href=""><h3>Book Name</h3></a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <div class="content-info">
+                                <span>Author Name</span>
+                                <span>100$</span>
+                            </div>
+                            <a href="#">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Assets/js/book-detail-page.js"></script>
+        }
+

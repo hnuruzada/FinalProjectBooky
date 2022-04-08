@@ -1,0 +1,55 @@
+﻿
+@model IconContainer
+@{
+    ViewData["Title"] = "Create";
+    
+
+}
+@section CSS{
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+
+<div class="container-fluid mb-4">
+    <form method="post" enctype="multipart/form-data">
+        
+        <div class="form-group">
+            <label asp-for="@Model.Icon">Icon</label>
+            <input type="text" asp-for="@Model.Icon" class="form-control" id="Icon" placeholder="Icon" rows="3">
+            <span asp-validation-for="@Model.Icon" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="@Model.Title">Title</label>
+            <input type="text" asp-for="@Model.Title" class="form-control" id="Title" placeholder="Title" rows="3">
+            <span asp-validation-for="@Model.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Description">Description</label>
+            <input type="text" asp-for="@Model.Description" class="form-control" id="Description" placeholder="Description" rows="3">
+            <span asp-validation-for="@Model.Description" class="text-danger"></span>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+         <a asp-controller="iconcontainer" asp-action="index">
+
+            <i style="font-size:0.875rem; text-decoration:none;" class="btn btn-dark">Back</i>
+        </a>
+
+
+
+    </form>
+
+
+</div>
+
+
+
+@section Scripts{ 
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+
+
