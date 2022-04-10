@@ -21,7 +21,8 @@ namespace FinalProjectBooky.Models
         public List<BlogTag> BlogTags { get; set; }
         public int CategoryId { get; set; }
         public Category Category  { get; set; }
-
+        public int? PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinalProjectBooky.Models
 {
     public class Setting
     {
         public int Id { get; set; }
-        [Required]
-        [StringLength(maximumLength: 150)]
+       
         public string Logo { get; set; }
         [Required]
         [StringLength(maximumLength: 40)]
@@ -26,5 +27,13 @@ namespace FinalProjectBooky.Models
         [StringLength(maximumLength: 50)]
         public string Email { get; set; }
         public List<FooterSocialMedia> FooterSocialMedias { get; set; }
+       
+        [NotMapped]
+        public IFormFile LogoFile { get; set; }
+        [NotMapped]
+        public IFormFile ParallaxFile { get; set; }
+        [NotMapped]
+        public IFormFile FooterImageFile { get; set; }
+
     }
 }

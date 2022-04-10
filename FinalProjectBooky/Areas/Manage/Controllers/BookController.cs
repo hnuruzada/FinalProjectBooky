@@ -124,7 +124,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
             ViewBag.Languages = _context.Languages.ToList();
-            ViewBag.Authors = _context.Authors.ToList();
+            ViewBag.Authors = _context.Authors.Include(a=>a.AuthorBooks).ThenInclude(ab=>ab.Book).ToList();
             ViewBag.Campaigns = _context.Campaigns.ToList();
            
             Book book = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).FirstOrDefault(b=>b.Id==id);
@@ -138,7 +138,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Book book)
+        public IActionResult Edit( Book book)
         {
             ViewBag.Categories = _context.Categories.ToList();
             ViewBag.Tags = _context.Tags.ToList();
@@ -146,9 +146,9 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             ViewBag.Authors = _context.Authors.ToList();
             ViewBag.Campaigns = _context.Campaigns.ToList();
 
-            Book existBook=_context.Books.FirstOrDefault(x => x.Id == id);
+            Book existBook=_context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).FirstOrDefault(x => x.Id ==book.Id);
             
-            //if (!_context.Campaigns.Any(x => x.Id == book.CampaignId)) return RedirectToAction(nameof(Index));
+            
             
             if (existBook == null)
             {
@@ -159,30 +159,26 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                 if (!book.ImageFile.IsImage())
                 {
                     ModelState.AddModelError("ImageFile", "Choose correct format file");
-                    return View();
+                    return View(existBook);
                 }
                 if (!book.ImageFile.IsSizeOkay(2))
                 {
                     ModelState.AddModelError("ImageFile", "File must be max 2mb");
-                    return View();
+                    return View(existBook);
                 }
                 Helpers.Helper.DeleteImg(_env.WebRootPath, "assets/images", existBook.Image);
                 existBook.Image = book.ImageFile.SaveImg(_env.WebRootPath, "assets/images");
 
 
             }
-            else
-            {
-                ModelState.AddModelError("ImageFile", "Choose Image for Book");
-                return View();
-            }
+           
 
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(existBook);
             }
-            var existAuthors = _context.AuthorBooks.Where(x => x.BookId == id).ToList();
+            var existAuthors = _context.AuthorBooks.Where(x => x.BookId == book.Id).ToList();
             if (book.AuthorIds != null)
             {
                 foreach (var authorId in book.AuthorIds)
@@ -192,7 +188,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                     {
                         AuthorBook authorBook = new AuthorBook
                         {
-                            BookId = id,
+                            BookId = book.Id,
                             AuthorId = authorId,
                         };
 
@@ -207,7 +203,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             }
             _context.AuthorBooks.RemoveRange(existAuthors);
 
-            var existTags = _context.BookTags.Where(x => x.BookId == id).ToList();
+            var existTags = _context.BookTags.Where(x => x.BookId == book.Id).ToList();
             if (book.TagIds != null)
             {
                 foreach (var tagId in book.TagIds)
@@ -217,7 +213,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                     {
                         BookTag bookTag = new BookTag
                         {
-                            BookId = id,
+                            BookId = book.Id,
                             TagId = tagId,
                         };
 
@@ -232,7 +228,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             }
             _context.BookTags.RemoveRange(existTags);
 
-            var existCategories = _context.BookCategories.Where(x => x.BookId == id).ToList();
+            var existCategories = _context.BookCategories.Where(x => x.BookId == book.Id).ToList();
             if (book.CategoryIds != null)
             {
                 foreach (var categoryId in book.CategoryIds)
@@ -242,7 +238,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                     {
                         BookCategory bookCategory = new BookCategory
                         {
-                            BookId = id,
+                            BookId = book.Id,
                             CategoryId = categoryId,
                         };
 

@@ -5,12 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Manage\Data\" />
-    <Folder Include="Areas\Manage\Models\" />
-    <Folder Include="wwwroot\Assets\" />
+    <Compile Remove="Migrations\20220410114717_EditiAppUserTable.cs" />
+    <Compile Remove="Migrations\20220410114717_EditiAppUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20220410114944_EditAppUserTable.cs" />
+    <Compile Remove="Migrations\20220410114944_EditAppUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20220410124503_changeAppUserTable.cs" />
+    <Compile Remove="Migrations\20220410124503_changeAppUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20220410124922_AppUserEditTable.cs" />
+    <Compile Remove="Migrations\20220410124922_AppUserEditTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Manage\Data\" />
+    <Folder Include="Areas\Manage\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23">

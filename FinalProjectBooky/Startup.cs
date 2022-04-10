@@ -1,11 +1,14 @@
 using FinalProjectBooky.DAL;
+using FinalProjectBooky.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,33 @@ namespace FinalProjectBooky
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+            //services.AddScoped<LayoutService>();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(100);
+            });
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Newtonsoft.Json.Formatting.Indented,
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
+            };
+            services.AddHttpContextAccessor();
+            services.AddIdentity<AppUser, IdentityRole>(option =>
+            {
+
+
+                option.Password.RequireDigit = true;
+                option.Password.RequiredLength = 8;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireUppercase = false;
+
+                option.Lockout.MaxFailedAccessAttempts = 5;
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                option.Lockout.AllowedForNewUsers = true;
+                option.SignIn.RequireConfirmedEmail = true;
+                option.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +80,12 @@ namespace FinalProjectBooky
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

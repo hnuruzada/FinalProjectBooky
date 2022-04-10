@@ -1,10 +1,11 @@
 ﻿using FinalProjectBooky.Migrations;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinalProjectBooky.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext: IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -26,8 +27,11 @@ namespace FinalProjectBooky.DAL
         public DbSet<Setting> Settings { get; set; }
         public DbSet<FooterSocialMedia> FooterSocialMedias { get; set;}
         public DbSet<IconContainer> IconContainers{ get; set; }
-        
+        public DbSet<Publisher> Publishers { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
 
     }
 }

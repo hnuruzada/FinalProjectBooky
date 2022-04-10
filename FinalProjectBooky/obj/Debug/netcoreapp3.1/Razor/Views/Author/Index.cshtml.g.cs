@@ -26,8 +26,15 @@ using FinalProjectBooky.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\Views\_ViewImports.cshtml"
+using FinalProjectBooky.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"18130f7e3e0a916364d58b8c379aa05ae9fbb976", @"/Views/Author/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb3fcf60b04a1aa71390a9f0db34c7f9cb5f69de", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d62860b27b3a71eb22080424e5489284e5ea8419", @"/Views/_ViewImports.cshtml")]
     public class Views_Author_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/Assets/images/author_image.webp"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -83,7 +90,7 @@ using FinalProjectBooky.Models;
             }
             );
             WriteLiteral("\r\n<section class=\"author-profile\" style=\"background-image: url(./Assets/images/bg-author_1920x545.webp);\">\r\n    <div class=\"profile\">\r\n        <div class=\"profile-img\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb9769130", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb9769337", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -123,7 +130,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97611103", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97611310", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -150,7 +157,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97612777", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97612984", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -177,7 +184,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97614451", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97614658", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -204,7 +211,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97616125", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97616332", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -231,7 +238,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97617799", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97618006", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -258,7 +265,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97619473", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97619680", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -285,7 +292,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97621147", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97621354", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -312,7 +319,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97622821", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97623028", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -340,7 +347,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97624522", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97624729", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -367,359 +374,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97626221", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97627922", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97629621", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97631320", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97633019", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97634718", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97636417", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97638116", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97639815", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97641514", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97643213", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97644912", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97646611", async() => {
-            }
-            );
-            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
-            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
-            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
-            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
-            if (!__tagHelperExecutionContext.Output.IsContentModified)
-            {
-                await __tagHelperExecutionContext.SetOutputContentAsync();
-            }
-            Write(__tagHelperExecutionContext.Output);
-            __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral(@"
-                    </div>
-                    <div class=""card-body"">
-                        <h5 class=""card-title"">Book Name</h5>
-                        <span class=""card-text"">100$</span>
-                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
-                <div class=""card"">
-                    <div class=""card-header"">
-                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97648310", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97626428", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -747,7 +402,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97650011", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97628129", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -774,7 +429,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97651710", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97629828", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -801,7 +456,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97653409", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97631527", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -828,7 +483,7 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97655108", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97633226", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -855,7 +510,359 @@ using FinalProjectBooky.Models;
                 <div class=""card"">
                     <div class=""card-header"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97656807", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97634925", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97636624", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97638323", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97640022", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97641721", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97643420", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97645119", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97646818", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97648517", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97650218", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97651917", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97653616", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97655315", async() => {
+            }
+            );
+            __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
+            __tagHelperExecutionContext.Add(__Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_7);
+            __tagHelperExecutionContext.AddHtmlAttribute(__tagHelperAttribute_3);
+            await __tagHelperRunner.RunAsync(__tagHelperExecutionContext);
+            if (!__tagHelperExecutionContext.Output.IsContentModified)
+            {
+                await __tagHelperExecutionContext.SetOutputContentAsync();
+            }
+            Write(__tagHelperExecutionContext.Output);
+            __tagHelperExecutionContext = __tagHelperScopeManager.End();
+            WriteLiteral(@"
+                    </div>
+                    <div class=""card-body"">
+                        <h5 class=""card-title"">Book Name</h5>
+                        <span class=""card-text"">100$</span>
+                        <a href=""#"" class=""btn btn-primary"">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class=""col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox"" style=""display: none;"">
+                <div class=""card"">
+                    <div class=""card-header"">
+                        ");
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97657014", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -894,7 +901,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97658775", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97658982", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -921,7 +928,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97660350", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97660557", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -948,7 +955,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97661925", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97662132", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -975,7 +982,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97663501", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97663708", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1002,7 +1009,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97665077", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97665284", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1029,7 +1036,7 @@ using FinalProjectBooky.Models;
                 <div class=""author"">
                     <div class=""author-img"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97666653", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "18130f7e3e0a916364d58b8c379aa05ae9fbb97666860", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1060,7 +1067,7 @@ using FinalProjectBooky.Models;
 ");
             DefineSection("Scripts", async() => {
                 WriteLiteral("\r\n        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n\r\n     \r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18130f7e3e0a916364d58b8c379aa05ae9fbb97668323", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18130f7e3e0a916364d58b8c379aa05ae9fbb97668530", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

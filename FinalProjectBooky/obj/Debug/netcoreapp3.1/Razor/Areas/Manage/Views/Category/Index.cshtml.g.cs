@@ -28,13 +28,20 @@ using FinalProjectBooky.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\Areas\Manage\Views\_ViewImports.cshtml"
+using FinalProjectBooky.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\Areas\Manage\Views\_ViewImports.cshtml"
 using FinalProjectBooky.DAL;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19e6e2470989a44602a09d321fa4bdc5022ca0c1", @"/Areas/Manage/Views/Category/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fb9eccca3c7acad2a1958912907af8a0e019dbdc", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"158dadea3c877975e620072cc91c609478d1a28c", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Category_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "category", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,7 +93,7 @@ using FinalProjectBooky.DAL;
             }
             );
             WriteLiteral("\r\n<div class=\"container\">\r\n\r\n    <div class=\"mt-2 d-flex\" style=\"justify-content:flex-end\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c17169", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c17389", async() => {
                 WriteLiteral("\r\n            <i class=\"mdi mdi-upload btn-icon-prepend\"></i>\r\n            Create\r\n        ");
             }
             );
@@ -132,7 +139,7 @@ using FinalProjectBooky.DAL;
 #nullable disable
             WriteLiteral("\r\n                    </td>\r\n");
             WriteLiteral("                    <td style=\"text-align:center;\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c110272", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c110492", async() => {
                 WriteLiteral("\r\n                            <i style=\"font-size:30px;\" class=\"fa-solid fa-pen-to-square\"></i>\r\n\r\n\r\n                        ");
             }
             );
@@ -166,7 +173,7 @@ using FinalProjectBooky.DAL;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c112929", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c113149", async() => {
                 WriteLiteral("\r\n\r\n                            <i style=\"font-size:30px;\" class=\"fa-solid fa-trash-can\"></i>\r\n                        ");
             }
             );
@@ -219,7 +226,7 @@ WriteAttributeValue(" ", 2368, ViewBag.Currentpage == 1 ? "disabled" : "", 2369,
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c116593", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c116813", async() => {
                 WriteLiteral("Previous");
             }
             );
@@ -283,7 +290,7 @@ WriteAttributeValue(" ", 2776, ViewBag.CurrentPage == i ? "none" : "", 2777, 41,
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c120444", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c120664", async() => {
 #nullable restore
 #line 75 "C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\Areas\Manage\Views\Category\Index.cshtml"
                                                                                                                                                                                                                                           Write(i);
@@ -342,7 +349,7 @@ WriteAttributeValue(" ", 2976, ViewBag.CurrentPage == ViewBag.TotalPage ? "disab
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c124283", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19e6e2470989a44602a09d321fa4bdc5022ca0c124503", async() => {
                 WriteLiteral("Next");
             }
             );

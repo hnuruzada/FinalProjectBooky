@@ -1,0 +1,115 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <table class="mt-3 table table-dark">
+        <thead>
+            <tr>
+
+                <th>
+                    User Name
+                </th>
+                <th>
+                    User Surname
+                </th>
+                <th>
+                    Email
+                </th>
+
+                <th>
+                    Status Role
+                </th>
+                <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+
+                    <td>@user.Email</td>
+                    <td>
+                        @if (user.IsAdmin == null)
+                        {
+                            <span>Member</span>
+                        }
+                        else if (user.IsAdmin == false)
+                        {
+                            <span>Admin</span>
+                        }
+                        else if (user.IsAdmin == true )
+                        {
+                            <span>Publisher</span>
+                        }
+
+                    </td>
+                    <td>
+                        @if (user.IsAdmin == null)
+                        {
+                            <a asp-controller="user" asp-action="UserStatusChange" asp-route-id="@user.Id" class="btn btn-danger btn-icon-text">
+                                <i class="far fa-user"></i>
+                                Member
+
+                            </a>
+                        }
+                        else if (user.IsAdmin == false)
+                        {
+                            <a asp-controller="user" asp-action="UserStatusChange" asp-route-id="@user.Id" class="btn btn-success btn-icon-text">
+                                <i class="fas fa-user-cog"></i>
+                                Admin
+                            </a>
+                        }
+                        else if (user.IsAdmin == true)
+                        {
+                            <a asp-controller="user" asp-action="UserStatusChange" asp-route-id="@user.Id" class="btn btn-primary btn-icon-text">
+                                <i class="fas fa-pen-alt" style="font-size:15px;"></i>
+                                Publisher
+
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row justify-content-center mt-4">
+        <nav aria-label="...">
+            <ul class="pagination" style="justify-content:center">
+
+                <li class="page-item @(ViewBag.Currentpage == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-controller="user" asp-action="index" asp-route-page="@(ViewBag.CurrentPage-1)">Previous</a>
+                </li>
+
+                @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                {
+                    <li class="page-item  @(ViewBag.CurrentPage == i ? "active" : "")" style="pointer-events: @(ViewBag.CurrentPage == i ? "none" : "")"><a class="page-link" asp-controller="user" asp-action="index" asp-route-page="@i">@i</a></li>
+                }
+
+                <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPage ? "disabled" : "")">
+                    <a class="page-link" asp-controller="user" asp-action="index" asp-route-page="@(ViewBag.CurrentPage +1)">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+@section Scripts{
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+}
+
+
+
+

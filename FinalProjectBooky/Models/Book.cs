@@ -19,7 +19,7 @@ namespace FinalProjectBooky.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
 
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         [Required]
         [StringLength(maximumLength: 20)]
         public string LeftSideColor { get; set; }
@@ -56,7 +56,7 @@ namespace FinalProjectBooky.Models
         [NotMapped]
         public List<int> AuthorIds { get; set; }
 
-
+        public List<OrderItem> OrderItems { get; set; }
 
 
     }

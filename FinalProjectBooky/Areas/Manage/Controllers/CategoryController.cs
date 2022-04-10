@@ -80,6 +80,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                 ModelState.AddModelError("Name", "You enter same tag.Change other tag");
                 return View(existedCategory);
             }
+
             existedCategory.Name = category.Name;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));

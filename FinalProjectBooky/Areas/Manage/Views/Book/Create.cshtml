@@ -5,7 +5,9 @@
     List<Tag> tags = (List<Tag>)ViewBag.Tags;
     List<Language> languages = (List<Language>)ViewBag.Languages;
     List<Author> authors = (List<Author>)ViewBag.Authors;
-    List<Campaign> campaigns = (List<Campaign>)ViewBag.Campaigns;
+    List<Campaign> campaigns=(List<Campaign>)ViewBag.Campaigns;
+
+    
     
 
 }
@@ -68,14 +70,14 @@
         </div>
        <div class="mb-3">
             <label asp-for="@Model.CampaignId" class="form-label">Campaign</label>
-            <select asp-for="@Model.CampaignId" class="form-select" asp-items="@(new SelectList(ViewBag.Campaigns,"Id","DiscountPercent"))">
+            <select asp-for="@Model.CampaignId" class="form-select" asp-items="@(new SelectList(campaigns,"Id","DiscountPercent"))">
                 <option value="0">Select campaign</option>
             </select>
             <span class="mt-2 text text-danger" asp-validation-for="@Model.CampaignId"></span>
         </div>
         <div class="mb-3">
             <label asp-for="@Model.LanguageId" class="form-label">Language</label>
-            <select asp-for="@Model.LanguageId" class="form-select" asp-items="@(new SelectList(ViewBag.Languages,"Id","Name"))">
+            <select asp-for="@Model.LanguageId" class="form-select" asp-items="@(new SelectList(languages,"Id","Name"))">
                 <option value="0">Select language</option>
             </select>
             <span class="mt-2 text text-danger" asp-validation-for="@Model.LanguageId"></span>
@@ -87,7 +89,9 @@
         </div>
         <div class="form-group col-md-3">
             <label asp-for="@Model.TagIds">Tags</label>
-            <select class="form-control" asp-for="@Model.TagIds" asp-items="@(new SelectList(tags,"Id","Name"))">
+            <select multiple class="form-control" asp-for="@Model.TagIds" asp-items="@(new SelectList(tags,"Id","Name"))">
+                
+
             </select>
         </div>
         <div class="form-group col-md-3">
