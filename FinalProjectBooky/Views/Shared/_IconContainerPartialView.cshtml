@@ -1,0 +1,15 @@
+﻿@model List<IconContainer>
+
+
+    @foreach(IconContainer icon in Model){
+        
+            <div class="icons" style="display:flex;justify-content:center">
+                @Html.Raw(@icon.Icon)
+                <div class="content">
+                    <h3>@icon.Title</h3>
+                    <p>@icon.Description</p>
+                </div>
+            </div>
+
+           
+    }

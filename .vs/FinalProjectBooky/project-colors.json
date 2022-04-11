@@ -5,6 +5,11 @@
       "ProjectGuid": "28239dd0-4ebb-4933-9535-d285d2a358a3",
       "DisplayName": "FinalProjectBooky",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1

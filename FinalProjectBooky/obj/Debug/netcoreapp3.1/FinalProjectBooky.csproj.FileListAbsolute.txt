@@ -197,3 +197,5 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Publisher\Index.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Publisher\Create.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Publisher\Edit.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_HeaderBookPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IconContainerPartialView.cshtml.g.cs
