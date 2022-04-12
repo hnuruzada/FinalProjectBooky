@@ -1,5 +1,6 @@
 using FinalProjectBooky.DAL;
 using FinalProjectBooky.Models;
+using FinalProjectBooky.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,7 +34,7 @@ namespace FinalProjectBooky
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
-            //services.AddScoped<LayoutService>();
+            services.AddScoped<LayoutService>();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(100);
@@ -44,6 +45,7 @@ namespace FinalProjectBooky
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
             };
             services.AddHttpContextAccessor();
+
             services.AddIdentity<AppUser, IdentityRole>(option =>
             {
 

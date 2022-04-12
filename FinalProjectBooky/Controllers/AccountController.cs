@@ -169,7 +169,9 @@ namespace FinalProjectBooky.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
                 return View(model);
+
             }
+              await  _signInManager.SignInAsync(user, true);
             return RedirectToAction("Index", "Home");
         }
 

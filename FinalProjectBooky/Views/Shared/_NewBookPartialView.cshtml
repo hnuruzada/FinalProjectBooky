@@ -1,0 +1,143 @@
+﻿@model List<Book>
+
+
+    @foreach (Book book in Model.Skip(Model.Count-4).Take(4))
+{
+    <li class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <figure class='book'>
+
+
+
+            <ul class="hardcover_front">
+                <li>
+                    <img src="~/Assets/images/@book.Image" alt="" width="100%" height="100%">
+                </li>
+                <li>
+
+                </li>
+            </ul>
+
+
+
+            <ul class="page">
+                <li>
+                    <p style="font-size: 8px;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dignissimos error debitis, reprehenderit
+                        sapiente, soluta labore obcaecati animi, laborum
+                        voluptates odio facilis sunt cum doloremque
+                        reiciendis ipsam eius similique consequuntur.
+                        Rerum, sint quibusdam sequi, nihil eum quia
+                        voluptatibus reprehenderit blanditiis, commodi
+                        fugit labore repudiandae eveniet reiciendis eius
+                        et voluptas amet sit!
+                    </p>
+                </li>
+                <li>
+                    <div class="rsp-design">
+                        <h1>@book.Name</h1>
+                        <span>By @book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span>
+                        <div class="price">
+                            @if (book.CampaignId == null)
+                            {
+                                <span>$@book.Price</span>
+                            }
+                            else
+                            {
+                                <span>@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span>
+                                <span class="campaign">$@book.Price</span>
+                            }
+
+                        </div>
+                    </div>
+                    <a class="btn addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
+
+
+                </li>
+                <li>
+                    <h5>Chapter3</h5>
+                    <p style="font-size: 8px;padding-right: 2%;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Dignissimos error debitis, reprehenderit
+                        sapiente, soluta labore obcaecati animi, laborum
+                        voluptates odio facilis sunt cum doloremque
+                        reiciendis ipsam eius similique consequuntur.
+                        Rerum, sint quibusdam sequi, nihil eum quia
+                        voluptatibus reprehenderit blanditiis, commodi
+                        fugit labore repudiandae eveniet reiciendis eius
+                        et voluptas amet sit!
+                    </p>
+                </li>
+                <li>
+                    <h5>Chapter2</h5>
+                    <p style="font-size: 6px;padding-right: 2%;">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum deserunt
+                        provident, harum nobis eius pariatur veniam quos non possimus placeat
+                        obcaecati iure. Fugit maiores maxime tempore consectetur nesciunt aperiam id
+                        voluptatum! Culpa, rerum quisquam impedit possimus explicabo ut enim,
+                        reiciendis natus, dolore hic deserunt asperiores. Temporibus, reprehenderit
+                        dolorum! Fugiat facilis praesentium explicabo vitae optio aliquam nemo nam
+                        dolor. Iusto, veniam! Minus enim, laboriosam architecto, beatae dolorem
+                        doloremque earum deserunt eligendi quas autem fugit? Quasi ab beatae nisi
+                        fugiat repellendus, dolore sit itaque ullam laudantium nesciunt. Distinctio
+                        eaque reiciendis possimus commodi ex, labore facere expedita ipsa
+                        dignissimos aliquam quo explicabo sequi!
+                    </p>
+                </li>
+                <li>
+                    <h5>Chapter1</h5>
+                    <p style="font-size: 6px;padding-right: 2%;">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi quidem
+                        accusantium atque accusamus qui ratione beatae, esse doloribus maxime
+                        provident rem ipsam dolores dolorem numquam alias fugiat aperiam, sapiente
+                        sequi, repudiandae ex. Labore, quas veritatis? Doloribus alias tempore fuga
+                        debitis repellendus repellat quaerat inventore illo ad quam quo aperiam
+                        numquam eius quae, quibusdam cumque molestiae exercitationem unde placeat
+                        optio vitae. Molestias, maxime molestiae, odit dolorum vel esse aspernatur
+                        tempora officia nostrum perspiciatis excepturi ipsa eveniet in magnam
+                        pariatur beatae repellat optio, provident dolores. Placeat qui unde pariatur
+                        cumque, consequatur explicabo! Eos, recusandae tempore? Deleniti, molestias
+                        aperiam ipsa blanditiis quos fugiat.
+                    </p>
+                </li>
+            </ul>
+
+
+
+            <ul class='hardcover_back'>
+                <li>
+
+
+                </li>
+                <li>
+
+                </li>
+
+            </ul>
+            <ul class='book_spine'>
+                <li>
+
+
+                </li>
+                <li>
+
+                </li>
+            </ul>
+            <figcaption>
+                <h1>@book.Name</h1>
+                <span>By @book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span>
+                <div class="price">
+                     @if (book.CampaignId == null)
+                            {
+                                <span>$@book.Price</span>
+                            }
+                            else
+                            {
+                                <span>@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span>
+                                <span class="campaign">$@book.Price</span>
+                            }
+                </div>
+            </figcaption>
+        </figure>
+    </li>
+}

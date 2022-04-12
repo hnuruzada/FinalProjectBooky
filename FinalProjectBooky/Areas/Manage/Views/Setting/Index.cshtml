@@ -54,7 +54,7 @@
                             <tr>
                                
                                 <td>
-                                    <img src="~/Assets/images/@Model.Logo" style="width:100px;height:80px;"/>
+                                    <img src="~/Assets/images/@Model.Logo" style="width:100px;height:80px;border-radius:0;"/>
                                 </td>
                                 
                                 <td>@Model.WebName</td>
@@ -73,7 +73,7 @@
                                 <td style="text-align:center;" class="row">
                                     @foreach(var item in Model.FooterSocialMedias )
                                    {
-                                       <a class="col-md-4" style="font-size:30px;" src="@item.Url">@Html.Raw(@item.Icon)</a>
+                                       <a class="col-md-4" style="font-size:30px;" src="@item.Url"><i class="@item.Icon"></i></a>
                                    }
                                 </td>
                                 <td>

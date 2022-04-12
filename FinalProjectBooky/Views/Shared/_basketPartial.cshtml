@@ -1,0 +1,27 @@
+﻿@inject FinalProjectBooky.Services.LayoutService layoutService
+
+@foreach (var item in layoutService.ShowBasket().Result.BasketItems)
+            {
+                <div class="product">
+                    <div class="image">
+                        <img src="~/Assets/images/@item.Book.Image" alt="">
+                    </div>
+                    <div class="info">
+                        <h5>@item.Book.Name</h5>
+                        @if (item.Book.CampaignId == null)
+                        {
+                             <span>@item.Count x $@(item.Book.Price*item.Count)</span>
+                        }
+                        else
+                        {
+                            <span>@item.Count x $@((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count)</span>
+                           
+                        }
+
+                    </div>
+                    <a asp-controller="book" asp-action="deletebasketitem" asp-route-id="@item.Book.Id" class="remove">
+                        <i class="las la-times"></i>
+                    </a>
+                </div>
+            }
+
