@@ -77,17 +77,17 @@
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart basket" onclick="openNav()">
-                    <span class="count">
+                   
                         @if (User.Identity.IsAuthenticated)
                         {
-                            @basket.Count
+                           <span id="total-count" class="count">0</span>
                         }
                         else
                         {
-                            @basket.Count
+                          <span id="total-count" class="count">0</span>
                         }
 
-                    </span>
+                    
                 </a>
                 <a href=""><i class="fas fa-user"></i></a>
 
@@ -109,72 +109,21 @@
         </div>
 
     </header>
-    <div id="mySidenav" class="bags sidenav">
+    <div id="mySidenav" class="bags sidenav carts">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <div class="bag">
-            @if (User.Identity.IsAuthenticated)
-            {
-                @if (basket.Count == 0)
-                {
-                    <div class="empty" style="background-image: url(../Assets/images/empty_cart.gif);background-repeat: no-repeat;width:100%;height:100%;background-position:center;">
-                    </div>
-                }
-                else
-                {
 
-                    @await Html.PartialAsync("_basketPartial",layoutService)
 
-                }
-            }
-            else
-            {
-                @if (basket.Count == 0)
-                {
-                    <div class="empty" style="background-image: url(../Assets/images/empty_cart.gif);background-repeat: no-repeat;width:100%;height:100%;background-position:center;">
-                    </div>
-                }
-                else
-                {
 
-                    @await Html.PartialAsync("_basketPartial",layoutService)
+        @await Html.PartialAsync("_basketPartial",layoutService)
 
-                }
-            }
-        </div>
-        <div class="view-cart-checkout">
-            <div class="total-price">
-                <h5>Total Price</h5>
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    @if (basket.Count == 0)
-                    {
-                        <span>$0</span>
-                    }
-                    else
-                    {
-                        <span>$@basket.TotalPrice</span>
-                    }
-                }
-                else
-                {
-                    @if (basket.Count == 0)
-                    {
-                        <span>$0</span>
-                    }
-                    else
-                    {
-                        <span>$@basket.TotalPrice</span>
-                    }
-                }
 
-            </div>
-            <div class="view-check">
-                <button class="view" type="submit">View Cart</button>
-                <button class="check" type="submit">Checkout</button>
-            </div>
-        </div>
+
+
+
+
+
     </div>
 
     <!-- header section ends -->
@@ -262,6 +211,7 @@
 
     <script>
         $(document).ready(function(){
+
           $(document).on("click",".addToCart",function(e){
               e.preventDefault();
               var href = $(this).attr("href");
@@ -274,16 +224,32 @@
 
                   fetch(urlForPartial).then(res=>res.text()).then(data=>{
 
-                  $(".bag").empty();
-                  $(".bag").append(data);
+
+                  $(".carts").empty();
+                  var card=document.querySelector(".carts")
+                  card.innerHTML=`<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
+
+                  $(".carts").append(data);
+
                   })
-                  console.log(data)
+
+
 
               })
+              setTimeout(function(){
+
+                 var totalcount=document.getElementById("total_price")
+                  var count=totalcount.innerHTML
+
+                  var htmltag=document.getElementById("total-count")
+                  htmltag.innerHTML=count
+                  console.log(htmltag)
+                  }, 100);
+
           })
 
           $(document).on("click",".remove",function(e){
-
+              
                e.preventDefault();
               var href = $(this).attr("href");
               console.log(href)
@@ -295,12 +261,25 @@
 
                   fetch(urlForPartial).then(res=>res.text()).then(data=>{
 
-                  $(".bag").empty();
-                  $(".bag").append(data);
+                  $(".carts").empty();
+                  var card=document.querySelector(".carts")
+                   card.innerHTML=`<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>`
+                  $(".carts").append(data);
+
                   })
-                  console.log(data)
+                  
 
               })
+              setTimeout(function(){
+                   var totalcount=document.getElementById("total_price")
+                  var htmltag=document.getElementById("total-count")
+                   htmltag.innerHTML="0"
+                  var count=totalcount.innerHTML
+                  htmltag.innerHTML=count
+                 
+                  }, 100);
+              
+
           })
         })
     </script>

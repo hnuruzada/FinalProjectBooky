@@ -1,0 +1,44 @@
+﻿@model List<Book>
+
+
+    @foreach (Book book in Model)
+{
+    <div class="column col-lg-6" data-price="">
+        <div class="cards justify-content-lg-start">
+            <div class="card-headers">
+                <img src="./Assets/images/@book.Image" alt="..." style="width:56%">
+            </div>
+            <div class="card-bodys">
+                <a asp-controller="book" asp-action="detail" style="text-decoration:none;">
+                    <h1 class="book-name">@book.Name</h1>
+                </a>
+                <a asp-controller="author" asp-action="index" style="text-decoration:none;">
+                    <h5 class="author-name">@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</h5>
+                </a>
+                @if (book.CampaignId == null)
+                {
+                   <span class="price">$@book.Price</span>
+                }
+                else
+                {
+                    
+                    <span class="price" ><span >$@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span><span style="text-decoration:line-through;opacity:0.6;padding-left:10px;">  $@book.Price</span></span>
+                }
+
+                
+                <p>
+
+                    @if(book.Summary.Length>150){
+
+                        @book.Summary.Substring(0,150)
+                    }
+                    else
+                    {
+                        @book.Summary
+                    }
+                </p>
+                <a class="btn btn-primary addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+}

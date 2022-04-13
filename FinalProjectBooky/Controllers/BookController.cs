@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,10 +22,62 @@ namespace FinalProjectBooky.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Index(int sortId,int page=1)
         {
-            return View();
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 4);
+
+            List<Book> model = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt=>bt.Tag).Skip((page - 1) * 4).Take(4).ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Tags= _context.Tags.ToList();
+            ViewBag.id = sortId;
+           
+            switch (sortId)
+            {
+                case 1:
+                    model = _context.Books.ToList();
+                    break;
+                case 2:
+                    model = _context.Books.OrderByDescending(s => s.Name).ToList();
+                    break;
+                case 3:
+                    model = _context.Books.OrderBy(s => s.Name).ToList();
+                    break;
+                case 4:
+                    model = _context.Books.OrderByDescending(s => s.Price).ToList();
+                    break;
+                case 5:
+                    model = _context.Books.OrderBy(s => s.Price).ToList(); 
+                    break;
+                default:
+                    
+                    break;
+            }
+
+
+            return View(model);
+        }   
+        public IActionResult LowToHigh()
+        {
+            List<Book> book = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(b => b.Price).ToList();
+            return View(book); 
         }
+        public IActionResult HighToLow()
+        {
+            List<Book> book1 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(b=>b.Price).ToList();
+            return View(book1);
+        }
+        public IActionResult AFromZ()
+        {
+            List<Book> book2 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(b => b.Name).ToList();
+            return View(book2);
+        }
+        public IActionResult ZFromA()
+        {
+            List<Book> book3 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(b => b.Name).ToList();
+            return View(book3);
+        }
+
         public IActionResult Detail()
         {
             return View();
@@ -105,7 +158,6 @@ namespace FinalProjectBooky.Controllers
                     HttpContext.Response.Cookies.Append("Basket", basketStr);
                     return PartialView("_basketPartial");
 
-
                 }
             }
 
@@ -154,6 +206,7 @@ namespace FinalProjectBooky.Controllers
        
         public IActionResult ShowBasket()
         {
+          
             string basketStr = HttpContext.Request.Cookies["Basket"];
             if (!string.IsNullOrEmpty(basketStr))
             {
@@ -162,5 +215,6 @@ namespace FinalProjectBooky.Controllers
             }
             return Content("Basket is empty");
         }
+
     }
 }

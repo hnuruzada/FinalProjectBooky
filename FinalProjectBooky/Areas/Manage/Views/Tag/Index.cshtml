@@ -23,9 +23,7 @@
                 <th>
                     Tag name
                 </th>
-                <th>
-                    Course count
-                </th>
+                
                 <th style="text-align:center;">
                     Settings
                 </th>
@@ -41,9 +39,7 @@
                     <td>
                         @tag.Name
                     </td>
-                    <td>
-                        @*@tag.CourseTags.Count*@
-                    </td>
+                   
                     <td style="text-align:center;">
                         <a asp-controller="tag" asp-action="edit" asp-route-id="@tag.Id" style="margin-right:3rem;text-decoration:none;">
                             <i style="font-size:30px;" class="fa-solid fa-pen-to-square"></i>
@@ -82,12 +78,7 @@
     </div>
 </div>
 
-@section Scripts{ 
-    
-}
-
 @section Scripts{
-
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(".delete-item").click(function (e) {
@@ -114,10 +105,10 @@
                             'Failed'
                         )
                     }
-                }
-                );
+                });
             }
         })
     })
 </script>
 }
+

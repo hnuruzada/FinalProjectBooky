@@ -1,27 +1,76 @@
 ﻿@inject FinalProjectBooky.Services.LayoutService layoutService
+@{
+    BasketVM basket = await layoutService.ShowBasket();
 
-@foreach (var item in layoutService.ShowBasket().Result.BasketItems)
-            {
-                <div class="product">
-                    <div class="image">
-                        <img src="~/Assets/images/@item.Book.Image" alt="">
-                    </div>
-                    <div class="info">
-                        <h5>@item.Book.Name</h5>
-                        @if (item.Book.CampaignId == null)
-                        {
-                             <span>@item.Count x $@(item.Book.Price*item.Count)</span>
-                        }
-                        else
-                        {
-                            <span>@item.Count x $@((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count)</span>
-                           
-                        }
+}
+@if (layoutService.ShowBasket().Result.BasketItems.Count == 0)
+{
+    <div class="bag">
 
-                    </div>
-                    <a asp-controller="book" asp-action="deletebasketitem" asp-route-id="@item.Book.Id" class="remove">
-                        <i class="las la-times"></i>
-                    </a>
+
+
+        <div class="empty" style="background-image: url(../Assets/images/empty_cart.gif);background-repeat: no-repeat;width:100%;height:100%;background-position:center;">
+        </div>
+    </div>
+    <div class="view-cart-checkout">
+        <div class="total-price">
+            <h5>Total Price</h5>
+
+            
+                
+                    <span>$@basket.TotalPrice</span>
+                
+               
+            
+        </div>
+        <div class="view-check">
+            <button class="view" type="submit">View Cart</button>
+            <button class="check" type="submit">Checkout</button>
+        </div>
+    </div>
+
+}
+else
+{
+    <div class="bag">
+
+        
+        @foreach (var item in layoutService.ShowBasket().Result.BasketItems)
+        {
+
+            <div class="product">
+                <div class="image">
+                    <img src="~/Assets/images/@item.Book.Image" alt="">
                 </div>
-            }
+                <div class="info">
+                    <h5>@item.Book.Name</h5>
+                    @if (item.Book.CampaignId == null)
+                    {
+                        <span>@item.Count x $@(item.Book.Price*item.Count)</span>
+                    }
+                    else
+                    {
+                        <span>@item.Count x $@((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count)</span>
+
+                    }
+
+                </div>
+                <a asp-controller="book" asp-action="deletebasketitem" asp-route-id="@item.Book.Id" class="remove">
+                    <i class="las la-times"></i>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="view-cart-checkout">
+        <div class="total-price">
+            <h5>Total Price</h5>
+                    <span>$@basket.TotalPrice</span>
+        </div>
+        <div class="view-check">
+            <button class="view" type="submit">View Cart</button>
+            <button class="check" type="submit">Checkout</button>
+        </div>
+    </div>
+    <p id="total_price" style="display:none">@layoutService.ShowBasket().Result.Count</p>
+}
 

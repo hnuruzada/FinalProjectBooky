@@ -19,9 +19,9 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         }
         public IActionResult Index(int page = 1)
         {
-            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Categories.Count() / 2);
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Categories.Count() / 10);
             ViewBag.CurrentPage = page;
-            List<Category> model = _context.Categories.Skip((page - 1) * 2).Take(2).ToList();
+            List<Category> model = _context.Categories.Skip((page - 1) * 10).Take(10).ToList();
 
             return View(model);
         }

@@ -203,3 +203,4 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NewBookPartialView.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogPartialView.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_basketPartial.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BookPartialView.cshtml.g.cs
