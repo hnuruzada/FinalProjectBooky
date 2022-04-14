@@ -124,7 +124,7 @@
                     <ul>
                         @foreach (Category category in ViewBag.Categories)
                         {
-                            <li><a href="">@category.Name (0)</a></li>
+                            <li><a asp-controller="book" asp-action="categorybook" asp-route-Id="@category.Id">@category.Name (@category.BookCategories.Count)</a></li>
                         }
 
                     </ul>

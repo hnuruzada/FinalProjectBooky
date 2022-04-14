@@ -1,0 +1,11 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "CategoryBook";
+}
+
+<div class="book-area pt-150 pb-150">
+    <div class="container">
+        @await Html.PartialAsync("_BookPartialView", Model)
+        </div>
+    </div>
+

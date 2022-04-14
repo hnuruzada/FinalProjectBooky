@@ -28,7 +28,7 @@ namespace FinalProjectBooky.Controllers
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 4);
 
             List<Book> model = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt=>bt.Tag).Skip((page - 1) * 4).Take(4).ToList();
-            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Categories = _context.Categories.Include(c=>c.BookCategories).ThenInclude(bc=>bc.Book).ToList();
             ViewBag.Tags= _context.Tags.ToList();
             ViewBag.id = sortId;
            
@@ -57,25 +57,12 @@ namespace FinalProjectBooky.Controllers
 
             return View(model);
         }   
-        public IActionResult LowToHigh()
+      
+        public IActionResult CategoryBook(int Id)
         {
-            List<Book> book = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(b => b.Price).ToList();
-            return View(book); 
-        }
-        public IActionResult HighToLow()
-        {
-            List<Book> book1 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(b=>b.Price).ToList();
-            return View(book1);
-        }
-        public IActionResult AFromZ()
-        {
-            List<Book> book2 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(b => b.Name).ToList();
-            return View(book2);
-        }
-        public IActionResult ZFromA()
-        {
-            List<Book> book3 = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(b => b.Name).ToList();
-            return View(book3);
+            List<Book> books = _context.Books.Include(b=>b.Campaign).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(c => c.BookCategories).ThenInclude(ct => ct.Category).Where(c => c.BookCategories.Any(bc=>bc.CategoryId==Id)).ToList();
+
+            return View(books);
         }
 
         public IActionResult Detail()

@@ -1,4 +1,5 @@
-﻿@model List<Book>
+﻿
+@model List<Book>
 
 
     @foreach (Book book in Model)
@@ -6,7 +7,7 @@
     <div class="column col-lg-6" data-price="">
         <div class="cards justify-content-lg-start">
             <div class="card-headers">
-                <img src="~/Assets/images/@book.Image" alt="..." style="width:56%">
+                <img src="./Assets/images/@book.Image" alt="..." style="width:56%">
             </div>
             <div class="card-bodys">
                 <a asp-controller="book" asp-action="detail" style="text-decoration:none;">
