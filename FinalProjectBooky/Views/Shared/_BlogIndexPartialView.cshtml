@@ -1,0 +1,16 @@
+﻿
+@model List<Blog>
+
+@foreach (Blog blog in Model)
+{
+    <div class="swiper-slide box">
+                        <div class="image">
+                            <img src="./Assets/images/@blog.Image" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>@blog.Title</h3>
+                            <p>@blog.Description</p>
+                            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="btn">read more</a>
+                        </div>
+                    </div>
+}

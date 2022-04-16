@@ -1,4 +1,4 @@
-﻿@inject FinalProjectBooky.Services.LayoutService layoutService
+﻿ @inject FinalProjectBooky.Services.LayoutService layoutService
 @{
     BasketVM basket = await layoutService.ShowBasket();
 
@@ -71,6 +71,6 @@ else
             <button class="check" type="submit">Checkout</button>
         </div>
     </div>
-    <p id="total_price" style="display:none">@layoutService.ShowBasket().Result.Count</p>
+    <p id="total_count" style="display:none">@layoutService.ShowBasket().Result.Count</p>
 }
 

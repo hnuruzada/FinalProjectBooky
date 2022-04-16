@@ -1,0 +1,18 @@
+﻿@model List<Author>
+
+
+     @foreach (Author author in Model.Skip(Model.Count-4).Take(4))
+           {
+               <div class="col col-lg-2 col-md-4">
+                <div class="author">
+                    <div class="author-img">
+                        <img src="~/Assets/images/@author.Image" alt="">
+                    </div>
+                    <div class="author-info">
+                        <h4>@author.Name @author.Surname</h4>
+                        <span>@author.AuthorBooks.Count Books</span>
+                        <a asp-controller="author" asp-action="index" asp-route-id="@author.Id">View Profile</a>
+                    </div>
+                </div>
+            </div>
+           }

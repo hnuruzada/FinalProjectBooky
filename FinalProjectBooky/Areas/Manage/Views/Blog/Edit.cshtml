@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Edit";
     List<Category> categories = (List<Category>)ViewBag.Categories;
+    List<Publisher> publishers = (List<Publisher>)ViewBag.Publishers;
     List<Tag> tags = (List<Tag>)ViewBag.Tags;
 }
 
@@ -33,7 +34,11 @@
             <textarea asp-for="@Model.Description" class="form-control" id="Subtitle" rows="3"></textarea>
             <span asp-validation-for="@Model.Description" class="text-danger"></span>
         </div>
-
+        <div class="form-group col-md-3">
+            <label asp-for="@Model.PublisherId">Publisher</label>
+            <select class="form-control" asp-for="@Model.PublisherId" asp-items="@(new SelectList(publishers,"Id","Name"))">
+            </select>
+        </div>
         <div class="form-group col-md-3">
             <label asp-for="@Model.CategoryId">Category</label>
             <select class="form-control" asp-for="@Model.CategoryId" asp-items="@(new SelectList(categories,"Id","Name"))">

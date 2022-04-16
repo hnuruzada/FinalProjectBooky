@@ -39,6 +39,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         {
             ViewBag.Tags = _context.Tags.ToList();
             ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Publishers = _context.Publishers.ToList();
             return View();
         }
         [HttpPost]
@@ -46,15 +47,21 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         public IActionResult Create(Blog blog)
         {
             ViewBag.Categories = _context.Categories.ToList();
-
+            ViewBag.Publishers = _context.Publishers.ToList();
             ViewBag.Tags = _context.Tags.ToList();
+            
 
             if (!_context.Categories.Any(x => x.Id == blog.CategoryId))
             {
                 ModelState.AddModelError("CategoryId", "Xetaniz var!");
                 return View();
             }
-            
+            if (!_context.Publishers.Any(x => x.Id == blog.PublisherId))
+            {
+                ModelState.AddModelError("PublisherId", "Xetaniz var!");
+                return View();
+            }
+
 
             if (!ModelState.IsValid)
             {
@@ -104,8 +111,9 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Publishers = _context.Publishers.ToList();
             ViewBag.Tags = _context.Tags.ToList();
-            Blog blog = _context.Blogs.Include(b=>b.Category).Include(x => x.BlogTags).ThenInclude(bt=>bt.Tag).FirstOrDefault(x => x.Id ==id);
+            Blog blog = _context.Blogs.Include(b=>b.Category).Include(x => x.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Publisher).FirstOrDefault(x => x.Id ==id);
             if (blog == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -119,10 +127,13 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         public IActionResult Edit(int id, Blog blog)
         {
             ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Publishers = _context.Publishers.ToList();
             ViewBag.Tags = _context.Tags.ToList();
 
-            Blog existBlog = _context.Blogs.Include(b=>b.Category).Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).FirstOrDefault(x => x.Id == id);
+            Blog existBlog = _context.Blogs.Include(b=>b.Category).Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Publisher).FirstOrDefault(x => x.Id == id);
             if (!_context.Categories.Any(x => x.Id == blog.CategoryId)) return RedirectToAction(nameof(Index));
+            if (!_context.Publishers.Any(x => x.Id == blog.PublisherId)) return RedirectToAction(nameof(Index));
+
             if (existBlog == null)
             {
                 return RedirectToAction("index");
@@ -183,6 +194,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             existBlog.Description = blog.Description;
             existBlog.Date = blog.Date;
             existBlog.CategoryId= blog.CategoryId;
+            existBlog.PublisherId= blog.PublisherId;
             
             _context.SaveChanges();
 
@@ -192,7 +204,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 
         public IActionResult Delete(int id)
         {
-            Blog blog = _context.Blogs.FirstOrDefault(c => c.Id == id);
+            Blog blog = _context.Blogs.Include(b=>b.Publisher).Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Category).FirstOrDefault(c => c.Id == id);
             if (blog == null) return Json(new { status = 404 });
 
             Helpers.Helper.DeleteImg(_env.WebRootPath, "assets/images", blog.Image);

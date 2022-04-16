@@ -1,7 +1,7 @@
 ﻿@model List<Book>
 @{
     ViewData["Title"] = "Index";
-    int id = 0;
+    
 }
 
 
@@ -37,10 +37,10 @@
                                 data-toggle="dropdown">
                             <i class="fas fa-layer-group"></i>
                         </button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu category-tab">
                             @foreach (Category category in ViewBag.Categories)
                             {
-                                <li><a href="">@category.Name</a></li>
+                                <li><a href="@category.Name">@category.Name</a></li>
                             }
 
 
@@ -121,10 +121,10 @@
 
                 <div class="categories">
                     <h2>Categories</h2>
-                    <ul>
+                    <ul class="category-tab">
                         @foreach (Category category in ViewBag.Categories)
                         {
-                            <li><a asp-controller="book" asp-action="categorybook" asp-route-Id="@category.Id">@category.Name (@category.BookCategories.Count)</a></li>
+                            <li><a href="@category.Name">@category.Name (@category.BookCategories.Count)</a></li>
                         }
 
                     </ul>
@@ -136,7 +136,7 @@
                     <div class="tag-links row">
                         @foreach (Tag tag in ViewBag.Tags)
                         {
-                            <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">@tag.Name</a></div>
+                            <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="@tag.Name">@tag.Name</a></div>
 
                         }
 
@@ -149,6 +149,44 @@
 </section>
 
 @section Scripts{
+    <script>
+       $(".tag-links div a").click(function(e) {  
+          e.preventDefault();
+    
+    var id=$(this).attr("href")
+   
+    var items=document.querySelectorAll(".items2")
+    items.forEach(item=>{
+        item.style.display="none"
+        var a=item.getAttribute("data-tag")
+   
+        if(a.includes(id)){
+            item.style.display="block"
+        }
+    })
+   
+
+});
+    </script>
+    <script>
+       $(".category-tab a").click(function(e) {  
+          e.preventDefault();
+    
+    var id=$(this).attr("href")
+   
+    var items=document.querySelectorAll(".items2")
+    items.forEach(item=>{
+        item.style.display="none"
+        var a=item.getAttribute("data-id")
+   
+        if(a.includes(id)){
+            item.style.display="block"
+        }
+    })
+   
+
+});
+    </script>
     <script>
         var option=document.querySelectorAll("#select option")
         var id=document.getElementById("getvalue").innerHTML

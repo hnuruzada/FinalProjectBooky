@@ -205,4 +205,10 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_basketPartial.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BookPartialView.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Book\CategoryBook.cshtml.g.cs
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CategoryBookPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AuthorBookPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AuthorsPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogIndexPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Blog\CategoryBlog.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CategoryTagBlogPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Blog\TagBlog.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RelatedBookPartialView.cshtml.g.cs

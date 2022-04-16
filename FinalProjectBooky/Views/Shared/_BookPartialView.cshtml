@@ -3,17 +3,30 @@
 
     @foreach (Book book in Model)
 {
-    <div class="column col-lg-6" data-price="">
+    <div class=" items2 column col-lg-6" data-id="@foreach (BookCategory item in book.BookCategories)
+                                       {
+                                           @(item.Category.Name )
+                                       }"
+    data-tag="@foreach (BookTag item in book.BookTags)
+                                       {
+                                           @(item.Tag.Name )
+                                       }">
         <div class="cards justify-content-lg-start">
             <div class="card-headers">
                 <img src="~/Assets/images/@book.Image" alt="..." style="width:56%">
             </div>
             <div class="card-bodys">
-                <a asp-controller="book" asp-action="detail" style="text-decoration:none;">
+                <a asp-controller="book" asp-action="detail" asp-route-id="@book.Id" asp-route-categoryId="@foreach (var item in book.BookCategories)
+                                                                                                        {
+                                                                                                            @item.Category.Id
+                                                                                                        }" style="text-decoration:none;">
                     <h1 class="book-name">@book.Name</h1>
                 </a>
-                <a asp-controller="author" asp-action="index" style="text-decoration:none;">
-                    <h5 class="author-name">@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</h5>
+                <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id" style="text-decoration:none;">
+                    <h5 class="author-name">@foreach (var item in book.AuthorBooks)
+                                         {
+                                             @item.Author.Name @item.Author.Surname
+                                         } </h5>
                 </a>
                 @if (book.CampaignId == null)
                 {

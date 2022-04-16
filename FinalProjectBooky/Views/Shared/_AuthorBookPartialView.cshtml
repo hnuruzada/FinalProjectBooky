@@ -1,0 +1,18 @@
+﻿@model AuthorVM
+
+
+    @foreach (var ab in Model.Author.AuthorBooks)
+   {
+        <div class="col col-lg-3 col-md-4 col-sm-6 col-xs-12 col-12 blogBox moreBox" style="display:none;">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="~/Assets/images/@ab.Book.Image" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@ab.Book.Name</h5>
+                        <span class="card-text">$@ab.Book.Price</span>
+                        <a  class="btn btn-primary addToCart"asp-controller="book" asp-action="addbasket" asp-route-id="@ab.Book.Id">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+   }

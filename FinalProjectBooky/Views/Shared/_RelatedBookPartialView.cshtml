@@ -1,0 +1,47 @@
+﻿@model BookDetailVM
+
+
+@foreach (var item in Model)
+{
+    <div class="col col-lg-3 col-md-6 col-sm-12">
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <img src="~/Assets/images/@item.Image">
+                    <a asp-controller="book" asp-action="detail" asp-route-id="@item.Id" asp-route-categoryId="@foreach (var category in item.BookCategories)
+                                                                                                            {
+                                                                                                                @category.Category.Id
+                                                                                                            }"><h3>@item.Name</h3></a>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <div class="content-info">
+                        
+                        <a class="ahver" asp-controller="author" asp-action="index" asp-route-id="@foreach (var auth in item.AuthorBooks)
+                                                                                               {
+                                                                                                  @auth.Author.Id 
+                                                                                               }
+" style="border:none;text-decoration:none;color:black;background-color:white;"><span style="font-size:12px;">  @foreach (var author in item.AuthorBooks)
+                                         {
+                                             @author.Author.Name @author.Author.Surname
+                                         } </span></a>
+                        <span>
+                            $
+                            @if (item.CampaignId == null)
+                            {
+                                @item.Price
+                            }
+                            else
+                            {
+
+                                @(item.Price * (100 - item.Campaign.DiscountPercent)/100)<span style="text-decoration:line-through;opacity:0.6;padding-left:10px;">  $@item.Price</span>
+                            }
+                        </span>
+                    </div>
+                    <a class="addToCart"  asp-controller="book" asp-action="addbasket" asp-route-id="@item.Id">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

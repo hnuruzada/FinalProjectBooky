@@ -25,7 +25,7 @@ namespace FinalProjectBooky.Controllers
             {
                 Books = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b=>b.Campaign).ToList(),
                 Settings=_context.Settings.Include(s => s.FooterSocialMedias).ToList(),
-                Blogs=_context.Blogs.Include(bl=>bl.Category).Include(bl=>bl.BlogTags).ThenInclude(bt=>bt.Tag).ToList(),
+                Blogs=_context.Blogs.Include(bl=>bl.Category).Include(bl=>bl.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Publisher).ToList(),
                 IconContainers=_context.IconContainers.ToList(),
             };
             return View(homeVM);

@@ -26,28 +26,28 @@ namespace FinalProjectBooky.Controllers
         {
             ViewBag.CurrentPage = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 4);
-
+           
             List<Book> model = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt=>bt.Tag).Skip((page - 1) * 4).Take(4).ToList();
             ViewBag.Categories = _context.Categories.Include(c=>c.BookCategories).ThenInclude(bc=>bc.Book).ToList();
-            ViewBag.Tags= _context.Tags.ToList();
+            ViewBag.Tags= _context.Tags.Include(b=>b.BookTags).ThenInclude(bt=>bt.Book).ToList();
             ViewBag.id = sortId;
            
             switch (sortId)
             {
                 case 1:
-                    model = _context.Books.ToList();
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).ToList();
                     break;
                 case 2:
-                    model = _context.Books.OrderByDescending(s => s.Name).ToList();
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(s => s.Name).ToList();
                     break;
                 case 3:
-                    model = _context.Books.OrderBy(s => s.Name).ToList();
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(s => s.Name).ToList();
                     break;
                 case 4:
-                    model = _context.Books.OrderByDescending(s => s.Price).ToList();
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(s => s.Price).ToList();
                     break;
                 case 5:
-                    model = _context.Books.OrderBy(s => s.Price).ToList(); 
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(s => s.Price).ToList(); 
                     break;
                 default:
                     
@@ -58,16 +58,40 @@ namespace FinalProjectBooky.Controllers
             return View(model);
         }   
       
-        public IActionResult CategoryBook(int Id)
-        {
-            List<Book> books = _context.Books.Include(b=>b.Campaign).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(c => c.BookCategories).ThenInclude(ct => ct.Category).Where(c => c.BookCategories.Any(bc=>bc.CategoryId==Id)).ToList();
+       
 
-            return View(books);
-        }
-
-        public IActionResult Detail()
+        public IActionResult Detail(int id,int categoryId)
         {
-            return View();
+
+            Book book = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Authors = _context.Authors.Include(a => a.AuthorBooks).ThenInclude(ab => ab.Book).Where(b => b.AuthorBooks.Any(b => b.BookId == id)).ToList();
+            ViewBag.Categories = _context.Categories.Include(b=>b.BookCategories).ThenInclude(bc=>bc.Book).Where(c => c.BookCategories.Any(c => c.BookId == id)).ToList();
+            ViewBag.RelatedBooks = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b=>b.BookTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Campaign).Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId)).ToList();
+            ViewBag.RelatedBppks=_context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.Campaign).Where(b => b.BookCategories.Any(bc => bc.CategoryId == categoryId)).ToList();
+
+
+            var items = _context.BookCategories.Include(n => n.Book).Where(b => b.CategoryId == categoryId);
+           
+            List<Book> relatedBooks = new List<Book>();
+
+            foreach (var item in items)
+            {
+                relatedBooks = _context.Books.Where(n => n.Id == item.BookId).ToList();
+            }
+
+            BookDetailVM bookDetailVM = new BookDetailVM()
+            {
+                RelatedBooks = relatedBooks,
+                Book = book,
+            };
+
+
+            return View(bookDetailVM);
+
         }
         public async Task<IActionResult> AddBasket(int id)
         {

@@ -80,11 +80,11 @@
                    
                         @if (User.Identity.IsAuthenticated)
                         {
-                           <span id="total-count" class="count">0</span>
+                           <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
                         }
                         else
                         {
-                          <span id="total-count" class="count">0</span>
+                          <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
                         }
 
                     
@@ -238,13 +238,13 @@
               })
               setTimeout(function(){
 
-                 var totalcount=document.getElementById("total_price")
+                 var totalcount=document.getElementById("total_count")
                   var count=totalcount.innerHTML
 
                   var htmltag=document.getElementById("total-count")
                   htmltag.innerHTML=count
                   console.log(htmltag)
-                  }, 100);
+                  }, 50);
 
           })
 
@@ -271,7 +271,7 @@
 
               })
               setTimeout(function(){
-                   var totalcount=document.getElementById("total_price")
+                   var totalcount=document.getElementById("total_count")
                   var htmltag=document.getElementById("total-count")
                    htmltag.innerHTML="0"
                   var count=totalcount.innerHTML

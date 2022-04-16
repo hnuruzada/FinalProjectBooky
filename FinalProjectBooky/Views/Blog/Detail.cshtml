@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Blog
+@{
     ViewData["Title"] = "Detail";
 }
 
@@ -19,11 +20,11 @@
 </section>
 <section class="blog-img">
     <div class="image">
-        <img src="~/Assets/images/blog8.webp" alt="">
+        <img src="~/Assets/images/@Model.Image" alt="">
     </div>
 </section>
 <section class="blog-detail-image">
-    <div class="parallax" style="background: url(../Assets/images/blog-5.jpg) no-repeat;">
+    <div class="parallax" style="background: url(/Assets/images/@Model.Image) no-repeat;">
         
     </div>
 </section>
@@ -33,14 +34,14 @@
             <div class="col-lg-9 post-side">
                 <div class="post">
                     <div class="post-title">
-                        <h1>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper laboris cupidatat</h1>
+                        <h1 style="display:flex; justify-content:center;">@Model.Title</h1>
                     </div>
                     <div class="post-date-publisher">
-                        <span>Post by <a href="">Arena</a> at <span>May 15,2018 </span>| <a href=""> <i class="fas fa-comments"></i><span>(3)</span></a></span>
+                        <span>Post by <a href="">@Model.Publisher.Name @Model.Publisher.Surname</a> at <span>@Model.Date.ToString("MMMM dd,yyyy") </span>| <a href=""> <i class="fas fa-comments"></i><span>(3)</span></a></span>
 
                     </div>
                     <div class="post-description">
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem molestias ex ipsum, error ipsam, a nihil officia blanditiis, eligendi laboriosam illo dolore harum nam nisi iste sapiente impedit! Accusamus distinctio eos corrupti dolor minus, culpa quam deleniti. Blanditiis similique eos iusto excepturi ea libero aperiam dolore possimus iste vitae distinctio pariatur nam nobis, accusamus ullam dolores qui sed quod delectus tempore natus corporis! Praesentium doloremque qui laboriosam eligendi consequatur maxime culpa, sequi doloribus aut ea aliquam atque mollitia in repudiandae nulla, neque quod ipsum soluta quia? Eligendi, nostrum iste quis laudantium inventore quia maxime quo, doloremque cum ducimus magnam. Aperiam cum enim expedita inventore et recusandae repellendus pariatur ab earum sapiente iure at, reprehenderit, id ipsum tempora quod adipisci magnam laudantium dolores nam illo. Ipsum repudiandae laboriosam sequi perspiciatis ex tenetur temporibus cum consequatur veniam rem at inventore, provident autem sint, libero expedita! Voluptas nam, aliquam aut vel odio laboriosam praesentium laborum laudantium a dolorem, consequuntur labore modi, pariatur distinctio voluptate quas. Corrupti officiis quo esse corporis, quaerat asperiores ea natus nostrum ipsum nisi! Ea laudantium consectetur delectus itaque sunt est quam cumque alias obcaecati dolorum, laboriosam id illo animi enim, harum molestiae maiores corrupti quia error ullam? Molestiae, maxime.</p>
+                        <p>@Model.Description</p>
                     </div>
 
                 </div>
@@ -122,103 +123,68 @@
                     </div>
                     <div class="body-author">
                         <div class="author-img">
-                            <img src="~/Assets/images/author_image.webp" alt="">
+                            <img src="~/Assets/images/@Model.Publisher.Image" alt="">
                         </div>
                         <div class="author-info">
                             <div class="title">
-                                <h3>arena-book-shop Admin</h3>
+                                <h3>@Model.Publisher.Name @Model.Publisher.Surname</h3>
                             </div>
                             <div class="description">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    @Model.Publisher.Resume
 
                                 </p>
                             </div>
-                            <div class="social-links">
-                                <i class="fab fa-facebook-f"></i>
-                                <i class="fab fa-twitter second"></i>
-                                <i class="fab fa-google-plus-g"></i>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="categories">
                     <h2>Categories</h2>
                     <ul>
-                        <li><a href="">All Collections</a></li>
-                        <li><a href="">Arts & Photography(0)</a></li>
-                        <li><a href="">Biographies & Memoirs(0)</a></li>
-                        <li><a href="">Children`s Books(0)</a></li>
-                        <li><a href="">Cookbook.Food & Wine(0)</a></li>
-                        <li><a href="">Literature & Fiction(0)</a></li>
-                        <li><a href="">Mystery & Suspense(0)</a></li>
-                        <li><a href="">Sci-fi & Fantasy(0)</a></li>
+                        @foreach (Category category in ViewBag.Categories)
+                       {
+                           <li><a asp-controller="blog" asp-action="categoryblog" asp-route-Id="@category.Id">@category.Name (@category.Blogs.Count)</a></li>
+                       }
+                      
                     </ul>
                 </div>
                 <div class="blog-posts">
                     <h2>Blog posts</h2>
-                    <div class="post-item">
+                    @foreach (Blog blog in ViewBag.Blogs)
+                   {
+                       <div class="post-item">
                         <div class="post-img">
-                            <img src="~/Assets/images/blog6.webp" alt="">
+                            <img src="~/Assets/images/@blog.Image" alt="">
                         </div>
                         <div class="post-info">
                             <div class="description">
-                                <a href="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam eiusmod tempor</a>
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id"> @if (blog.Description.Length < 100)
+                    {
+                       @blog.Description
+
+                    }
+                    else
+                    {
+                        @(blog.Description.Substring(0,100) + "...")
+                    }</a>
                             </div>
                             <div class="date">
-                                <span>May 23,2021</span>
+                                <span>@blog.Date.ToString("MMMM dd,yyyy")</span>
                             </div>
                         </div>
                     </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="~/Assets/images/blog7.webp" alt="">
-                        </div>
-                        <div class="post-info">
-                            <div class="description">
-                                <a href="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam eiusmod tempor</a>
-                            </div>
-                            <div class="date">
-                                <span>May 23,2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="~/Assets/images/blog8.webp" alt="">
-                        </div>
-                        <div class="post-info">
-                            <div class="description">
-                                <a href="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam eiusmod tempor</a>
-                            </div>
-                            <div class="date">
-                                <span>May 23,2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="~/Assets/images/blog9.webp" alt="">
-                        </div>
-                        <div class="post-info">
-                            <div class="description">
-                                <a href="">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam eiusmod tempor</a>
-                            </div>
-                            <div class="date">
-                                <span>May 23,2021</span>
-                            </div>
-                        </div>
-                    </div>
+                   }
+                   
                 </div>
                 <div class="tags">
                     <h2>Tags</h2>
                     <div class="tag-links row">
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">Horror</a></div>
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">Author Name</a></div>
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">Best Seller</a></div>
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">New Book</a></div>
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">Action</a></div>
-                        <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a href="">Criminal</a></div>
+                        @foreach (Tag tag in ViewBag.Tags)
+                       {
+                           <div class="link col col-lg-3 col-md-4 col-sm-6 col-4"><a asp-controller="blog" asp-action="tagblog" asp-route-id="@tag.Id">@tag.Name</a></div>
+                       }
+                        
                     </div>
                 </div>
             </div>

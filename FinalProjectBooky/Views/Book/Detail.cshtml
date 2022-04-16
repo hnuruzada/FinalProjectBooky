@@ -1,10 +1,12 @@
-﻿@{
+﻿@model BookDetailVM
+@{
     ViewData["Title"] = "Detail";
 }
 
 
 @section CSS{
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
 }
 
@@ -18,12 +20,12 @@
 <section class="book-content">
     <div class="container">
         <div class="rsp-book-img">
-            <img src="~/Assets/images/book16.jpg" alt="">
+            <img src="~/Assets/images/@Model.Book.Image" alt="">
         </div>
         <div class="cover">
             <div class="book">
                 <label for="page-1" class="book__page book__page--1">
-                    <img src="~/Assets/images/book16.jpg" alt="">
+                    <img src="~/Assets/images/@Model.Book.Image" alt="">
                 </label>
 
                 <label for="page-2" class="book__page book__page--4">
@@ -48,8 +50,6 @@
                                 was not cut off from civilization, you see. At that time, no place in the Galaxy
                                 was.
                             </p>
-
-
                         </div>
                         <div class="page__number">3</div>
                     </div>
@@ -64,9 +64,12 @@
                     <div class="book__page-front">
                         <div class="page__content">
                             <h1 class="page__content-book-title">Foundation</h1>
-                            <h2 class="page__content-author">Isaac Asimov</h2>
+                            <h2 class="page__content-author">@*@foreach (var item in AuthorBook)
+                                                          {
+                                                              @item.Author.Name @item.Author.Surname
+                                                          }*@</h2>
 
-                            <p class="page__content-credits">
+                            @*<p class="page__content-credits">
                                 Introduction by
                                 <span>Paul Krugman</span>
                             </p>
@@ -74,10 +77,13 @@
                             <p class="page__content-credits">
                                 Illustrations by
                                 <span>Alex Wells</span>
-                            </p>
+                            </p>*@
 
                             <div class="page__content-copyright">
-                                <p>The Folio Society</p>
+                                <p>@foreach (var item in ViewBag.Categories)
+                                 {
+                                     @item.Name
+                                 }</p>
                                 <p>London - MMXII</p>
                             </div>
                         </div>
@@ -121,15 +127,30 @@
         </div>
         <div class="book-details">
             <div class="details">
-                <h1>Book Name</h1>
+                <h1>@Model.Book.Name</h1>
                 <ul>
-                    <li>Author: <span>Author Name</span> </li>
-                    <li>Category: <span>Historical,Action</span></li>
-                    <li>SkuCode: <span>1524324</span></li>
-                    <li>Language: <span>English</span></li>
-                    <li>Page: <span>250</span></li>
-                    <li>Publish: <span>1997</span></li>
-                    <li>Price: <span>$100</span></li>
+                    <li>Author: <span>@foreach (var item in ViewBag.Authors)
+                                    {
+                                        @(item.Name + " " + item.Surname)
+                                    }</span> </li>
+                    <li>Category: <span>@foreach (var item in ViewBag.Categories)
+                                      {
+                                       @(item.Name + " ")   
+                                      }</span></l i>
+                    <li>SkuCode: <span>@Model.Book.SkuCode</span></li>
+                    <li>Language: <span>@Model.Book.Language</span></li>
+                    <li>Page: <span>@Model.Book.PageCount</span></li>
+                    <li>Publish: <span>@Model.Book.Date.ToString("yyyy")</span></li>
+                        <li>Price: <span>$@if (Model.Book.Campaign == null)
+                                {
+                                    @Model.Book.Price
+                                }
+                                else
+                                {
+                                    @(Model.Book.Price * (100 - Model.Book.Campaign.DiscountPercent)/100)
+                                    <span style="text-decoration:line-through;opacity:0.6;">$@Model.Book.Price</span>
+                                }
+                            </span></li>
                 </ul>
             </div>
             <div class="Add-Cart">
@@ -139,7 +160,7 @@
                     <button class="btn plus-btn" type="button">+</button>
                 </div>
                 <div class="btn-cart">
-                    <button type="submit">Add To Cart</button>
+                    <a class="btn btn-primary addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@Model.Book.Id">Add To Cart</a>
                 </div>
             </div>
             <div class="buy-it-now">
@@ -165,20 +186,22 @@
                 <div id="description" class="tab-panel">
                     <h2>Book Summary</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolorem ut deserunt
-                        soluta libero voluptatum mollitia illum sapiente aut natus enim vitae reiciendis,
-                        magnam, laborum quidem fugiat molestias officiis. Sit eum tenetur tempore ipsam
-                        molestias doloribus mollitia incidunt dolore, doloremque ducimus aliquam laborum magnam
-                        aperiam, atque officia deserunt odio! Velit!
+                       @Model.Book.Summary
                     </p>
                 </div>
                 <div id="bookInformation" class="tab-panel">
 
-                    <p><strong>Book:</strong> Book Name</p>
-                    <p><strong>Author:</strong> Author Name</p>
-                    <p><strong>Page:</strong> 250</p>
-                    <p><strong>Category:</strong> Action,Criminal</p>
-                    <p><strong>Date:</strong> 1993</p>
+                    <p><strong>Book:</strong> @Model.Book.Name</p>
+                    <p><strong>Author:</strong> @foreach (var item in ViewBag.Authors)
+                                    {
+                                        @item.Name
+                                    }</p>
+                    <p><strong>Page:</strong> @Model.Book.PageCount</p>
+                    <p><strong>Category:</strong>@foreach (var item in ViewBag.Categories)
+                                      {
+                                       @(item.Name + " ")   
+                                      }</p>
+                    <p><strong>Date:</strong> @Model.Book.Date.ToString("yyyy")</p>
 
                 </div>
 
@@ -270,91 +293,17 @@
             <h1>RELATED BOOKS</h1>
         </div>
         <div class="row">
-            <div class="col col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <img src="~/Assets/images/book16.jpg">
-                            <a href=""><h3>Book Name</h3></a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <div class="content-info">
-                                <span>Author Name</span>
-                                <span>100$</span>
-                            </div>
-                            <a href="#">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <img src="~/Assets/images/book17.jpg">
-                            <a href=""><h3>Book Name</h3></a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <div class="content-info">
-                                <span>Author Name</span>
-                                <span>100$</span>
-                            </div>
-                            <a href="#">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <img src="~/Assets/images/book18.jpg">
-                            <a href=""><h3>Book Name</h3></a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <div class="content-info">
-                                <span>Author Name</span>
-                                <span>100$</span>
-                            </div>
-                            <a href="#">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-                            <img src="~/Assets/images/book19.jpg">
-                            <a href=""><h3>Book Name</h3></a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <div class="content-info">
-                                <span>Author Name</span>
-                                <span>100$</span>
-                            </div>
-                            <a href="#">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         
+               @await Html.PartialAsync("_RelatedBookPartialView",Model)
+          
+        </div>  
     </div>
 </section>
 
 
 
 @section Scripts{
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="~/Assets/js/book-detail-page.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/Assets/js/book-detail-page.js"></script>
         }
 

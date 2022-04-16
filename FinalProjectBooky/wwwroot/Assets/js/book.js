@@ -94,65 +94,11 @@ function gridViewThree() {
 
 
 
-//sort by
+
 
 
 		
-    //let field = document.querySelector('.items');
     
-    //let column = Array.from(field.children);
-    
-
-    //function SortProduct() {
-    //    let select = document.getElementById('select');
-        
-    //    let ar = [];
-    //    for(let i of column){
-    //        const last = i.lastElementChild.lastElementChild.children[2];
-    //        console.log(last);
-    //        const x = last.textContent.trim();
-    //        console.log(x);
-    //        const y = Number(x.substring(1));
-            
-    //        i.setAttribute("data-price", y);
-           
-            
-    //    }
-        
-
-    //    this.run = ()=>{
-    //        addevent();
-    //    }
-    //    function addevent(){
-    //        select.onchange = sortingValue;
-        
-    //    }
-    //    function sortingValue(){
-        
-    //        if (this.value === 'Default') {
-    //            while (field.firstChild) {field.removeChild(field.firstChild);}
-    //            field.append(...ar);	
-    //        }
-    //        if (this.value === 'LowToHigh') {
-    //            SortElem(field, column, true)
-    //        }
-    //        if (this.value === 'HighToLow') {
-    //            SortElem(field, column, false)
-    //        }
-    //    }
-    //    function SortElem(field,column, asc){
-    //        let  dm, sortcolumn;
-    //        dm = asc ? 1 : -1;
-    //        sortcolumn = column.sort((a, b)=>{
-    //            const ax = a.getAttribute('data-price');
-    //            const bx = b.getAttribute('data-price');
-    //            return ax > bx ? (1*dm) : (-1*dm);
-    //        });
-    //         while (field.firstChild) {field.removeChild(field.firstChild);}
-    //         field.append(...sortcolumn);	
-    //    }
-    //}
-    //new SortProduct().run();
 
 
 
