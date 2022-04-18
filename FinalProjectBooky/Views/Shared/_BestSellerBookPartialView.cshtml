@@ -49,7 +49,7 @@
                             </div>
                             <div class="add-to-cart">
                                 <a class="btn btn-light addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
-                                <a href=""><i class="far fa-heart"></i></a>
+                                <a asp-controller="book" asp-action="addwishlist" asp-route-id="@book.Id"  class="wishlist wishlistFetch"><i class="far fa-heart"></i></a>
                             </div>
                         </div>
                     </div>

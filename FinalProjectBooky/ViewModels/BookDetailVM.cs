@@ -7,6 +7,6 @@ namespace FinalProjectBooky.ViewModels
     {
         public Book Book { get; set; }
         public List<Book> RelatedBooks { get; set; }
-        
+        public List<Category> Categories { get; set; }
     }
 }

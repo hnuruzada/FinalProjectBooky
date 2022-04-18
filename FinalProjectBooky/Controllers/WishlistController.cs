@@ -2,7 +2,7 @@
 
 namespace FinalProjectBooky.Controllers
 {
-    public class WishlistController : Controller
+    public class WishListController : Controller
     {
         public IActionResult Index()
         {

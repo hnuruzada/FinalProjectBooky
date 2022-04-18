@@ -57,6 +57,7 @@ namespace FinalProjectBooky.Models
         public List<int> AuthorIds { get; set; }
 
         public List<OrderItem> OrderItems { get; set; }
+        public List<WishListItem> WishListItems { get; set; }
 
 
     }

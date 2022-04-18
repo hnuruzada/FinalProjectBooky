@@ -21,6 +21,26 @@ namespace FinalProjectBooky.Controllers
             _context = context;
             _userManager = userManager;
         }
+
+        public async Task<IActionResult> ViewCart()
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+           
+            OrderVM model = new OrderVM
+            {
+                
+                Name = user.Name,
+                Surname = user.Surname,
+                Username = user.UserName,
+                Email = user.Email,
+                BasketItems = _context.BasketItems.Include(b => b.Book).ThenInclude(f => f.Campaign).Include(b => b.Book).ThenInclude(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Where(b => b.AppUserId == user.Id).ToList(),
+                
+            };
+           
+
+            return View(model);
+
+        }
         public async Task<IActionResult> Checkout()
         {
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -30,7 +50,8 @@ namespace FinalProjectBooky.Controllers
                 Surname = user.Surname,
                 Username = user.UserName,
                 Email = user.Email,
-                BasketItems = _context.BasketItems.Include(b => b.Book).ThenInclude(f => f.Campaign).Where(b => b.AppUserId == user.Id).ToList()
+                BasketItems = _context.BasketItems.Include(b => b.Book).ThenInclude(f => f.Campaign).Where(b => b.AppUserId == user.Id).ToList(),
+               
             };
 
             return View(model);

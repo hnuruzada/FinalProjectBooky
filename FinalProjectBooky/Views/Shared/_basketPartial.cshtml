@@ -16,16 +16,24 @@
         <div class="total-price">
             <h5>Total Price</h5>
 
-            
-                
-                    <span>$@basket.TotalPrice</span>
-                
-               
-            
+
+
+            <span>$@basket.TotalPrice</span>
+
+
+
         </div>
         <div class="view-check">
-            <button class="view" type="submit">View Cart</button>
-            <button class="check" type="submit">Checkout</button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button class="view" type="button"><a asp-controller="order" asp-action="viewcart" style>View Cart</a></button>
+                <button class="check" type="submit">Checkout</button>
+            }
+            else
+            {
+                 <button class="view" type="button"><a  asp-controller="account" asp-action="login" style="display:flex;justify-content:center;align-items:center;padding:0;">View Cart</a></button>
+            <a class="check" type="button" asp-controller="account" asp-action="login" style="display:flex;justify-content:center;align-items:center;padding:0;">Checkout</a>
+            }
         </div>
     </div>
 
@@ -34,7 +42,7 @@ else
 {
     <div class="bag">
 
-        
+
         @foreach (var item in layoutService.ShowBasket().Result.BasketItems)
         {
 
@@ -64,11 +72,19 @@ else
     <div class="view-cart-checkout">
         <div class="total-price">
             <h5>Total Price</h5>
-                    <span>$@basket.TotalPrice</span>
+            <span>$@basket.TotalPrice</span>
         </div>
         <div class="view-check">
-            <button class="view" type="submit">View Cart</button>
-            <button class="check" type="submit">Checkout</button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                  <a class="view" asp-controller="order" asp-action="viewcart" style="display:flex;justify-content:center;align-items:center;padding:0;">View Cart</a>
+                <a class="check" >Checkout</a>
+            }
+            else
+            {
+                  <a class="view" asp-controller="account" asp-action="login" style="display:flex;justify-content:center;align-items:center;padding:0;">View Cart</a>
+            <a class="check">Checkout</a>
+            }
         </div>
     </div>
     <p id="total_count" style="display:none">@layoutService.ShowBasket().Result.Count</p>

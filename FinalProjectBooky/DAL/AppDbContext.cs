@@ -16,7 +16,8 @@ namespace FinalProjectBooky.DAL
         public DbSet<AuthorBook> AuthorBooks { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Language> Languages { get; set; }
-        
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<WishListItem> WishListItems { get; set; }
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }

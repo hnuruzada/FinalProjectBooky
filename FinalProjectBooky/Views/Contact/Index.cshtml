@@ -1,4 +1,5 @@
-﻿@{
+﻿ @model Contact
+@{
     ViewData["Title"] = "Index";
 }
 
@@ -36,7 +37,7 @@
                 <div class="col col-lg-12 send-message">
                     <h1>Contact Us</h1>
                     <div class="forms">
-                        <form action="">
+                        <form asp-action="message" asp-controller="contact" method="post">
 
                             <div class="name">
                                 <label for="">Name</label><br>
@@ -44,7 +45,7 @@
                             </div>
                             <div class="email">
                                 <label for="">Email</label><br>
-                                <input type="email">
+                                <input type="email" name="email" id="email">
                             </div>
                             <div class="subject">
                                 <label for="">Subject</label><br>
@@ -52,11 +53,11 @@
                             </div>
                             <div class="message">
                                 <label for="">Message</label><br>
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                <textarea name="message" id="message" id="" cols="30" rows="10"></textarea>
                             </div>
 
                             <div class="submit">
-                                <button type="submit">Send Message</button>
+                                <button type="submit" data-text="send">Send Message</button>
                             </div>
                         </form>
                     </div>

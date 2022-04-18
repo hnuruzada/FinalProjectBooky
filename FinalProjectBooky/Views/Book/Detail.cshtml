@@ -1,6 +1,8 @@
 ﻿@model BookDetailVM
 @{
     ViewData["Title"] = "Detail";
+    List<Book> books = (List<Book>)ViewBag.RelatedBooks;
+    
 }
 
 
@@ -64,10 +66,10 @@
                     <div class="book__page-front">
                         <div class="page__content">
                             <h1 class="page__content-book-title">Foundation</h1>
-                            <h2 class="page__content-author">@*@foreach (var item in AuthorBook)
+                            <h2 class="page__content-author">@foreach (var item in Model.Book.AuthorBooks)
                                                           {
                                                               @item.Author.Name @item.Author.Surname
-                                                          }*@</h2>
+                                                          }</h2>
 
                             @*<p class="page__content-credits">
                                 Introduction by
@@ -80,11 +82,11 @@
                             </p>*@
 
                             <div class="page__content-copyright">
-                                <p>@foreach (var item in ViewBag.Categories)
+                                <p>@foreach (var item in Model.Categories)
                                  {
                                      @item.Name
                                  }</p>
-                                <p>London - MMXII</p>
+                                <p>@Model.Book.Date.ToString("yyyy")</p>
                             </div>
                         </div>
                     </div>
@@ -133,7 +135,7 @@
                                     {
                                         @(item.Name + " " + item.Surname)
                                     }</span> </li>
-                    <li>Category: <span>@foreach (var item in ViewBag.Categories)
+                    <li>Category: <span>@foreach (var item in Model.Categories)
                                       {
                                        @(item.Name + " ")   
                                       }</span></l i>
@@ -197,7 +199,7 @@
                                         @item.Name
                                     }</p>
                     <p><strong>Page:</strong> @Model.Book.PageCount</p>
-                    <p><strong>Category:</strong>@foreach (var item in ViewBag.Categories)
+                    <p><strong>Category:</strong>@foreach (var item in Model.Categories)
                                       {
                                        @(item.Name + " ")   
                                       }</p>
@@ -293,9 +295,7 @@
             <h1>RELATED BOOKS</h1>
         </div>
         <div class="row">
-         
-               @await Html.PartialAsync("_RelatedBookPartialView",Model)
-          
+          @await Html.PartialAsync("_RelatedBookPartialView",Model)
         </div>  
     </div>
 </section>

@@ -1,6 +1,7 @@
 ﻿using FinalProjectBooky.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinalProjectBooky.ViewModels
 {
@@ -29,5 +30,6 @@ namespace FinalProjectBooky.ViewModels
         [StringLength(maximumLength: 30)]
         public string State { get; set; }
         public List<BasketItem> BasketItems { get; set; }
+        
     }
 }

@@ -92,5 +92,61 @@ namespace FinalProjectBooky.Services
             return basketData;
 
         }
+        public async Task<WishListVM> GetWishlist()
+        {
+            string wishlist = _httpContext.HttpContext.Request.Cookies["Wishlist"];
+
+            WishListVM wishlistData = new WishListVM
+            {
+                WishListItemVMs = new List<WishListItemVM>(),
+                Count = 0
+            };
+            if (_httpContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                AppUser user = await _userManager.FindByNameAsync(_httpContext.HttpContext.User.Identity.Name);
+                List<WishListItem> wishlistItems = _context.WishListItems.Include(b => b.AppUser).Where(b => b.AppUserId == user.Id).ToList();
+                foreach (WishListItem item in wishlistItems)
+                {
+                    Book book = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(p => p.BookCategories).ThenInclude(pc => pc.Category).Include(p => p.Campaign).FirstOrDefault(f => f.Id == item.BookId);
+                    if (book != null)
+                    {
+                        WishListItemVM wishlistItemVM = new WishListItemVM
+                        {
+                            Book = book,
+                            Count = item.Count
+                        };
+                        wishlistItemVM.Price = book.CampaignId == null ? book.Price : book.Price * (100 - book.Campaign.DiscountPercent) / 100;
+                        wishlistData.WishListItemVMs.Add(wishlistItemVM);
+                        wishlistData.Count++;
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(wishlist))
+                {
+                    List<WishListCookieItemVM> wishlistCookieItems = JsonConvert.DeserializeObject<List<WishListCookieItemVM>>(wishlist);
+
+                    foreach (WishListCookieItemVM item in wishlistCookieItems)
+                    {
+                        Book book = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).FirstOrDefault(p => p.Id == item.Id);
+                        if (book != null)
+                        {
+                            WishListItemVM wishlistItem = new WishListItemVM
+                            {
+                                Book = _context.Books.Include(p => p.Campaign).Include(b=>b.BookCategories).ThenInclude(bc=>bc.Category).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).FirstOrDefault(p => p.Id == item.Id),
+                                Count = item.Count
+                            };
+
+                            wishlistItem.Price = wishlistItem.Book.CampaignId == null ? wishlistItem.Book.Price : wishlistItem.Book.Price * (100 - wishlistItem.Book.Campaign.DiscountPercent) / 100;
+                            wishlistData.WishListItemVMs.Add(wishlistItem);
+                            wishlistItem.Count++;
+                        }
+                    }
+
+                }
+            }
+            return wishlistData;
+        }
     }
 }

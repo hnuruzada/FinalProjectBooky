@@ -75,7 +75,7 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart"></a>
+                <a asp-controller="wishlist" asp-action="index" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart basket" onclick="openNav()">
                    
                         @if (User.Identity.IsAuthenticated)
@@ -282,6 +282,84 @@
 
           })
         })
+    </script>
+     <script>
+        $(document).ready(function () {
+
+            $(document).on("click", ".wishlistFetch", function (e) {
+                e.preventDefault()
+                var href = $(this).attr("href")
+                console.log(href)
+                var base = window.location.origin
+                var url = `${base}${href}`
+                var urlToPartial = `${url}/Book/GetWishlistPartial`
+
+                fetch(url).then(res => res.text()).then(data => {
+                    fetch(urlToPartial).then(res => res.text()).then(data => {
+
+                        $(".wish-lists .wishContainer .wishinROw").empty();
+                        
+                        $(".wish-lists .wishContainer .wishinROw").append(data);
+                    });
+                })
+
+               
+            });
+
+            $(document).on("click", ".removeWishlistItem", function (e) {
+
+                e.preventDefault();
+                var href = $(this).attr("href");
+                console.log(href)
+                var base = window.location.origin;
+                var url = `${base}${href}`
+                var urlForPartial = `${base}/Book/GetWishlistPartial`
+
+                fetch(url).then(res => res.text()).then(data => {
+
+                    fetch(urlForPartial).then(res => res.text()).then(data => {
+
+                        $(".wish-lists .wishContainer .wishinROw").empty();
+                       
+                        $(".wish-lists .wishContainer .wishinROw").append(data);
+
+                    })
+
+
+                })
+                setTimeout(function () {
+                    
+
+                }, 100);
+            })
+            $(document).on("click", ".removeAllWishlist", function (e) {
+
+                e.preventDefault();
+                var href = $(this).attr("href");
+                console.log(href)
+                var base = window.location.origin;
+                var url = `${base}${href}`
+                var urlForPartial = `${base}/Book/GetWishlistPartial`
+
+                fetch(url).then(res => res.text()).then(data => {
+
+                    fetch(urlForPartial).then(res => res.text()).then(data => {
+
+                        $(".wish-lists .wishContainer .wishinROw").empty();
+                       
+                        $(".wish-lists .wishContainer .wishinROw").append(data);
+
+                    })
+
+
+                })
+                setTimeout(function () {
+                    
+
+                }, 100);
+            })
+
+        });
     </script>
 
 

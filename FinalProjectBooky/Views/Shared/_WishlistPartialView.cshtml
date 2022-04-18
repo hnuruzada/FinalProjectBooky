@@ -1,0 +1,45 @@
+﻿@inject FinalProjectBooky.Services.LayoutService layoutService
+@{
+    WishListVM wishlist = await layoutService.GetWishlist();
+}
+
+@if (wishlist.WishListItemVMs==null)
+{
+     <div style="background-image: url(../Assets/images/wishlist.gif);background-repeat: no-repeat;width:900px;height:400px;background-position:center;"> </div>
+}
+else{
+    @foreach (var item in wishlist.WishListItemVMs.Skip(wishlist.WishListItemVMs.Count-4).Take(4).ToList())
+    {
+        <div class="book-item col-lg-6 col-md-6 col-xs-12 col-sm-12 col-12 blogBox moreBox ">
+                    <div class="book-image">
+                        <img src="~/Assets/images/@item.Book.Image" alt="">
+                    </div>
+                    <div class="book-info">
+                        <h1>@item.Book.Name</h1>
+                <span>$@if (item.Book.CampaignId == null)
+                    {
+                        @item.Book.Price
+                    }
+                    else
+                    {
+                        @((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count)<span style="text-decoration:line-through;">$@item.Book.Price</span>
+                    }
+                </span>
+                        <span>@item.Book.Date.ToString("MMMM dd,yyyy")</span>
+                    </div>
+                    <div class="adding">
+                        @if(item.Book.InStock==true){
+                    <span>In Stock</span>
+                }
+                else
+                {
+                    <span style="background-color:red;">Out Stock</span>
+                }
+                <div class="cart-delete">
+                            <a class="addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@item.Book.Id" style="text-decoration:none;"><span>Add to cart</span> </a>
+                            <a asp-controller="book" asp-action="deletewishlistitem" asp-route-id="@item.Book.Id" class="removeWishlistItem"><i class="far fa-trash-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+    }
+}

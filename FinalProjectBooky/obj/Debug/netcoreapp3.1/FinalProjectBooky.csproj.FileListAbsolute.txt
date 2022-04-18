@@ -212,3 +212,10 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CategoryTagBlogPartialView.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Blog\TagBlog.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RelatedBookPartialView.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Order\ViewCart.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Contact\Index.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Index.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Order\Edit.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\WishList\Index.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_WishlistPartialView.cshtml.g.cs
