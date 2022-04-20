@@ -35,7 +35,7 @@ namespace FinalProjectBooky.Controllers
             };
             ViewBag.Categories=_context.Categories.Include(c=>c.Blogs).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.BlogTags).ThenInclude(bt => bt.Blog).ToList();
-            ViewBag.Blogs=_context.Blogs.Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Category).Include(b=>b.Publisher).ToList();
+            ViewBag.Blogs=_context.Blogs.Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Category).Include(b=>b.Publisher).Include(b=>b.Comments).ToList();
             return View(detailVM);
         }
         [AutoValidateAntiforgeryToken]
@@ -71,18 +71,18 @@ namespace FinalProjectBooky.Controllers
         }
         public IActionResult CategoryBlog(int Id)
         {
-            List<Blog> blogs = _context.Blogs.Include(b => b.Publisher).Include(b => b.Category).Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Where(c => c.CategoryId == Id).ToList();
+            List<Blog> blogs = _context.Blogs.Include(b => b.Publisher).Include(b => b.Category).Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b=>b.Comments).Where(c => c.CategoryId == Id).ToList();
             ViewBag.Categories = _context.Categories.Include(c => c.Blogs).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.BlogTags).ThenInclude(bt => bt.Blog).ToList();
-            ViewBag.Blogs = _context.Blogs.Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b => b.Category).Include(b => b.Publisher).ToList();
+            ViewBag.Blogs = _context.Blogs.Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b => b.Category).Include(b => b.Publisher).Include(b=>b.Comments).ToList();
             return View(blogs);
         }
         public IActionResult TagBlog(int id)
         {
-            List<Blog> blogs = _context.Blogs.Include(b => b.Publisher).Include(b => b.Category).Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Where(c => c.BlogTags.Any(bt=>bt.TagId==id)).ToList();
+            List<Blog> blogs = _context.Blogs.Include(b => b.Publisher).Include(b => b.Category).Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b=>b.Comments).Where(c => c.BlogTags.Any(bt=>bt.TagId==id)).ToList();
             ViewBag.Categories = _context.Categories.Include(c => c.Blogs).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.BlogTags).ThenInclude(bt => bt.Blog).ToList();
-            ViewBag.Blogs = _context.Blogs.Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b => b.Category).Include(b => b.Publisher).Where(b=>b.Id==id).ToList();
+            ViewBag.Blogs = _context.Blogs.Include(b=>b.Comments).Include(b => b.BlogTags).ThenInclude(bt => bt.Tag).Include(b => b.Category).Include(b => b.Publisher).Where(b=>b.Id==id).ToList();
             return View(blogs);
         }
     }
