@@ -4,37 +4,39 @@
 @foreach (Book book in Model)
 {
     <div class="item">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="wrap">
-                                <div class="perspective">
-                                    <div class="book-wrap">
-                                        <div class="book book-1"><img class="book-main-img"
-                                                src="~/Assets/images/@book.Image" alt=""></div>
-                                        <div class="title book-1" style="background-color: @book.LeftSideColor;"></div>
-                                        <div class="book-back book-1" style="background-color: @book.BackSideColor;">
-                                            <div class="text">
-                                                <h3>@book.Name</h3>
-                                                <p>
-                                                    <span>@book.Summary</span>
-                                                    
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="wrap">
+                    <div class="perspective">
+                        <div class="book-wrap">
+                            <div class="book book-1">
+                                <img class="book-main-img"
+                                 src="~/Assets/images/@book.Image" alt="">
+                            </div>
+                            <div class="title book-1" style="background-color: @book.LeftSideColor;"></div>
+                            <div class="book-back book-1" style="background-color: @book.BackSideColor;">
+                                <div class="text">
+                                    <h3>@book.Name</h3>
+                                    <p>
+                                        <span>@book.Summary</span>
+
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="title">
-                                <a asp-controller="book" asp-action="detail" asp-route-id="@book.Id">
-                                    <h3>@book.Name</h3>
-                                </a>
-                            </div>
-                            <div class="author-name">
-                                <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
-                            </div>
-                            <div class="price">
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="title">
+                    <a asp-controller="book" asp-action="detail" asp-route-id="@book.Id">
+                        <h3>@book.Name</h3>
+                    </a>
+                </div>
+                <div class="author-name">
+                    <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
+                </div>
+                <div class="price">
                     @if (book.CampaignId == null)
                     {
                         <span><span>$</span>@book.Price</span>
@@ -44,14 +46,22 @@
                         <span><span>$</span>@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span>
                         <p class="campaign">$@book.Price</p>
                     }
-                    
-                                
-                            </div>
-                            <div class="add-to-cart">
-                                <a class="btn btn-light addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
-                                <a asp-controller="book" asp-action="addwishlist" asp-route-id="@book.Id"  class="wishlist wishlistFetch"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
+                <div class="add-to-cart">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-light addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-light" asp-controller="account" asp-action="login">Add To Cart</a>
+                    }
+
+                    <a asp-controller="book" asp-action="addwishlist" asp-route-id="@book.Id" class="wishlist wishlistFetch"><i class="far fa-heart"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 }
