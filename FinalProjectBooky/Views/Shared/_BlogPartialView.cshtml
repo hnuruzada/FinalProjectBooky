@@ -2,35 +2,40 @@
 
 @foreach (Blog blog in Model)
 {
-                         <div class="card col col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
-                <div class="item">
-                    <div class="image">
-                        <img src="~/Assets/images/@blog.Image" alt="">
+    <div class="card col col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+        <div class="item">
+            <div class="image">
+                <img src="~/Assets/images/@blog.Image" alt="">
+            </div>
+            <div class="content">
+                <div class="info">
+                    <div class="date-publisher">
+                        <span>@blog.Date.ToString("MMMM dd,yyyy")</span>
+                        <span>-</span>
+                        <span>by @blog.Publisher.Name @blog.Publisher.Surname</span>
                     </div>
-                    <div class="content">
-                        <div class="info">
-                            <div class="date-publisher">
-                                <span>@blog.Date.ToString("MMMM dd,yyyy")</span>
-                                <span>-</span>
-                                <span>by @blog.Publisher.Name @blog.Publisher.Surname</span>
-                            </div>
-                            <div class="comments">
-                                <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
-                                    <i class="fas fa-comments"></i>
-                                    <span>(@blog.Comments.Where(c=>c.IsAccess==true).Count())</span>
-                                </a>
-                            </div>
-                        </div>
-                        <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id"><h3> @if (blog.Title.Length < 30)
-                    {
-                       @blog.Title
+                    <div class="comments">
+                        <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
+                            <i class="fas fa-comments"></i>
+                            <span>(@blog.Comments.Where(c=>c.IsAccess==true).Count())</span>
+                        </a>
+                    </div>
+                </div>
+                <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
+                    <h3>
+                        @if (blog.Title.Length < 30)
+                        {
+                            @blog.Title
 
-                    }
-                    else
-                    {
-                        @(blog.Title.Substring(0,30) + "...")
-                    }</h3></a>
-                        <p>@if (blog.Description.Length < 100)
+                        }
+                        else
+                        {
+                            @(blog.Title.Substring(0,30) + "...")
+                        }
+                    </h3>
+                </a>
+                <p>
+                    @if (blog.Description.Length < 100)
                     {
                         @blog.Description
 
@@ -38,9 +43,10 @@
                     else
                     {
                         @(blog.Description.Substring(0,100) + "...")
-                    }</p>
-                        <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="btn">read more</a>
-                    </div>
-                </div>
+                    }
+                </p>
+                <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="btn">read more</a>
             </div>
+        </div>
+    </div>
 }

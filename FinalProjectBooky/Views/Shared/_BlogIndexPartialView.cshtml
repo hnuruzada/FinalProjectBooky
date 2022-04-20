@@ -1,16 +1,35 @@
-﻿
-@model List<Blog>
+﻿@model List<Blog>
 
 @foreach (Blog blog in Model)
 {
     <div class="swiper-slide box">
-                        <div class="image">
-                            <img src="./Assets/images/@blog.Image" alt="">
-                        </div>
-                        <div class="content">
-                            <h3>@blog.Title</h3>
-                            <p>@blog.Description</p>
-                            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="btn">read more</a>
-                        </div>
-                    </div>
+        <div class="image">
+            <img src="./Assets/images/@blog.Image" alt="">
+        </div>
+        <div class="content">
+            <h3>
+                @if (blog.Title.Length < 30)
+                {
+                    @blog.Title
+
+                }
+                else
+                {
+                    @(blog.Title.Substring(0,30) + "...")
+                }
+            </h3>
+            <p>
+                @if (blog.Description.Length < 100)
+                {
+                    @blog.Description
+
+                }
+                else
+                {
+                    @(blog.Description.Substring(0,100) + "...")
+                }
+            </p>
+            <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id" class="btn">read more</a>
+        </div>
+    </div>
 }

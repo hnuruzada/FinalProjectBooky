@@ -104,7 +104,6 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\Index.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Author\Index.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Index.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
@@ -219,12 +218,5 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\WishList\Index.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_WishlistPartialView.cshtml.g.cs
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
-C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Book\Comments.cshtml.g.cs
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Comments.cshtml.g.cs

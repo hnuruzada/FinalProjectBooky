@@ -155,7 +155,7 @@
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                 {
                     <a>
-                        <i class="fas fa-user" style="color:green;"></i>
+                        <i class="fas fa-user" style="color:green;" data-toggle="tooltip" data-placement="top" title="@User.Identity.Name"></i>
                     </a>
 
                 }

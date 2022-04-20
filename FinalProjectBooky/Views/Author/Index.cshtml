@@ -47,6 +47,7 @@
             
         </div>
     </div>
+     
 </section>
 
 @section Scripts{
@@ -59,14 +60,14 @@
       }   
       $(".loadMore").on('click', function (e) {
         e.preventDefault();
-        $(".moreBox:hidden").slice(0, 2).slideDown();
+        $(".moreBox:hidden").slice(0, 4).slideDown();
         if ($(".moreBox:hidden").length == 0) {
           $(".loadMore").fadeOut('slow');
         }
       });
     });
     </script>
-        
+   
         <script src="~/Assets/js/author.js"></script>
 }
 
