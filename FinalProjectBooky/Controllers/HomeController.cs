@@ -4,6 +4,7 @@ using FinalProjectBooky.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,6 +30,13 @@ namespace FinalProjectBooky.Controllers
                 IconContainers=_context.IconContainers.ToList(),
             };
             return View(homeVM);
+        }
+        [HttpPost]
+        public JsonResult Search(string search)
+        {
+            List<Book> books=_context.Books.Where(b=>b.Name.ToLower().Trim().Contains(search.ToLower().Trim())).ToList();
+          
+            return Json(books);
         }
 
         

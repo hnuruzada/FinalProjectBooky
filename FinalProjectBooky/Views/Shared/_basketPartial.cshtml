@@ -78,12 +78,12 @@ else
             @if (User.Identity.IsAuthenticated)
             {
                   <a class="view" asp-controller="order" asp-action="viewcart" style="display:flex;justify-content:center;align-items:center;padding:0;">View Cart</a>
-                <a class="check" >Checkout</a>
+                <a class="check" asp-controller="order" asp-action="checkout" style="display:flex;justify-content:center;align-items:center;padding:0;">Checkout</a>
             }
             else
             {
                   <a class="view" asp-controller="account" asp-action="login" style="display:flex;justify-content:center;align-items:center;padding:0;">View Cart</a>
-            <a class="check">Checkout</a>
+            <a class="check" style="padding:0;">Checkout</a>
             }
         </div>
     </div>

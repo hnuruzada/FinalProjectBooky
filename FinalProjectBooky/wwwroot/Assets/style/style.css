@@ -48,9 +48,6 @@
   transition: width none;
 }
 
-
-
-
 a {
   text-decoration: none;
 }
@@ -287,6 +284,440 @@ section {
   color: #27ae60;
 }
 
+.header .header-0 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+}
+
+.header .header-0 .login {
+  width: 130px;
+  height: 40px;
+  background-color: #1f2335;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-0 .login .sign-in-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.header .header-0 .login .sign-in-btn span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #f4f7ff;
+}
+
+.header .header-0 .login .sign-in-btn i {
+  margin-left: 5px;
+  font-size: 20px;
+  color: #4371f7;
+}
+
+.header .header-0 .register {
+  width: 130px;
+  height: 40px;
+  background-color: #1f2335;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-0 .register .register-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.header .header-0 .register .register-btn span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #f4f7ff;
+}
+
+.header .header-0 .register .register-btn i {
+  margin-left: 5px;
+  font-size: 15px;
+  color: #4371f7;
+}
+
+.header .header-0 .logout {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .header-0 .logout .logoutButton {
+  --figure-duration: 100ms;
+  --transform-figure: none;
+  --walking-duration: 100ms;
+  --transform-arm1: none;
+  --transform-wrist1: none;
+  --transform-arm2: none;
+  --transform-wrist2: none;
+  --transform-leg1: none;
+  --transform-calf1: none;
+  --transform-leg2: none;
+  --transform-calf2: none;
+  background: none;
+  border: 0;
+  color: #f4f7ff;
+  cursor: pointer;
+  display: block;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  outline: none;
+  padding: 0 0 0 20px;
+  -webkit-perspective: 100px;
+          perspective: 100px;
+  position: relative;
+  text-align: left;
+  width: 130px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header .header-0 .logout .logoutButton::before {
+  background-color: #1f2335;
+  border-radius: 5px;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: -webkit-transform 50ms ease;
+  transition: -webkit-transform 50ms ease;
+  transition: transform 50ms ease;
+  transition: transform 50ms ease, -webkit-transform 50ms ease;
+  width: 100%;
+  z-index: 2;
+}
+
+.header .header-0 .logout .logoutButton:hover .door {
+  -webkit-transform: rotateY(20deg);
+          transform: rotateY(20deg);
+}
+
+.header .header-0 .logout .logoutButton:active::before {
+  -webkit-transform: scale(0.96);
+          transform: scale(0.96);
+}
+
+.header .header-0 .logout .logoutButton:active .door {
+  -webkit-transform: rotateY(28deg);
+          transform: rotateY(28deg);
+}
+
+.header .header-0 .logout .logoutButton.clicked::before {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.header .header-0 .logout .logoutButton.clicked .door {
+  -webkit-transform: rotateY(35deg);
+          transform: rotateY(35deg);
+}
+
+.header .header-0 .logout .logoutButton.door-slammed .door {
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: -webkit-transform 100ms ease-in 250ms;
+  transition: -webkit-transform 100ms ease-in 250ms;
+  transition: transform 100ms ease-in 250ms;
+  transition: transform 100ms ease-in 250ms, -webkit-transform 100ms ease-in 250ms;
+}
+
+.header .header-0 .logout .logoutButton.falling {
+  -webkit-animation: shake 200ms linear;
+          animation: shake 200ms linear;
+}
+
+.header .header-0 .logout .logoutButton.falling .bang {
+  -webkit-animation: flash 300ms linear;
+          animation: flash 300ms linear;
+}
+
+.header .header-0 .logout .logoutButton.falling .figure {
+  -webkit-animation: spin 1000ms infinite linear;
+          animation: spin 1000ms infinite linear;
+  bottom: -1080px;
+  opacity: 0;
+  right: 1px;
+  -webkit-transition: bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms), -webkit-transform calc(var(--figure-duration) * 1ms) linear;
+  transition: bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms), -webkit-transform calc(var(--figure-duration) * 1ms) linear;
+  transition: transform calc(var(--figure-duration) * 1ms) linear, bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
+  transition: transform calc(var(--figure-duration) * 1ms) linear, bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms), -webkit-transform calc(var(--figure-duration) * 1ms) linear;
+  z-index: 1;
+}
+
+.header .header-0 .logout .logoutButton--light::before {
+  background-color: #f4f7ff;
+}
+
+.header .header-0 .logout .logoutButton--light .button-text {
+  color: #1f2335;
+}
+
+.header .header-0 .logout .logoutButton--light .door,
+.header .header-0 .logout .logoutButton--light .doorway {
+  fill: #1f2335;
+}
+
+.header .header-0 .logout .button-text {
+  color: #f4f7ff;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.header .header-0 .logout svg {
+  display: block;
+  position: absolute;
+}
+
+.header .header-0 .logout .figure {
+  bottom: 5px;
+  fill: #4371f7;
+  right: 18px;
+  -webkit-transform: var(--transform-figure);
+          transform: var(--transform-figure);
+  -webkit-transition: -webkit-transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  transition: -webkit-transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  transition: transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  transition: transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9), -webkit-transform calc(var(--figure-duration) * 1ms) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  width: 30px;
+  z-index: 4;
+}
+
+.header .header-0 .logout .door,
+.header .header-0 .logout .doorway {
+  bottom: 4px;
+  fill: #f4f7ff;
+  right: 12px;
+  width: 32px;
+}
+
+.header .header-0 .logout .door {
+  -webkit-transform: rotateY(20deg);
+          transform: rotateY(20deg);
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 200ms ease;
+  transition: -webkit-transform 200ms ease;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease, -webkit-transform 200ms ease;
+  z-index: 5;
+}
+
+.header .header-0 .logout .door path {
+  fill: #4371f7;
+  stroke: #4371f7;
+  stroke-width: 4;
+}
+
+.header .header-0 .logout .doorway {
+  z-index: 3;
+}
+
+.header .header-0 .logout .bang {
+  opacity: 0;
+}
+
+.header .header-0 .logout .arm1,
+.header .header-0 .logout .wrist1,
+.header .header-0 .logout .arm2,
+.header .header-0 .logout .wrist2,
+.header .header-0 .logout .leg1,
+.header .header-0 .logout .calf1,
+.header .header-0 .logout .leg2,
+.header .header-0 .logout .calf2 {
+  -webkit-transition: -webkit-transform calc(var(--walking-duration) * 1ms) ease-in-out;
+  transition: -webkit-transform calc(var(--walking-duration) * 1ms) ease-in-out;
+  transition: transform calc(var(--walking-duration) * 1ms) ease-in-out;
+  transition: transform calc(var(--walking-duration) * 1ms) ease-in-out, -webkit-transform calc(var(--walking-duration) * 1ms) ease-in-out;
+}
+
+.header .header-0 .logout .arm1 {
+  -webkit-transform: var(--transform-arm1);
+          transform: var(--transform-arm1);
+  -webkit-transform-origin: 52% 45%;
+          transform-origin: 52% 45%;
+}
+
+.header .header-0 .logout .wrist1 {
+  -webkit-transform: var(--transform-wrist1);
+          transform: var(--transform-wrist1);
+  -webkit-transform-origin: 59% 55%;
+          transform-origin: 59% 55%;
+}
+
+.header .header-0 .logout .arm2 {
+  -webkit-transform: var(--transform-arm2);
+          transform: var(--transform-arm2);
+  -webkit-transform-origin: 47% 43%;
+          transform-origin: 47% 43%;
+}
+
+.header .header-0 .logout .wrist2 {
+  -webkit-transform: var(--transform-wrist2);
+          transform: var(--transform-wrist2);
+  -webkit-transform-origin: 35% 47%;
+          transform-origin: 35% 47%;
+}
+
+.header .header-0 .logout .leg1 {
+  -webkit-transform: var(--transform-leg1);
+          transform: var(--transform-leg1);
+  -webkit-transform-origin: 47% 64.5%;
+          transform-origin: 47% 64.5%;
+}
+
+.header .header-0 .logout .calf1 {
+  -webkit-transform: var(--transform-calf1);
+          transform: var(--transform-calf1);
+  -webkit-transform-origin: 55.5% 71.5%;
+          transform-origin: 55.5% 71.5%;
+}
+
+.header .header-0 .logout .leg2 {
+  -webkit-transform: var(--transform-leg2);
+          transform: var(--transform-leg2);
+  -webkit-transform-origin: 43% 63%;
+          transform-origin: 43% 63%;
+}
+
+.header .header-0 .logout .calf2 {
+  -webkit-transform: var(--transform-calf2);
+          transform: var(--transform-calf2);
+  -webkit-transform-origin: 41.5% 73%;
+          transform-origin: 41.5% 73%;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg) scale(0.94);
+            transform: rotate(0deg) scale(0.94);
+  }
+  to {
+    -webkit-transform: rotate(359deg) scale(0.94);
+            transform: rotate(359deg) scale(0.94);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg) scale(0.94);
+            transform: rotate(0deg) scale(0.94);
+  }
+  to {
+    -webkit-transform: rotate(359deg) scale(0.94);
+            transform: rotate(359deg) scale(0.94);
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  50% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  100% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+  50% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+  100% {
+    -webkit-transform: rotate(-1deg);
+            transform: rotate(-1deg);
+  }
+}
+
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .header .header-1 {
   background: #fff;
   padding: 1.5rem 9%;
@@ -484,6 +915,95 @@ section {
 
 .header .header-1 .search-form label:hover {
   color: var(--green);
+}
+
+.header .header-1 .search-form .empty-message {
+  color: red;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.header .header-1 .search-form .tt-menu {
+  display: block;
+  width: 398px;
+  background-color: #fff;
+  border: unset !important;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 56px;
+  left: 33.65%;
+  z-index: 100;
+  display: block;
+}
+
+.header .header-1 .search-form .tt-menu .man-section {
+  position: relative;
+  width: 398px;
+  border-bottom: 1px solid #d2d2d2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .image-section {
+  width: 93px;
+  height: 93px;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .image-section img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section {
+  padding-left: 40px;
+  width: 250px;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section h1 {
+  margin: 0px;
+  font-weight: bold;
+  padding: 0px 10px;
+  font-size: 16px;
+  color: #000;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section span {
+  padding: 7px;
+  font-size: 13px;
+  color: #a09999;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section .more-section {
+  position: absolute;
+  bottom: 7px;
+  right: 16px;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section .more-section a {
+  text-decoration: none;
+}
+
+.header .header-1 .search-form .tt-menu .man-section .description-section .more-section a button {
+  border: unset;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #5D4C46 !important;
+}
+
+.header .header-1 .search-form .tt-suggestion {
+  padding: 3px 10px;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
 }
 
 .header .header-1 .icons {
@@ -2462,6 +2982,7 @@ main .blog-detail-image {
 }
 
 main .blog-detail-image .parallax {
+  background: url(./Assets/images/blog8.webp) no-repeat;
   background-size: cover !important;
   background-position: center !important;
   background-attachment: fixed !important;

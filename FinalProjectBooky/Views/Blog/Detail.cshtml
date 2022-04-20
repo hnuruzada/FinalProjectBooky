@@ -1,4 +1,4 @@
-﻿@model Blog
+﻿@model BlogDetailVM
 @{
     ViewData["Title"] = "Detail";
 }
@@ -7,7 +7,8 @@
 @section CSS{
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+<link href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css
+">
 }
 
 
@@ -20,11 +21,11 @@
 </section>
 <section class="blog-img">
     <div class="image">
-        <img src="~/Assets/images/@Model.Image" alt="">
+        <img src="~/Assets/images/@Model.Blog.Image" alt="">
     </div>
 </section>
 <section class="blog-detail-image">
-    <div class="parallax" style="background: url(/Assets/images/@Model.Image) no-repeat;">
+    <div class="parallax" style="background: url(/Assets/images/@Model.Blog.Image) no-repeat;">
         
     </div>
 </section>
@@ -34,14 +35,14 @@
             <div class="col-lg-9 post-side">
                 <div class="post">
                     <div class="post-title">
-                        <h1 style="display:flex; justify-content:center;">@Model.Title</h1>
+                        <h1 style="display:flex; justify-content:center;">@Model.Blog.Title</h1>
                     </div>
                     <div class="post-date-publisher">
-                        <span>Post by <a href="">@Model.Publisher.Name @Model.Publisher.Surname</a> at <span>@Model.Date.ToString("MMMM dd,yyyy") </span>| <a href=""> <i class="fas fa-comments"></i><span>(3)</span></a></span>
+                        <span>Post by <a href="">@Model.Blog.Publisher.Name @Model.Blog.Publisher.Surname</a> at <span>@Model.Blog.Date.ToString("MMMM dd,yyyy") </span>| <a href=""> <i class="fas fa-comments"></i><span>(@Model.Comments.Count)</span></a></span>
 
                     </div>
                     <div class="post-description">
-                        <p>@Model.Description</p>
+                        <p>@Model.Blog.Description</p>
                     </div>
 
                 </div>
@@ -49,41 +50,46 @@
                     <div class="comments">
                         <h2 class="reviews-title">Reviews</h2>
                         <ul class="commentlist">
-                            <li class="comment-even">
-                                <div id="comment-1" class="comment_container">
-                                    <div class="comment-text">
-                                        <p class="info">
-                                            <span class="author">Joshua Garcia </span>
-                                            <span class="time">27.04.2018</span>
-                                        </p>
-                                        <div class="description">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                                commodo ligula eget dolor. Aenean massa. Cum sociis Theme
-                                                natoque penatibus et magnis dis parturient montes, nascetur
-                                                ridiculus mus.
-                                            </p>
+
+                            @foreach (var comment in Model.Comments.Where(f => f.IsAccess == true).OrderBy(f => f.Date))
+                            {
+                                @if (comment.AppUser.UserName == User.Identity.Name)
+                                {
+                                    <li class="comment-even" style="position:relative;">
+                                        <div id="comment-1" class="comment_container">
+                                            <div class="comment-text">
+                                                <p class="info" style="display:flex;flex-direction:row-reverse;justify-content:space-between">
+                                                    <span class="author">@comment.AppUser.Name @comment.AppUser.Surname</span>
+                                                    <span class="time">@comment.Date.ToString("dd MMMM yyyy HH:mm")</span>
+                                                </p>
+                                                <div class="description">
+                                                    <p style="display:flex;flex-direction:row-reverse;">
+                                                       @comment.Message
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="comment-odd">
-                                <div id="comment-2" class="comment_container">
-                                    <div class="comment-text">
-                                        <p class="info">
-                                            <span class="author">Joan Stanley </span>
-                                            <span class="time">27.04.2018</span>
-                                        </p>
-                                        <div class="description">
-                                            <p>
-                                                Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
-                                                sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
-                                                Nam quam nunc, blandit vel, luctus pulvinar, hendrerit
-                                            </p>
+                                        <a asp-controller="blog" asp-action="deletecomment" asp-route-id="@comment.Id" class="text-danger"><i class="far fa-times-circle" style="font-size:15px; position:absolute; top:2px;left:2px;"></i></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="comment-odd">
+                                        <div id="comment-2" class="comment_container">
+                                            <div class="comment-text">
+                                                <p class="info" style="display:flex;justify-content:space-between;">
+                                                    <span class="author">@comment.AppUser.Name @comment.AppUser.Surname</span>
+                                                    <span class="time">@comment.Date.ToString("dd MMMM yyyy HH:mm")</span>
+                                                </p>
+                                                <div class="description">
+                                                    <p>@comment.Message</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                }
+                            }
                         </ul>
 
                     </div>
@@ -92,25 +98,17 @@
                     <div class="reviewtitle">
                         <h1>Add a review</h1>
                         <div class="form">
-                            <form>
+                            <form method="post" asp-controller="blog" asp-action="addcomment">
                                 <div class="input">
 
                                     <p>Your review *</p>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Message" rows="3" style="font-size:15px;"></textarea>
+                                    <input type="hidden" name="BlogId" value="@Model.Blog.Id" />
                                 </div>
 
-                                <div class="input">
-                                    <label for="exampleInputPassword1" class="form-label">Name*</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1">
-                                </div>
-                                <div class="input">
-                                    <label for="exampleInputEmail1" class="form-label">Email*</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                           aria-describedby="emailHelp">
-                                </div>
+                                
 
-
-                                <button type="submit" class="btn">Submit</button>
+                                <button type="submit"  class="btn">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -123,15 +121,15 @@
                     </div>
                     <div class="body-author">
                         <div class="author-img">
-                            <img src="~/Assets/images/@Model.Publisher.Image" alt="">
+                            <img src="~/Assets/images/@Model.Blog.Publisher.Image" alt="">
                         </div>
                         <div class="author-info">
                             <div class="title">
-                                <h3>@Model.Publisher.Name @Model.Publisher.Surname</h3>
+                                <h3>@Model.Blog.Publisher.Name @Model.Blog.Publisher.Surname</h3>
                             </div>
                             <div class="description">
                                 <p>
-                                    @Model.Publisher.Resume
+                                    @Model.Blog.Publisher.Resume
 
                                 </p>
                             </div>

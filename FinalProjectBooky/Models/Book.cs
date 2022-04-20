@@ -37,7 +37,7 @@ namespace FinalProjectBooky.Models
         public int PageCount { get; set; }
         public List<Content> Contents { get; set; }
         public List<AuthorBook> AuthorBooks { get; set; }
-       
+        public List<Comment> Comments { get; set; }
         public List<BookCategory> BookCategories { get; set; }
         public List<BookTag> BookTags  { get; set; }
         public int? LanguageId { get; set; }

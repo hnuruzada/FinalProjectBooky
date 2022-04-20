@@ -4,7 +4,7 @@
 }
 
 .signIn .login form {
-  height: 600px;
+  height: 520px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -55,7 +55,7 @@
   color: #e5e5e5;
 }
 
-.signIn .login form :-ms-input-placeholder {
+.signIn .login form ::-ms-input-placeholder {
   color: #e5e5e5;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .signUp .register form {
-  height: 45rem;
+  height: 41rem;
   width: 50rem;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -239,19 +239,19 @@
 }
 
 .signUp .register form ::-webkit-input-placeholder {
-  color: white;
+  color: black;
 }
 
 .signUp .register form :-ms-input-placeholder {
-  color: white;
+  color: black;
 }
 
-.signUp .register form :-ms-input-placeholder {
-  color: white;
+.signUp .register form ::-ms-input-placeholder {
+  color: black;
 }
 
 .signUp .register form ::placeholder {
-  color: white;
+  color: black;
 }
 
 .signUp .register form .terms-conditions {

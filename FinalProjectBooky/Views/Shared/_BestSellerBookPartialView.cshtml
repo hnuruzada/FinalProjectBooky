@@ -32,7 +32,7 @@
                                 </a>
                             </div>
                             <div class="author-name">
-                                <a asp-controller="author" asp-action="index" asp-route-id="@book.Id"><span>@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
+                                <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
                             </div>
                             <div class="price">
                     @if (book.CampaignId == null)

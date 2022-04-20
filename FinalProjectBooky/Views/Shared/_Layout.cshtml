@@ -13,7 +13,9 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/corejs-typeahead/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.jquery.min.js"></script>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet"
@@ -33,7 +35,64 @@
     <!-- header section starts  -->
 
     <header class="header">
+        <div class="header-0">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="logout">
 
+                    <a asp-controller="account" asp-action="logout" class="logoutButton logoutButton--dark">
+                        <svg class="doorway" viewBox="0 0 100 100">
+                            <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+                            <path class="bang" d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z" />
+                        </svg>
+                        <svg class="figure" viewBox="0 0 100 100">
+                            <circle cx="52.1" cy="32.4" r="6.4" />
+                            <path d="M50.7 62.8c-1.2 2.5-3.6 5-7.2 4-3.2-.9-4.9-3.5-4-7.8.7-3.4 3.1-13.8 4.1-15.8 1.7-3.4 1.6-4.6 7-3.7 4.3.7 4.6 2.5 4.3 5.4-.4 3.7-2.8 15.1-4.2 17.9z" />
+                            <g class="arm1">
+                                <path d="M55.5 56.5l-6-9.5c-1-1.5-.6-3.5.9-4.4 1.5-1 3.7-1.1 4.6.4l6.1 10c1 1.5.3 3.5-1.1 4.4-1.5.9-3.5.5-4.5-.9z" />
+                                <path class="wrist1" d="M69.4 59.9L58.1 58c-1.7-.3-2.9-1.9-2.6-3.7.3-1.7 1.9-2.9 3.7-2.6l11.4 1.9c1.7.3 2.9 1.9 2.6 3.7-.4 1.7-2 2.9-3.8 2.6z" />
+                            </g>
+                            <g class="arm2">
+                                <path d="M34.2 43.6L45 40.3c1.7-.6 3.5.3 4 2 .6 1.7-.3 4-2 4.5l-10.8 2.8c-1.7.6-3.5-.3-4-2-.6-1.6.3-3.4 2-4z" />
+                                <path class="wrist2" d="M27.1 56.2L32 45.7c.7-1.6 2.6-2.3 4.2-1.6 1.6.7 2.3 2.6 1.6 4.2L33 58.8c-.7 1.6-2.6 2.3-4.2 1.6-1.7-.7-2.4-2.6-1.7-4.2z" />
+                            </g>
+                            <g class="leg1">
+                                <path d="M52.1 73.2s-7-5.7-7.9-6.5c-.9-.9-1.2-3.5-.1-4.9 1.1-1.4 3.8-1.9 5.2-.9l7.9 7c1.4 1.1 1.7 3.5.7 4.9-1.1 1.4-4.4 1.5-5.8.4z" />
+                                <path class="calf1" d="M52.6 84.4l-1-12.8c-.1-1.9 1.5-3.6 3.5-3.7 2-.1 3.7 1.4 3.8 3.4l1 12.8c.1 1.9-1.5 3.6-3.5 3.7-2 0-3.7-1.5-3.8-3.4z" />
+                            </g>
+                            <g class="leg2">
+                                <path d="M37.8 72.7s1.3-10.2 1.6-11.4 2.4-2.8 4.1-2.6c1.7.2 3.6 2.3 3.4 4l-1.8 11.1c-.2 1.7-1.7 3.3-3.4 3.1-1.8-.2-4.1-2.4-3.9-4.2z" />
+                                <path class="calf2" d="M29.5 82.3l9.6-10.9c1.3-1.4 3.6-1.5 5.1-.1 1.5 1.4.4 4.9-.9 6.3l-8.5 9.6c-1.3 1.4-3.6 1.5-5.1.1-1.4-1.3-1.5-3.5-.2-5z" />
+                            </g>
+                        </svg>
+                        <svg class="door" viewBox="0 0 100 100">
+                            <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
+                            <circle cx="66" cy="50" r="3.7" />
+                        </svg>
+                        <span class="button-text">Log Out</span>
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="login">
+                    <a asp-controller="account" asp-action="login" class="sign-in-btn">
+                        <span>Login</span>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </div>
+                <div class="register">
+                    <a asp-controller="account" asp-action="register" class="register-btn">
+                        <span>Sign Up</span>
+                        <i class="fas fa-user-plus"></i>
+
+                    </a>
+                </div>
+            }
+
+
+
+        </div>
         <div class="header-1">
 
             <a asp-controller="home" asp-action="index" class="logos">
@@ -68,30 +127,41 @@
                 <h4><span>@layoutService.GetSettingData().WebName</span><span></span></h4>
             </a>
 
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="search here..." id="search-box">
+            <form method="post" class="search-form">
+                <input type="search" class="typeahead " placeholder="search here..." id="keyword" autocomplete="off">
                 <label for="search-box" class="fas fa-search"></label>
+                <div class="tt-menu tt-open" style="top:130px; left:38.57%;">
+                </div>
             </form>
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a asp-controller="wishlist" asp-action="index" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart basket" onclick="openNav()">
-                   
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                           <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
-                        }
-                        else
-                        {
-                          <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
-                        }
 
-                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
+                    }
+                    else
+                    {
+                        <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
+                    }
+
+
                 </a>
-                <a href=""><i class="fas fa-user"></i></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a>
+                        <i class="fas fa-user" style="color:green;"></i>
+                    </a>
 
-                <a href=""><i class="fas fa-user-plus"></i></a>
+                }
+                else
+                {
+                    <a href=""><i class="fas fa-user"></i></a>
+                }
+
             </div>
 
         </div>
@@ -111,19 +181,7 @@
     </header>
     <div id="mySidenav" class="bags sidenav carts">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-
-
-
         @await Html.PartialAsync("_basketPartial",layoutService)
-
-
-
-
-
-
-
-
     </div>
 
     <!-- header section ends -->
@@ -196,6 +254,9 @@
     <div class="loader-container">
         <img src="~/Assets/images/loader-img.gif" alt="">
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -210,6 +271,15 @@
     <script src="~/Assets/js/script.js"></script>
 
     <script>
+        var logout=document.querySelector(".logout")
+        logout.addEventListener("click",function(e){
+            e.preventDefault()
+            function greet() {
+                 window.location.href=`https://localhost:44352/account/logout`
+                  }
+             setTimeout(greet, 1800)
+
+        })
         $(document).ready(function(){
 
           $(document).on("click",".addToCart",function(e){
@@ -249,7 +319,7 @@
           })
 
           $(document).on("click",".remove",function(e){
-              
+
                e.preventDefault();
               var href = $(this).attr("href");
               console.log(href)
@@ -267,7 +337,7 @@
                   $(".carts").append(data);
 
                   })
-                  
+
 
               })
               setTimeout(function(){
@@ -276,16 +346,15 @@
                    htmltag.innerHTML="0"
                   var count=totalcount.innerHTML
                   htmltag.innerHTML=count
-                 
+
                   }, 100);
-              
+
 
           })
         })
     </script>
-     <script>
+    <script>
         $(document).ready(function () {
-
             $(document).on("click", ".wishlistFetch", function (e) {
                 e.preventDefault()
                 var href = $(this).attr("href")
@@ -298,14 +367,11 @@
                     fetch(urlToPartial).then(res => res.text()).then(data => {
 
                         $(".wish-lists .wishContainer .wishinROw").empty();
-                        
+
                         $(".wish-lists .wishContainer .wishinROw").append(data);
                     });
                 })
-
-               
             });
-
             $(document).on("click", ".removeWishlistItem", function (e) {
 
                 e.preventDefault();
@@ -320,7 +386,7 @@
                     fetch(urlForPartial).then(res => res.text()).then(data => {
 
                         $(".wish-lists .wishContainer .wishinROw").empty();
-                       
+
                         $(".wish-lists .wishContainer .wishinROw").append(data);
 
                     })
@@ -328,7 +394,7 @@
 
                 })
                 setTimeout(function () {
-                    
+
 
                 }, 100);
             })
@@ -346,7 +412,7 @@
                     fetch(urlForPartial).then(res => res.text()).then(data => {
 
                         $(".wish-lists .wishContainer .wishinROw").empty();
-                       
+
                         $(".wish-lists .wishContainer .wishinROw").append(data);
 
                     })
@@ -354,15 +420,209 @@
 
                 })
                 setTimeout(function () {
-                    
+
 
                 }, 100);
             })
 
+
         });
     </script>
+    <script>
+        $('#keyword').keyup(function(){
+            var searchField =$('#keyword').val();
+            var expression = RegExp(searchField,'i');
+            var tt_menu=document.querySelector(".tt-menu")
+            console.log(expression)
+            $('.tt-dataset').remove();
+            $.ajax({
+                type: "POST",
+                url: "/home/search",
+                data:{
+                    search:searchField
+                },
+
+                success:function(data) {
 
 
+                    if(searchField != ""){
+                        var html_body=document.createElement("div")
+                        html_body.classList.add("tt-dataset")
+                        html_body.classList.add("tt-dataset-states")
+                    }
+                    data.map(function(val,i){
+                        var main_sec=document.createElement("div")
+                        main_sec.classList.add("man-section")
+                        main_sec.classList.add("tt-suggestion")
+                        main_sec.classList.add("tt-selectable")
+                         main_sec.innerHTML=
+                               `
+
+                        <div class="image-section">
+                          <img src="/Assets/images/${val.image}">
+                        </div>
+                        <div class="description-section">
+                          <h1>${val.name}</h1>
+                          <span>
+                          <div class="more-section">
+                            <a href="/book/detail/${val.id}">
+                              More Info
+                            </a>
+                          </div>
+                        </div>
+                        <div style="clear:both;">
+                        </div>
+                               `
+                   html_body.appendChild(main_sec)
+                    })
+                    tt_menu.appendChild(html_body)
+
+                }
+            })
+
+
+        })
+    </script>
+    <script>
+                document.querySelectorAll('.logoutButton').forEach(button => {
+          button.state = 'default'
+
+          // function to transition a button from one state to the next
+          let updateButtonState = (button, state) => {
+            if (logoutButtonStates[state]) {
+              button.state = state
+              for (let key in logoutButtonStates[state]) {
+                button.style.setProperty(key, logoutButtonStates[state][key])
+              }
+            }
+          }
+
+          // mouse hover listeners on button
+          button.addEventListener('mouseenter', () => {
+            if (button.state === 'default') {
+              updateButtonState(button, 'hover')
+            }
+          })
+          button.addEventListener('mouseleave', () => {
+            if (button.state === 'hover') {
+              updateButtonState(button, 'default')
+            }
+          })
+
+          // click listener on button
+          button.addEventListener('click', () => {
+            if (button.state === 'default' || button.state === 'hover') {
+              button.classList.add('clicked')
+              updateButtonState(button, 'walking1')
+              setTimeout(() => {
+                button.classList.add('door-slammed')
+                updateButtonState(button, 'walking2')
+                setTimeout(() => {
+                  button.classList.add('falling')
+                  updateButtonState(button, 'falling1')
+                  setTimeout(() => {
+                    updateButtonState(button, 'falling2')
+                    setTimeout(() => {
+                      updateButtonState(button, 'falling3')
+                      setTimeout(() => {
+                        button.classList.remove('clicked')
+                        button.classList.remove('door-slammed')
+                        button.classList.remove('falling')
+                        updateButtonState(button, 'default')
+                      }, 1000)
+                    }, logoutButtonStates['falling2']['--walking-duration'])
+                  }, logoutButtonStates['falling1']['--walking-duration'])
+                }, logoutButtonStates['walking2']['--figure-duration'])
+              }, logoutButtonStates['walking1']['--figure-duration'])
+            }
+          })
+        })
+
+        const logoutButtonStates = {
+          'default': {
+            '--figure-duration': '100',
+            '--transform-figure': 'none',
+            '--walking-duration': '100',
+            '--transform-arm1': 'none',
+            '--transform-wrist1': 'none',
+            '--transform-arm2': 'none',
+            '--transform-wrist2': 'none',
+            '--transform-leg1': 'none',
+            '--transform-calf1': 'none',
+            '--transform-leg2': 'none',
+            '--transform-calf2': 'none'
+          },
+          'hover': {
+            '--figure-duration': '100',
+            '--transform-figure': 'translateX(1.5px)',
+            '--walking-duration': '100',
+            '--transform-arm1': 'rotate(-5deg)',
+            '--transform-wrist1': 'rotate(-15deg)',
+            '--transform-arm2': 'rotate(5deg)',
+            '--transform-wrist2': 'rotate(6deg)',
+            '--transform-leg1': 'rotate(-10deg)',
+            '--transform-calf1': 'rotate(5deg)',
+            '--transform-leg2': 'rotate(20deg)',
+            '--transform-calf2': 'rotate(-20deg)'
+          },
+          'walking1': {
+            '--figure-duration': '300',
+            '--transform-figure': 'translateX(11px)',
+            '--walking-duration': '300',
+            '--transform-arm1': 'translateX(-4px) translateY(-2px) rotate(120deg)',
+            '--transform-wrist1': 'rotate(-5deg)',
+            '--transform-arm2': 'translateX(4px) rotate(-110deg)',
+            '--transform-wrist2': 'rotate(-5deg)',
+            '--transform-leg1': 'translateX(-3px) rotate(80deg)',
+            '--transform-calf1': 'rotate(-30deg)',
+            '--transform-leg2': 'translateX(4px) rotate(-60deg)',
+            '--transform-calf2': 'rotate(20deg)'
+          },
+          'walking2': {
+            '--figure-duration': '400',
+            '--transform-figure': 'translateX(17px)',
+            '--walking-duration': '300',
+            '--transform-arm1': 'rotate(60deg)',
+            '--transform-wrist1': 'rotate(-15deg)',
+            '--transform-arm2': 'rotate(-45deg)',
+            '--transform-wrist2': 'rotate(6deg)',
+            '--transform-leg1': 'rotate(-5deg)',
+            '--transform-calf1': 'rotate(10deg)',
+            '--transform-leg2': 'rotate(10deg)',
+            '--transform-calf2': 'rotate(-20deg)'
+          },
+          'falling1': {
+            '--figure-duration': '1600',
+            '--walking-duration': '400',
+            '--transform-arm1': 'rotate(-60deg)',
+            '--transform-wrist1': 'none',
+            '--transform-arm2': 'rotate(30deg)',
+            '--transform-wrist2': 'rotate(120deg)',
+            '--transform-leg1': 'rotate(-30deg)',
+            '--transform-calf1': 'rotate(-20deg)',
+            '--transform-leg2': 'rotate(20deg)'
+          },
+          'falling2': {
+            '--walking-duration': '300',
+            '--transform-arm1': 'rotate(-100deg)',
+            '--transform-arm2': 'rotate(-60deg)',
+            '--transform-wrist2': 'rotate(60deg)',
+            '--transform-leg1': 'rotate(80deg)',
+            '--transform-calf1': 'rotate(20deg)',
+            '--transform-leg2': 'rotate(-60deg)'
+          },
+          'falling3': {
+            '--walking-duration': '500',
+            '--transform-arm1': 'rotate(-30deg)',
+            '--transform-wrist1': 'rotate(40deg)',
+            '--transform-arm2': 'rotate(50deg)',
+            '--transform-wrist2': 'none',
+            '--transform-leg1': 'rotate(-30deg)',
+            '--transform-leg2': 'rotate(20deg)',
+            '--transform-calf2': 'none'
+          }
+        }
+    </script>
 </body>
 
 </html>

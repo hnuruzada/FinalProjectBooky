@@ -1,7 +1,5 @@
 ﻿@model HomeVM
 @using FinalProjectBooky.ViewModels
-@*@inject FinalProjectBooky.Services.LayoutService layoutService
-*@
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -54,7 +52,7 @@
                 @await Html.PartialAsync("_BestSellerBookPartialView",Model.Books)
             </div>
         </section>
-        <section class="newsletter" style="background:url(./Assets/images/letter-bg.jpg) no-repeat;">
+        <section class="newsletter" style="background:url(/Assets/images/letter-bg.jpg) no-repeat;">
             
             <form action="">
                 <h3>subscribe for latest updates</h3>
@@ -95,7 +93,7 @@
         
         </section>
 
-       @* @section Scripts{
+       @section Scripts{
              <script>
         $(document).ready(function () {
             if ($("#toastrJs").length) {
@@ -110,7 +108,7 @@
                         "preventDuplicates": false,
                         "onclick": null,
                         "showDuration": "300",
-                        "hideDuration": "10000",
+                        "hideDuration": "000",
                         "timeOut": "10000",
                         "extendedTimeOut": "10000",
                         "showEasing": "swing",
@@ -181,4 +179,4 @@
             }
         })
     </script>
-        }*@
+        }

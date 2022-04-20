@@ -23,6 +23,7 @@ namespace FinalProjectBooky.Models
         public Category Category  { get; set; }
         public int? PublisherId { get; set; }
         public Publisher Publisher { get; set; }
+        public List<Comment> Comments { get; set; }
 
         [NotMapped]
         public IFormFile ImageFile { get; set; }

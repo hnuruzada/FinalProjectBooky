@@ -33,6 +33,6 @@ namespace FinalProjectBooky.DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
-
+        public DbSet<Comment> Comments { get; set; }
     }
 }

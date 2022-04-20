@@ -63,27 +63,27 @@ namespace FinalProjectBooky.Controllers
         public IActionResult Detail(int id,int categoryId)
         {
 
-            Book book = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
+            Book book = _context.Books.Include(b=>b.Comments).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
             if (book == null)
             {
                 return NotFound();
             }
             ViewBag.Authors = _context.Authors.Include(a => a.AuthorBooks).ThenInclude(ab => ab.Book).Where(b => b.AuthorBooks.Any(b => b.BookId == id)).ToList();
-            //ViewBag.Categories = _context.Categories.Include(b=>b.BookCategories).ThenInclude(bc=>bc.Book).Where(c => c.BookCategories.Any(c => c.BookId == id)).ToList();
-            //ViewBag.RelatedBooks = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b=>b.BookTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Campaign).ToList();
+            
 
 
-            List<Category> categories=_context.Categories.Include(c=>c.BookCategories).ThenInclude(bc=>bc.Book).Where(b=>b.BookCategories.Any(bc=>bc.BookId==id)).ToList();
+            List<Category> categories=_context.Categories.Include(c=>c.BookCategories).ThenInclude(bc=>bc.Book).ThenInclude(bcb=>bcb.Comments).Where(b=>b.BookCategories.Any(bc=>bc.BookId==id)).ToList();
 
             List<Book> relatedBooks=new List<Book>();
 
             foreach (var item in categories)
             {
-                relatedBooks = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Campaign).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Where(b => b.BookCategories.Any(bc => bc.CategoryId == item.Id)).Skip(1).Take(4).ToList();
+                relatedBooks = _context.Books.Include(b=>b.Comments).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Campaign).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Where(b => b.BookCategories.Any(bc => bc.CategoryId == item.Id)).Skip(1).Take(4).ToList();
             }
 
             BookDetailVM bookDetailVM = new BookDetailVM()
             {
+                Comments = _context.Comments.Include(c => c.Book).Include(c => c.AppUser).Where(c => c.BookId == id).ToList(),
                 RelatedBooks = relatedBooks,
                 Categories = categories,
                 Book = book,
@@ -91,6 +91,63 @@ namespace FinalProjectBooky.Controllers
 
             return View(bookDetailVM);
 
+        }
+
+
+        [AutoValidateAntiforgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> AddComment(Comment comment)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (!ModelState.IsValid) return RedirectToAction("Detail", "Book", new { id = comment.BookId });
+            if (!_context.Books.Any(f => f.Id == comment.BookId)) return NotFound();
+            Comment cmnt = new Comment
+            {
+                Message = comment.Message,
+                BookId = comment.BookId,
+                Date = DateTime.Now,
+                AppUserId = user.Id,
+                IsAccess = true
+            };
+            _context.Comments.Add(cmnt);
+            _context.SaveChanges();
+            return RedirectToAction("Detail", "Book", new { id = comment.BookId });
+        }
+       
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (!ModelState.IsValid) return RedirectToAction("Detail", "Book");
+            if (!_context.Comments.Any(c => c.Id == id && c.IsAccess == true && c.AppUserId == user.Id)) return NotFound();
+            Comment comment = _context.Comments.FirstOrDefault(c => c.Id == id && c.AppUserId == user.Id);
+            _context.Comments.Remove(comment);
+            _context.SaveChanges();
+            return RedirectToAction("Detail", "Book", new { id = comment.BookId });
+        }
+        [HttpPost]
+        public async Task<IActionResult> increaseBookDetail(int Id)
+        {
+            AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+            BasketItem basket = _context.BasketItems.Include(b => b.Book).ThenInclude(b => b.Campaign).FirstOrDefault(b => b.BookId == Id && b.AppUserId == user.Id);
+            basket.Count++;
+            _context.SaveChanges();
+            double TotalPrice = 0;
+            double Price = basket.Count * (basket.Book.CampaignId == null ? basket.Book.Price : basket.Book.Price * (100 - basket.Book.Campaign.DiscountPercent) / 100);
+            
+             Book book = _context.Books.Include(b => b.Campaign).FirstOrDefault(b => b.Id == basket.BookId);
+
+                BasketItemVM basketItemVM = new BasketItemVM
+                {
+                    Book = book,
+                    Count = basket.Count
+                };
+                basketItemVM.Price = book.CampaignId == null ? book.Price : book.Price * (100 - book.Campaign.DiscountPercent) / 100;
+
+                TotalPrice += basketItemVM.Price * basketItemVM.Count;
+
+            
+
+            return Json(new { totalPrice = TotalPrice, Price });
         }
         public async Task<IActionResult> AddBasket(int id)
         {

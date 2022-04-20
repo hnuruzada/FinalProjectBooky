@@ -1,8 +1,9 @@
 ﻿@model BookDetailVM
+
 @{
     ViewData["Title"] = "Detail";
-    List<Book> books = (List<Book>)ViewBag.RelatedBooks;
-    
+
+
 }
 
 
@@ -66,26 +67,28 @@
                     <div class="book__page-front">
                         <div class="page__content">
                             <h1 class="page__content-book-title">Foundation</h1>
-                            <h2 class="page__content-author">@foreach (var item in Model.Book.AuthorBooks)
-                                                          {
-                                                              @item.Author.Name @item.Author.Surname
-                                                          }</h2>
+                            <h2 class="page__content-author">
+                                @foreach (var item in Model.Book.AuthorBooks)
+                                {
+                                    @item.Author.Name @item.Author.Surname
+                                }
+                            </h2>
 
                             @*<p class="page__content-credits">
                                 Introduction by
                                 <span>Paul Krugman</span>
-                            </p>
+                                </p>
 
-                            <p class="page__content-credits">
+                                <p class="page__content-credits">
                                 Illustrations by
                                 <span>Alex Wells</span>
-                            </p>*@
+                                </p>*@
 
                             <div class="page__content-copyright">
-                                <p>@foreach (var item in Model.Categories)
-                                 {
-                                     @item.Name
-                                 }</p>
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <p> @item.Name</p>
+                                }
                                 <p>@Model.Book.Date.ToString("yyyy")</p>
                             </div>
                         </div>
@@ -131,42 +134,49 @@
             <div class="details">
                 <h1>@Model.Book.Name</h1>
                 <ul>
-                    <li>Author: <span>@foreach (var item in ViewBag.Authors)
-                                    {
-                                        @(item.Name + " " + item.Surname)
-                                    }</span> </li>
-                    <li>Category: <span>@foreach (var item in Model.Categories)
-                                      {
-                                       @(item.Name + " ")   
-                                      }</span></l i>
+                    <li>
+                        Author: <span>
+                            @foreach (var item in ViewBag.Authors)
+                            {
+                                @(item.Name + " " + item.Surname)
+                            }
+                        </span>
+                    </li>
+                    <li>
+                        Category: <span>
+                            @foreach (var item in Model.Categories)
+                            {
+                                @(item.Name + " ")
+                            }
+                        </span></l i>
                     <li>SkuCode: <span>@Model.Book.SkuCode</span></li>
                     <li>Language: <span>@Model.Book.Language</span></li>
                     <li>Page: <span>@Model.Book.PageCount</span></li>
                     <li>Publish: <span>@Model.Book.Date.ToString("yyyy")</span></li>
-                        <li>Price: <span>$@if (Model.Book.Campaign == null)
+                    <li>
+                        Price: <span>
+                            $@if (Model.Book.Campaign == null)
                                 {
                                     @Model.Book.Price
                                 }
                                 else
                                 {
                                     @(Model.Book.Price * (100 - Model.Book.Campaign.DiscountPercent)/100)
-                                    <span style="text-decoration:line-through;opacity:0.6;">$@Model.Book.Price</span>
+                                <span style="text-decoration:line-through;opacity:0.6;">$@Model.Book.Price</span>
                                 }
-                            </span></li>
+                        </span>
+                    </li>
                 </ul>
             </div>
             <div class="Add-Cart">
-                <div class="quantity">
-                    <button class="btn minus-btn disabled" type="button">-</button>
-                    <input type="text" id="quantity" value="1">
-                    <button class="btn plus-btn" type="button">+</button>
-                </div>
-                <div class="btn-cart">
-                    <a class="btn btn-primary addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@Model.Book.Id">Add To Cart</a>
+                
+                <div class="btn-cart" style="display:flex;justify-content:flex-start;align-items:center;">
+                    <a class="btn btn-primary addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@Model.Book.Id" style="margin-top:0;">Add To Cart</a>
                 </div>
             </div>
             <div class="buy-it-now">
-                <button type="submit">Buy It Now</button>
+
+                <a asp-controller="order" asp-action="checkout" class="btn btn-outline-primary" style="background-color:white;color:blue;width:100%">Buy It Now</a>
             </div>
         </div>
     </div>
@@ -182,27 +192,31 @@
             <label for="tab2">INFORMATION</label>
             <!-- Tab 3 -->
             <input type="radio" name="tabset" id="tab3" aria-controls="reviews">
-            <label for="tab3">REVIEWS(0)</label>
+            <label for="tab3">REVIEWS(@Model.Comments.Count)</label>
 
             <div class="tab-panels">
                 <div id="description" class="tab-panel">
                     <h2>Book Summary</h2>
                     <p>
-                       @Model.Book.Summary
+                        @Model.Book.Summary
                     </p>
                 </div>
                 <div id="bookInformation" class="tab-panel">
 
                     <p><strong>Book:</strong> @Model.Book.Name</p>
-                    <p><strong>Author:</strong> @foreach (var item in ViewBag.Authors)
-                                    {
-                                        @item.Name
-                                    }</p>
+                    <p>
+                        <strong>Author:</strong> @foreach (var item in ViewBag.Authors)
+                        {
+                            @item.Name
+                        }
+                    </p>
                     <p><strong>Page:</strong> @Model.Book.PageCount</p>
-                    <p><strong>Category:</strong>@foreach (var item in Model.Categories)
-                                      {
-                                       @(item.Name + " ")   
-                                      }</p>
+                    <p>
+                        <strong>Category:</strong>@foreach (var item in Model.Categories)
+                        {
+                            @(item.Name + " ")
+                        }
+                    </p>
                     <p><strong>Date:</strong> @Model.Book.Date.ToString("yyyy")</p>
 
                 </div>
@@ -211,41 +225,48 @@
                     <div id="comments">
                         <h2 class="reviews-title">Reviews</h2>
                         <ul class="commentlist">
-                            <li class="comment-even">
-                                <div id="comment-1" class="comment_container">
-                                    <div class="comment-text">
-                                        <p class="info">
-                                            <span class="author">Joshua Garcia </span>
-                                            <span class="time">27.04.2018</span>
-                                        </p>
-                                        <div class="description">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                                commodo ligula eget dolor. Aenean massa. Cum sociis Theme
-                                                natoque penatibus et magnis dis parturient montes, nascetur
-                                                ridiculus mus.
-                                            </p>
+                            @foreach (var comment in Model.Comments.Where(f => f.IsAccess == true).OrderBy(f => f.Date))
+                            {
+                                if (comment.AppUser.UserName == User.Identity.Name)
+                                {
+                                    <li class="comment-even" style="position:relative;">
+                                        <div id="comment-1" class="comment_container">
+                                            <div class="comment-text">
+                                                <p class="info" style="display:flex;flex-direction:row-reverse;justify-content:space-between">
+                                                    <span class="author">@comment.AppUser.Name @comment.AppUser.Surname</span>
+                                                    <span class="time">@comment.Date.ToString("dd MMMM yyyy HH:mm")</span>
+                                                </p>
+                                                <div class="description">
+                                                    <p style="display:flex;flex-direction:row-reverse;">
+                                                        @comment.Message
+                                                    </p>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="comment-odd">
-                                <div id="comment-2" class="comment_container">
-                                    <div class="comment-text">
-                                        <p class="info">
-                                            <span class="author">Joan Stanley </span>
-                                            <span class="time">27.04.2018</span>
-                                        </p>
-                                        <div class="description">
-                                            <p>
-                                                Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
-                                                sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
-                                                Nam quam nunc, blandit vel, luctus pulvinar, hendrerit
-                                            </p>
+                                        <a asp-controller="book" asp-action="deletecomment" asp-route-id="@comment.Id" class="text-danger"><i class="far fa-times-circle" style="font-size:15px; position:absolute; top:2px;left:2px;"></i></a>
+                                    </li>
+
+                                }
+                                else
+                                {
+                                    <li class="comment-odd">
+                                        <div id="comment-2" class="comment_container">
+                                            <div class="comment-text">
+                                                <p class="info" style="display:flex;justify-content:space-between;">
+                                                    <span class="author">@comment.AppUser.Name @comment.AppUser.Surname</span>
+                                                    <span class="time">@comment.Date.ToString("dd MMMM yyyy HH:mm")</span>
+                                                </p>
+                                                <div class="description">
+                                                    <p>@comment.Message</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                }
+                            }
+
+
                         </ul>
 
                     </div>
@@ -254,29 +275,14 @@
                         <div class="reviewtitle">
                             <h1>Add a review</h1>
                             <div class="form">
-                                <form>
+                                <form method="post" asp-controller="book" asp-action="addcomment">
                                     <div class="input">
 
                                         <p>Your review *</p>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Message" style="font-size:15px;"></textarea>
+                                        <input type="hidden" name="BookId" value="@Model.Book.Id" />
                                     </div>
 
-                                    <div class="input">
-                                        <label for="exampleInputPassword1" class="form-label">Name*</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1">
-                                    </div>
-                                    <div class="input">
-                                        <label for="exampleInputEmail1" class="form-label">Email*</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               aria-describedby="emailHelp">
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">
-                                            Save my name, email,and website in this browser for the next time I comment.
-                                        </label>
-                                    </div>
                                     <button type="submit" class="btn">Submit</button>
                                 </form>
                             </div>
@@ -295,15 +301,80 @@
             <h1>RELATED BOOKS</h1>
         </div>
         <div class="row">
-          @await Html.PartialAsync("_RelatedBookPartialView",Model)
-        </div>  
+            @await Html.PartialAsync("_RelatedBookPartialView",Model)
+        </div>
     </div>
 </section>
 
 
 
 @section Scripts{
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="~/Assets/js/book-detail-page.js"></script>
+<script>
+     $(document).ready(function(){
+
+           $(document).on("click",".down",function(e){
+               e.preventDefault();
+                 var id= $(this).attr("data-id")
+                 var total=document.querySelector(".total_price")
+                 var money=document.querySelectorAll(".money-t")
+                 console.log(id)
+              $.ajax({
+                  url:"/book/decrease",
+                  data:{
+                      id:id
+                  },
+                  type:"post",
+                  datatype:"json",
+                  success: function(data) {
+                      money.forEach(mon=>{
+                          if(id==mon.getAttribute("data-id")){
+                              mon.innerHTML=data.price
+                              console.log(data.price)
+                          }
+                      })
+                      total.innerHTML=`${data.totalPrice}`
+
+                   }
+              })
+
+           })
+
+
+           $(document).on("click",".up",function(e){
+               e.preventDefault();
+                 var id= $(this).attr("data-id")
+                
+                 var total=document.querySelector(".total_price")
+                 var money=document.querySelectorAll(".money-t")
+                 console.log(id)
+              $.ajax({
+                  url:"/book/increase",
+                  data:{
+                      id:id
+                  },
+                  type:"post",
+                  datatype:"json",
+                  success: function(data) {
+                      money.forEach(mon=>{
+                          if(id==mon.getAttribute("data-id")){
+                              mon.innerHTML=data.price
+                              console.log(data.price)
+                          }
+                      })
+                      total.innerHTML=`${data.totalPrice}`
+
+                   }
+              })
+
+           })
+
+
+    })
+
+
+</script>
         }
 
