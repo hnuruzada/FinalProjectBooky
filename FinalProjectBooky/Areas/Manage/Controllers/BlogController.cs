@@ -1,6 +1,7 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Extensions;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +12,8 @@ using System.Linq;
 namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "SuperAdmin,Publisher")]
 
-    
     public class BlogController : Controller
     {
         private readonly AppDbContext _context;
@@ -216,26 +217,26 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 
         }
 
-        //public IActionResult Comments(int courseId)
-        //{
-        //    if (!_context.Comments.Any(c => c.CourseId == courseId)) return RedirectToAction("Index", "Course");
+        public IActionResult Comments(int blogId)
+        {
+            if (!_context.Comments.Any(c => c.BlogId == blogId)) return RedirectToAction("Index", "Blog");
 
-        //    List<Comment> comments = _context.Comments.Include(c => c.Course).Include(c => c.AppUser).Where(c => c.CourseId == courseId).ToList();
+            List<Comment> comments = _context.Comments.Include(c => c.Blog).Include(c => c.AppUser).Where(c => c.BlogId == blogId).ToList();
 
 
 
-        //    return View(comments);
-        //}
+            return View(comments);
+        }
 
-        //public IActionResult CommentStatusChange(int id)
-        //{
-        //    if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "Course");
-        //    Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
+        public IActionResult CommentStatusChange(int id)
+        {
+            if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "Blog");
+            Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
 
-        //    comment.IsAccess = comment.IsAccess ? false : true;
-        //    _context.SaveChanges();
-        //    return RedirectToAction("Comments", "Course", new { CourseId = comment.CourseId });
-        //}
+            comment.IsAccess = comment.IsAccess ? false : true;
+            _context.SaveChanges();
+            return RedirectToAction("Comments", "Blog", new { BlogId = comment.BlogId });
+        }
 
     }
 }

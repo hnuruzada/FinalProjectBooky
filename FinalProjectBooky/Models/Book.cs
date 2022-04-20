@@ -30,8 +30,8 @@ namespace FinalProjectBooky.Models
 
         public int SkuCode { get; set; }
         public bool InStock { get; set; }
+        public int SaleCount { get; set; } = 0;
         [Required]
-        
         public DateTime Date { get; set; }
         [Required]
         public int PageCount { get; set; }

@@ -53,10 +53,11 @@
             </div>
         </section>
         <section class="newsletter" style="background:url(/Assets/images/letter-bg.jpg) no-repeat;">
-            
-            <form action="">
+            <div asp-validation-summary="ModelOnly"></div>
+            <form method="post" asp-controller="home" asp-action="index">
                 <h3>subscribe for latest updates</h3>
-                <input type="email" name="" placeholder="enter your email" id="" class="box">
+                <input asp-for="@Model.SubscribeVM.Email" placeholder="enter your email" id="" class="box">
+                
                 <input type="submit" value="subscribe" class="btn">
             </form>
         

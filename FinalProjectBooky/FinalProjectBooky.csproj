@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20220410124503_changeAppUserTable.Designer.cs" />
     <Compile Remove="Migrations\20220410124922_AppUserEditTable.cs" />
     <Compile Remove="Migrations\20220410124922_AppUserEditTable.Designer.cs" />
+    <Compile Remove="Migrations\20220420121937_addSaleCountToBookTable.cs" />
+    <Compile Remove="Migrations\20220420121937_addSaleCountToBookTable.Designer.cs" />
+    <Compile Remove="Migrations\20220420122037_valutypeSaleCountInBookTable.cs" />
+    <Compile Remove="Migrations\20220420122037_valutypeSaleCountInBookTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

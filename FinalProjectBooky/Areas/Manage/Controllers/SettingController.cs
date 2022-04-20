@@ -1,6 +1,7 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Extensions;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
 
-   
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class SettingController : Controller
     {
         private readonly AppDbContext _context;

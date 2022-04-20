@@ -37,6 +37,9 @@
                 <th style="text-align:center;">
                     Settings
                 </th>
+                <th style="text-align:center;">
+                    Comments
+                </th>
                
 
             </tr>
@@ -84,6 +87,7 @@
                             <i style="font-size:30px;" class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
+                    <td Style="text-align:center;"><a asp-controller="blog" asp-action="comments" asp-route-blogId="@blog.Id"><i class="fas fa-comment" style="font-size:20px;"></i></a> </td>
  
             </tr>
             }

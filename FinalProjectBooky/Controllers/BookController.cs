@@ -63,7 +63,7 @@ namespace FinalProjectBooky.Controllers
         public IActionResult Detail(int id,int categoryId)
         {
 
-            Book book = _context.Books.Include(b=>b.Comments).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
+            Book book = _context.Books.Include(b=>b.Comments).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(b=>b.Contents).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
             if (book == null)
             {
                 return NotFound();

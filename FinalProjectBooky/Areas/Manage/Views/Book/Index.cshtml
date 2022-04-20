@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th style="text-align:center;">
-                    # / <i class="fa-solid fa-barcode" style="color:greenyellow;"></i> 
+                    # / <i class="fa-solid fa-barcode" style="color:greenyellow;"></i>
                 </th>
                 <th style="text-align:center;">
                     Image
@@ -45,7 +45,9 @@
                 <th style="text-align:center;">
                     Settings
                 </th>
-
+                <th>
+                    Comment
+                </th>
 
             </tr>
         </thead>
@@ -76,8 +78,8 @@
 
                     <td style="text-align:center;">
                         <div class="d-flex justify-content-center">
-                                <div class="me-3" style="background-color:@book.LeftSideColor; width:20px;height:30px;"></div>
-                                <div class="" style="background-color: @book.BackSideColor;width:20px;height:30px;"></div>
+                            <div class="me-3" style="background-color:@book.LeftSideColor; width:20px;height:30px;"></div>
+                            <div class="" style="background-color: @book.BackSideColor;width:20px;height:30px;"></div>
                         </div>
 
                     </td>
@@ -97,15 +99,17 @@
 
                     <td style="text-align:center;">
                         <a asp-controller="book" asp-action="edit" asp-route-id="@book.Id" style="margin-right:3rem;text-decoration:none;">
-                            <i style="font-size:30px;" class="fa-solid fa-pen-to-square"></i>
+                            <i style="font-size:20px;" class="fa-solid fa-pen-to-square"></i>
 
 
                         </a>
                         <a asp-controller="book" asp-action="delete" asp-route-id="@book.Id" class="delete-item">
 
-                            <i style="font-size:30px;" class="fa-solid fa-trash-can"></i>
+                            <i style="font-size:20px;" class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
+
+                    <td Style="text-align:center;"><a asp-controller="book" asp-action="comments" asp-route-bookId="@book.Id"><i class="fas fa-comment" style="font-size:20px;"></i> </a> </td>
 
                 </tr>
             }

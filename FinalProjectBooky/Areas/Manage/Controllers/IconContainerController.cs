@@ -1,5 +1,6 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
 
-
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class IconContainerController : Controller
     {
         private readonly AppDbContext _context;

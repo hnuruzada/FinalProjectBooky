@@ -17,7 +17,7 @@
                             <div class="comments">
                                 <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">
                                     <i class="fas fa-comments"></i>
-                                    <span>(3)</span>
+                                    <span>(@blog.Comments.Where(c=>c.IsAccess==true).Count())</span>
                                 </a>
                             </div>
                         </div>

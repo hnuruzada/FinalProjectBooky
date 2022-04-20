@@ -1,16 +1,21 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Extensions;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 
 namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class BookController : Controller
     {
         private readonly AppDbContext _context;
@@ -116,7 +121,38 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 
             _context.Books.Add(book);
             _context.SaveChanges();
+            List<Subscribe> subscribes = _context.Subscribes.ToList();
+            foreach (var sub in subscribes)
+            {
+                string link = "https://localhost:44352/book/detail/" + book.Id + $"?categoryId={book.BookCategories.FirstOrDefault().CategoryId}";
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("hasanng@code.edu.az", "Booky");
+                mail.To.Add(new MailAddress(sub.Email));
+
+
+                mail.Subject = "New book";
+                string body = string.Empty;
+
+                using (StreamReader reader = new StreamReader("wwwroot/Assets/Template/NewSubscribe.html"))
+                {
+                    body = reader.ReadToEnd();
+                }
+
+                string about = $"<strong>Hello</strong><br /> a new <strong>{book.AuthorBooks.FirstOrDefault().Author.Name} {book.Name}</strong> book added to our shop <br/>click the link down below to discover new book";
+                body = body.Replace("{{link}}", link);
+                mail.Body = body.Replace("{{about}}", about);
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+
+                smtp.Credentials = new NetworkCredential("hasanng@code.edu.az", "Hasan0557578407");
+                smtp.Send(mail);
+            }
             return RedirectToAction(nameof(Index));
+            
 
         }
         public IActionResult Edit(int id)
@@ -303,6 +339,26 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
 
             return Json(new { status = 200 });
 
+        }
+        public IActionResult Comments(int bookId)
+        {
+            if (!_context.Comments.Any(c => c.BookId == bookId)) return RedirectToAction("Index", "Book");
+
+            List<Comment> comments = _context.Comments.Include(c => c.Book).Include(c => c.AppUser).Where(c => c.BookId == bookId).ToList();
+
+
+
+            return View(comments);
+        }
+
+        public IActionResult CommentStatusChange(int id)
+        {
+            if (!_context.Comments.Any(c => c.Id == id)) return RedirectToAction("Index", "Book");
+            Comment comment = _context.Comments.SingleOrDefault(c => c.Id == id);
+
+            comment.IsAccess = comment.IsAccess ? false : true;
+            _context.SaveChanges();
+            return RedirectToAction("Comments", "Book", new { BookId = comment.BookId });
         }
 
     }

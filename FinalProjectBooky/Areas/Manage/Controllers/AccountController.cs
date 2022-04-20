@@ -52,7 +52,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             if (!ModelState.IsValid) return View();
             AppUser user = await _userManager.FindByNameAsync(login.Username);
 
-            if (user.IsAdmin == false)
+            if (user.IsAdmin == null)
             {
                 ModelState.AddModelError("", "Username or password incorrect");
                 return View();
@@ -90,15 +90,15 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         //{
         //    AppUser user = new AppUser
         //    {
-        //        UserName = "j",
-        //        Email = "jamalzeynalli@gmail.com",
-        //        Name = "Jamal",
-        //        Surname = "Zeynalli"
+        //        UserName = "HasanNuruzade",
+        //        Email = "h.nuruzada@hotmail.com",
+        //        Name = "Hasan",
+        //        Surname = "Nuruzada"
 
         //    };
 
-        //    await _userManager.CreateAsync(user, "jamal12345");
-        //    await _userManager.AddToRoleAsync(user, "Admin");
+        //    await _userManager.CreateAsync(user, "Hasan12345@");
+        //    await _userManager.AddToRoleAsync(user, "SuperAdmin");
 
         //}
     }

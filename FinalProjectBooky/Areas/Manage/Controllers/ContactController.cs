@@ -1,5 +1,6 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class ContactController : Controller
     {
         private readonly AppDbContext _context;

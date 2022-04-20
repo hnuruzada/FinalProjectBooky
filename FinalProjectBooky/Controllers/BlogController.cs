@@ -22,7 +22,7 @@ namespace FinalProjectBooky.Controllers
         }
         public IActionResult Index()
         {
-            List<Blog> blogs = _context.Blogs.Include(b=>b.Publisher).Include(b=>b.Category).Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).ToList();
+            List<Blog> blogs = _context.Blogs.Include(b=>b.Publisher).Include(b=>b.Comments).Include(b=>b.Category).Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).ToList();
 
             return View(blogs);
         }

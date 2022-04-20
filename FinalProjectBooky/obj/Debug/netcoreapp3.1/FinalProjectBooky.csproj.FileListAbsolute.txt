@@ -226,3 +226,5 @@ C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcor
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
 C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Book\Comments.cshtml.g.cs
+C:\Users\Hesen\source\repos\FinalProjectBooky\FinalProjectBooky\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Blog\Comments.cshtml.g.cs

@@ -10,5 +10,6 @@ namespace FinalProjectBooky.ViewModels
         public List<Blog> Blogs { get; set; }
         public List<Author> Authors { get; set; }
         public List<IconContainer> IconContainers { get; set; }
+        public SubscribeVM SubscribeVM { get; set; }
     }
 }

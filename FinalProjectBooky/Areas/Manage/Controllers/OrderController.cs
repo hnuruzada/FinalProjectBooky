@@ -1,7 +1,9 @@
 ﻿using FinalProjectBooky.DAL;
 using FinalProjectBooky.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +12,7 @@ using System.Net.Mail;
 namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class OrderController : Controller
     {
         private readonly AppDbContext _context;
@@ -18,9 +21,11 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-            List<Order> orders = _context.Orders.ToList();
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Orders.Count() / 6);
+            ViewBag.CurrentPage = page;
+            List<Order> orders = _context.Orders.Skip((page - 1) * 6).Take(6).ToList();
             return View(orders);
         }
 

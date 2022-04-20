@@ -34,5 +34,6 @@ namespace FinalProjectBooky.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
     }
 }

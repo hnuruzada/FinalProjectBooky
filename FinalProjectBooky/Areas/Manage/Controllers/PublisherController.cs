@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FinalProjectBooky.Areas.Manage.Controllers
 {
     [Area("Manage")]
-
+    [Authorize(Roles = "SuperAdmin,Publisher")]
     public class PublisherController : Controller
     {
         private readonly AppDbContext _context;

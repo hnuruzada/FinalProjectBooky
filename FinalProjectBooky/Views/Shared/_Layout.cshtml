@@ -36,7 +36,25 @@
 
     <header class="header">
         <div class="header-0">
-            @if (User.Identity.IsAuthenticated)
+          
+            @if (!(User.Identity.IsAuthenticated && User.IsInRole("Member")))
+            {
+                <div class="login">
+                    <a asp-controller="account" asp-action="login" class="sign-in-btn">
+                        <span>Login</span>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </div>
+                <div class="register">
+                    <a asp-controller="account" asp-action="register" class="register-btn">
+                        <span>Sign Up</span>
+                        <i class="fas fa-user-plus"></i>
+
+                    </a>
+                </div>
+                
+            }
+            else
             {
                 <div class="logout">
 
@@ -70,22 +88,6 @@
                             <circle cx="66" cy="50" r="3.7" />
                         </svg>
                         <span class="button-text">Log Out</span>
-                    </a>
-                </div>
-            }
-            else
-            {
-                <div class="login">
-                    <a asp-controller="account" asp-action="login" class="sign-in-btn">
-                        <span>Login</span>
-                        <i class="fas fa-sign-in-alt"></i>
-                    </a>
-                </div>
-                <div class="register">
-                    <a asp-controller="account" asp-action="register" class="register-btn">
-                        <span>Sign Up</span>
-                        <i class="fas fa-user-plus"></i>
-
                     </a>
                 </div>
             }
@@ -139,7 +141,7 @@
                 <a asp-controller="wishlist" asp-action="index" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart basket" onclick="openNav()">
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                     {
                         <span id="total-count" class="count">@layoutService.ShowBasket().Result.Count</span>
                     }
@@ -150,7 +152,7 @@
 
 
                 </a>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                 {
                     <a>
                         <i class="fas fa-user" style="color:green;"></i>
@@ -179,7 +181,7 @@
         </div>
 
     </header>
-    <div id="mySidenav" class="bags sidenav carts">
+    <div id="mySidenav" class="bags sidenav carts" style="width:0;">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         @await Html.PartialAsync("_basketPartial",layoutService)
     </div>

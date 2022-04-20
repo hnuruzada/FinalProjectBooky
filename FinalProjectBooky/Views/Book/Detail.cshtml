@@ -35,24 +35,22 @@
                     <div class="page__content">
                         <h1 class="page__content-title">I</h1>
                         <div class="page__content-text">
-                            <p>
-                                His name was Gaal Dornick and he was just a country boy who had never seen Trantor
-                                before. That is, not in real life. He had seen it many times on the hyper-video, and
-                                occasionally in tremendous three-dimensional newscasts covering an Imperial
-                                Coronation or the opening of a Galactic Council. Even though he had lived all his
-                                life on the world of Synnax, which circled a star at the edges of the Blue Drift, he
-                                was not cut off from civilization, you see. At that time, no place in the Galaxy
-                                was.
-                            </p>
-                            <p>
-                                His name was Gaal Dornick and he was just a country boy who had never seen Trantor
-                                before. That is, not in real life. He had seen it many times on the hyper-video, and
-                                occasionally in tremendous three-dimensional newscasts covering an Imperial
-                                Coronation or the opening of a Galactic Council. Even though he had lived all his
-                                life on the world of Synnax, which circled a star at the edges of the Blue Drift, he
-                                was not cut off from civilization, you see. At that time, no place in the Galaxy
-                                was.
-                            </p>
+                            @if (Model.Book.Summary.Length > 1000)
+                            {
+                                <p>
+                                    @(Model.Book.Summary.Substring(0,1000) + "...")
+                                </p>
+                                
+                            }
+                            else
+                            {
+                                <p>
+                                    @Model.Book.Summary
+                                </p>
+                                
+                            }
+
+
                         </div>
                         <div class="page__number">3</div>
                     </div>
@@ -97,31 +95,15 @@
                         <div class="page__content">
                             <h1 class="page__content-title">Contents</h1>
                             <table class="page__content-table">
-                                <tr>
-                                    <td align="left">Part I</td>
-                                    <td align="left">The Psycohistorians</td>
-                                    <td align="right">3</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Part II</td>
-                                    <td align="left">The Encyclopedists</td>
-                                    <td align="right">43</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Part III</td>
-                                    <td align="left">The Mayors</td>
-                                    <td align="right">87</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Part IV</td>
-                                    <td align="left">The Traders</td>
-                                    <td align="right">147</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">Part V</td>
-                                    <td align="left">The Merchant Princes</td>
-                                    <td align="right">173</td>
-                                </tr>
+                                @foreach (var item in Model.Book.Contents)
+                                {
+                                    <tr>
+                                        <td align="left">@item.PartOf</td>
+                                        <td align="left">@item.Title</td>
+                                        <td align="right">...@item.PageNumber</td>
+                                    </tr>
+                                }
+                               
                             </table>
 
                             <div class="page__number">2</div>
@@ -169,15 +151,25 @@
                 </ul>
             </div>
             <div class="Add-Cart">
-                
+
                 <div class="btn-cart" style="display:flex;justify-content:flex-start;align-items:center;">
                     <a class="btn btn-primary addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@Model.Book.Id" style="margin-top:0;">Add To Cart</a>
                 </div>
             </div>
-            <div class="buy-it-now">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="buy-it-now">
 
-                <a asp-controller="order" asp-action="checkout" class="btn btn-outline-primary" style="background-color:white;color:blue;width:100%">Buy It Now</a>
-            </div>
+                    <a asp-controller="order" asp-action="checkout" class="btn btn-outline-primary" style="background-color:white;color:blue;width:100%">Buy It Now</a>
+                </div>
+            }
+            else
+            {
+                <div class="buy-it-now">
+
+                    <a asp-controller="account" asp-action="login" class="btn btn-outline-primary" style="background-color:white;color:blue;width:100%">Buy It Now</a>
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -192,7 +184,7 @@
             <label for="tab2">INFORMATION</label>
             <!-- Tab 3 -->
             <input type="radio" name="tabset" id="tab3" aria-controls="reviews">
-            <label for="tab3">REVIEWS(@Model.Comments.Count)</label>
+            <label for="tab3">REVIEWS(@Model.Comments.Where(c=>c.IsAccess==true).Count())</label>
 
             <div class="tab-panels">
                 <div id="description" class="tab-panel">
@@ -346,7 +338,7 @@
            $(document).on("click",".up",function(e){
                e.preventDefault();
                  var id= $(this).attr("data-id")
-                
+
                  var total=document.querySelector(".total_price")
                  var money=document.querySelectorAll(".money-t")
                  console.log(id)
