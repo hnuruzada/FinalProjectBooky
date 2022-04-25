@@ -13,7 +13,7 @@ namespace FinalProjectBooky.Models
         [StringLength(maximumLength:150)]
         public string Title { get; set; }
         [Required]
-        [StringLength(maximumLength: 1500)]
+        [StringLength(maximumLength: 5000)]
         public string Description { get; set; }
         [Required]
         public DateTime Date { get; set; }

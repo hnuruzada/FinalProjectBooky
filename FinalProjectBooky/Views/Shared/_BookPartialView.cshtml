@@ -3,11 +3,11 @@
 
     @foreach (Book book in Model)
 {
-    <div class=" items2 column col-lg-6" data-id="@foreach (BookCategory item in book.BookCategories)
+    <div class=" items2 column col-lg-6 blogBox moreBox" style="display:none;" data-id="@foreach (BookCategory item in book.BookCategories)
                                        {
                                            @(item.Category.Name )
                                        }"
-    data-tag="@foreach (BookTag item in book.BookTags)
+     data-tag="@foreach (BookTag item in book.BookTags)
                                        {
                                            @(item.Tag.Name )
                                        }">
@@ -23,25 +23,28 @@
                     <h1 class="book-name">@book.Name</h1>
                 </a>
                 <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id" style="text-decoration:none;">
-                    <h5 class="author-name">@foreach (var item in book.AuthorBooks)
-                                         {
-                                             @item.Author.Name @item.Author.Surname
-                                         } </h5>
+                    <h5 class="author-name">
+                        @foreach (var item in book.AuthorBooks)
+                        {
+                            @item.Author.Name @item.Author.Surname
+                        }
+                    </h5>
                 </a>
                 @if (book.CampaignId == null)
                 {
-                   <span class="price">$@book.Price</span>
+                    <span class="price">$@book.Price</span>
                 }
                 else
                 {
-                    
-                    <span class="price" ><span >$@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span><span style="text-decoration:line-through;opacity:0.6;padding-left:10px;">  $@book.Price</span></span>
+
+                    <span class="price"><span>$@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span><span style="text-decoration:line-through;opacity:0.6;padding-left:10px;">  $@book.Price</span></span>
                 }
 
-                
+
                 <p>
 
-                    @if(book.Summary.Length>150){
+                    @if (book.Summary.Length > 150)
+                    {
 
                         @book.Summary.Substring(0,150)
                     }
@@ -57,8 +60,8 @@
                 }
                 else
                 {
-                <a class="btn btn-primary" asp-controller="account" asp-action="login" >Add To Cart</a>
-                    
+                    <a class="btn btn-primary" asp-controller="account" asp-action="login">Add To Cart</a>
+
                 }
 
             </div>

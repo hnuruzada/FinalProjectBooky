@@ -35,7 +35,7 @@ namespace FinalProjectBooky.Controllers
             };
             ViewBag.Categories=_context.Categories.Include(c=>c.Blogs).ToList();
             ViewBag.Tags = _context.Tags.Include(t => t.BlogTags).ThenInclude(bt => bt.Blog).ToList();
-            ViewBag.Blogs=_context.Blogs.Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Category).Include(b=>b.Publisher).Include(b=>b.Comments).ToList();
+            ViewBag.Blogs=_context.Blogs.Include(b=>b.BlogTags).ThenInclude(bt=>bt.Tag).Include(b=>b.Category).Include(b=>b.Publisher).Include(b=>b.Comments).Take(4).ToList();
             return View(detailVM);
         }
         [AutoValidateAntiforgeryToken]

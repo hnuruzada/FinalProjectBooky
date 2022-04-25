@@ -425,24 +425,24 @@ section {
   -webkit-tap-highlight-color: transparent;
 }
 
-.header .header-0 .logout .logoutButton::before {
-  background-color: #1f2335;
-  border-radius: 5px;
-  content: '';
-  display: block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  -webkit-transform: none;
-          transform: none;
-  -webkit-transition: -webkit-transform 50ms ease;
-  transition: -webkit-transform 50ms ease;
-  transition: transform 50ms ease;
-  transition: transform 50ms ease, -webkit-transform 50ms ease;
-  width: 100%;
-  z-index: 2;
-}
+    .header .header-0 .logout .logoutButton::before {
+        background-color: #1f2335;
+        border-radius: 5px;
+        content: '';
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: -webkit-transform 50ms ease;
+        transition: -webkit-transform 50ms ease;
+        transition: transform 50ms ease;
+        transition: transform 50ms ease, -webkit-transform 50ms ease;
+        width: 100%;
+        z-index: 2;
+    }
 
 .header .header-0 .logout .logoutButton:hover .door {
   -webkit-transform: rotateY(20deg);

@@ -15,10 +15,28 @@
                             </div>
                             <div class="title book-1" style="background-color: @book.LeftSideColor;"></div>
                             <div class="book-back book-1" style="background-color: @book.BackSideColor;">
-                                <div class="text">
-                                    <h3>@book.Name</h3>
-                                    <p>
-                                        <span>@book.Summary</span>
+                                <div class="text" style="padding:0 13px;">
+                                    <h5 style="color:white;">
+                                        @if (book.Name.Length > 20)
+                                        {
+                                            @(book.Name.Substring(0,20) + "...")
+                                        }
+                                        else
+                                        {
+                                            @book.Name
+                                        }
+                                    </h5>
+                                    <p style="font-size:8px;">
+                                        <span style="font-size:8px;margin-top:10px;">
+                                            @if (book.Summary.Length > 350)
+                                            {
+                                                @(book.Summary.Substring(0,350) + "...")
+                                            }
+                                            else
+                                            {
+                                                @book.Summary
+                                            }
+                                        </span>
 
                                     </p>
                                 </div>
@@ -30,11 +48,23 @@
             <div class="card-body">
                 <div class="title">
                     <a asp-controller="book" asp-action="detail" asp-route-id="@book.Id">
-                        <h3>@book.Name</h3>
+                        <h3>
+                            @if (book.Name.Length > 20)
+                            {
+                                @(book.Name.Substring(0,20) + "...")
+                            }
+                            else
+                            {
+                                @book.Name
+                            }
+                        </h3>
                     </a>
                 </div>
                 <div class="author-name">
-                    <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>@book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
+                    <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>
+                                @(book.AuthorBooks.FirstOrDefault().Author.Name.Substring(0,1) + ".")
+                           
+                            @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
                 </div>
                 <div class="price">
                     @if (book.CampaignId == null)
@@ -59,7 +89,7 @@
                         <a class="btn btn-light" asp-controller="account" asp-action="login">Add To Cart</a>
                     }
 
-                    <a asp-controller="book" asp-action="addwishlist" asp-route-id="@book.Id" class="wishlist wishlistFetch"><i class="far fa-heart"></i></a>
+                    <a asp-controller="book" asp-action="addwishlist" asp-route-id="@book.Id" class="wishlist wishlistFetch"><i class="fas fa-heart"></i></a>
                 </div>
             </div>
         </div>

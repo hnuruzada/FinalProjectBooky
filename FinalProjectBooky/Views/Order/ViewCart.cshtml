@@ -44,8 +44,17 @@
                                             </a>
                                         </div>
                                         <div class="item-title">
-                                            <a href="">
-                                                <span class="item-name">@item.Book.Name</span>
+                                            <a asp-controller="book" asp-action="detail" asp-route-id="@item.Book.Id" style="text-decoration:none;">
+                                                <span class="item-name">
+                                                    @if (item.Book.Name.Length > 20)
+                                                    {
+                                                        @(item.Book.Name.Substring(0,20) + "...")
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.Book.Name
+                                                    }
+                                                </span>
                                             </a>
 
                                             <div class="author-item">
@@ -53,7 +62,7 @@
                                                 <span class="author">
                                                     @foreach (var auth in item.Book.AuthorBooks)
                                                     {
-                                                        @auth.Author.Name @auth.Author.Surname
+                                                        @(auth.Author.Name.Substring(0,1) + ".") @auth.Author.Surname <span> </span>
                                                     }
                                                 </span>
                                             </div>
@@ -77,7 +86,7 @@
                                 </td>
                                 <td class="item-quantity">
                                     <div class="inp-num">
-                                        <a  data-id="@item.Book.Id" class="down" id="downbtn"><i class="fas fa-chevron-left"></i></a>
+                                        <a data-id="@item.Book.Id" class="down" id="downbtn"><i class="fas fa-chevron-left"></i></a>
                                         <span class="inp-value">@item.Count</span>
                                         <a data-id="@item.Book.Id" class="up" id="upbtn"><i class="fas fa-chevron-right"></i></a>
                                     </div>
@@ -97,7 +106,7 @@
                                     </span>
 
                                     <div class="remove">
-                                        <a asp-controller="book" asp-action="removecartitem" asp-route-id="@item.Book.Id" class="cart-remove-btn" >
+                                        <a asp-controller="book" asp-action="removecartitem" asp-route-id="@item.Book.Id" class="cart-remove-btn">
                                             <span>Remove</span>
                                         </a>
                                     </div>
@@ -111,17 +120,20 @@
 
                     </tbody>
                 </table>
-                @if(Model.BasketItems.Count!=0){
+                @if (Model.BasketItems.Count != 0)
+                {
                     <div class="clear-all">
-                    <a asp-controller="book" asp-action="removeall" class="removeall">
-                        Delete All
-                    </a>
-                </div>
-                }else{
-                    
-                     <div style="background-image: url(/Assets/images/empty_cart.gif);background-repeat: no-repeat;width:900px;height:400px;background-position:center;">
-        </div>
-                
+                        <a asp-controller="book" asp-action="removeall" class="removeall">
+                            Delete All
+                        </a>
+                    </div>
+                }
+                else
+                {
+
+                    <div style="background-image: url(/Assets/images/empty_cart.gif);background-repeat: no-repeat;width:900px;height:400px;background-position:center;">
+                    </div>
+
                 }
             </div>
             <div class="col-lg-3 right-side">
@@ -131,7 +143,7 @@
                     </div>
                     <div class="card-body">
                         <h4>Total Price</h4>
-                        <span class="total_price">$@totalprice</span>
+                        <span class="total_price">$ <span>@totalprice</span></span>
                     </div>
                     <div class="card-footer">
                         <a asp-controller="order" asp-action="checkout" class="btn btn-primary" style="background-color:white;color:blue;width:80%; display:flex;justify-content:center;align-items:center;">Checkout</a>
@@ -143,7 +155,7 @@
 </section>
 
 @section Scripts{
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(".cart-remove-btn").click(function (e) {
@@ -204,65 +216,65 @@
     })
 </script>
 <script>
-    $(document).ready(function(){
+     $(document).ready(function(){
 
-          $(document).on("click",".down",function(e){
-              e.preventDefault();
-                var id= $(this).attr("data-id")
-                var total=document.querySelector(".total_price")
-                var money=document.querySelectorAll(".money-t")
-                console.log(id)
-             $.ajax({
-                 url:"/book/decrease",
-                 data:{
-                     id:id
-                 },
-                 type:"post",
-                 datatype:"json",
-                 success: function(data) {
-                     money.forEach(mon=>{
-                         if(id==mon.getAttribute("data-id")){
-                             mon.innerHTML=data.price
-                             console.log(data.price)
-                         }
-                     })
-                     total.innerHTML=`${data.totalPrice}`
-                     
-                  }
-             })
+           $(document).on("click",".down",function(e){
+               e.preventDefault();
+                 var id= $(this).attr("data-id")
+                 var total=document.querySelector(".total_price")
+                 var money=document.querySelectorAll(".money-t")
+                 console.log(id)
+              $.ajax({
+                  url:"/book/decrease",
+                  data:{
+                      id:id
+                  },
+                  type:"post",
+                  datatype:"json",
+                  success: function(data) {
+                      money.forEach(mon=>{
+                          if(id==mon.getAttribute("data-id")){
+                              mon.innerHTML=data.price
+                              console.log(data.price)
+                          }
+                      })
+                      total.innerHTML=`${data.totalPrice}`
 
-          })
+                   }
+              })
+
+           })
 
 
-          $(document).on("click",".up",function(e){
-              e.preventDefault();
-                var id= $(this).attr("data-id")
-                var total=document.querySelector(".total_price")
-                var money=document.querySelectorAll(".money-t")
-                console.log(id)
-             $.ajax({
-                 url:"/book/increase",
-                 data:{
-                     id:id
-                 },
-                 type:"post",
-                 datatype:"json",
-                 success: function(data) {
-                     money.forEach(mon=>{
-                         if(id==mon.getAttribute("data-id")){
-                             mon.innerHTML=data.price
-                             console.log(data.price)
-                         }
-                     })
-                     total.innerHTML=`${data.totalPrice}`
-                     
-                  }
-             })
+           $(document).on("click",".up",function(e){
+               e.preventDefault();
+                 var id= $(this).attr("data-id")
+                 var total=document.querySelector(".total_price")
+                 var money=document.querySelectorAll(".money-t")
+                 console.log(id)
+              $.ajax({
+                  url:"/book/increase",
+                  data:{
+                      id:id
+                  },
+                  type:"post",
+                  datatype:"json",
+                  success: function(data) {
+                      money.forEach(mon=>{
+                          if(id==mon.getAttribute("data-id")){
+                              mon.innerHTML=data.price
+                              console.log(data.price)
+                          }
+                      })
+                      total.innerHTML=`${data.totalPrice}`
 
-          })
-         
-          
-   })
+                   }
+              })
+
+           })
+
+
+    })
 
 
 </script>

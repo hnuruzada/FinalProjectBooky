@@ -1,7 +1,7 @@
 ﻿@model List<Book>
 
 
-    @foreach (Book book in Model.Skip(Model.Count-4).Take(4))
+    @foreach (Book book in Model.Skip(Model.Count - 6).Take(6))
 {
     <li class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <figure class='book'>
@@ -35,8 +35,19 @@
                 </li>
                 <li>
                     <div class="rsp-design">
-                        <h1>@book.Name</h1>
-                        <span>By @book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span>
+                        <a asp-controller="book" asp-action="detail" asp-route-id=@book.Id>
+                            <h1>
+                                @if (book.Name.Length > 20)
+                                {
+                                    @(book.Name.Substring(0,20) + "...")
+                                }
+                                else
+                                {
+                                    @book.Name
+                                }
+                            </h1>
+                        </a>
+                        <a asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>By @(book.AuthorBooks.FirstOrDefault().Author.Name.Substring(0,1)+".") @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
                         <div class="price">
                             @if (book.CampaignId == null)
                             {
@@ -50,8 +61,16 @@
 
                         </div>
                     </div>
-                    <a class="btn addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn addToCart" asp-controller="book" asp-action="addbasket" asp-route-id="@book.Id">Add To Cart</a>
 
+                    }
+                    else
+                    {
+                        <a class="btn" asp-controller="account" asp-action="login">Add To Cart</a>
+
+                    }
 
                 </li>
                 <li>
@@ -124,18 +143,29 @@
                 </li>
             </ul>
             <figcaption>
-                <h1>@book.Name</h1>
-                <span>By @book.AuthorBooks.FirstOrDefault().Author.Name @book.AuthorBooks.FirstOrDefault().Author.Surname</span>
+                <a style="color:black;text-decoration:none;" asp-controller="book" asp-action="detail" asp-route-id=@book.Id>
+                    <h1>
+                        @if (book.Name.Length > 20)
+                        {
+                            @(book.Name.Substring(0,20) + "...")
+                        }
+                        else
+                        {
+                            @book.Name
+                        }
+                    </h1>
+                </a>
+                <a style="color:black;text-decoration:none;" asp-controller="author" asp-action="index" asp-route-id="@book.AuthorBooks.FirstOrDefault().Author.Id"><span>By @(book.AuthorBooks.FirstOrDefault().Author.Name.Substring(0,1)+".") @book.AuthorBooks.FirstOrDefault().Author.Surname</span></a>
                 <div class="price">
-                     @if (book.CampaignId == null)
-                            {
-                                <span>$@book.Price</span>
-                            }
-                            else
-                            {
-                                <span>@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span>
-                                <span class="campaign">$@book.Price</span>
-                            }
+                    @if (book.CampaignId == null)
+                    {
+                        <span>$@book.Price</span>
+                    }
+                    else
+                    {
+                        <span>@(book.Price * (100 - book.Campaign.DiscountPercent)/100)</span>
+                        <span class="campaign">$@book.Price</span>
+                    }
                 </div>
             </figcaption>
         </figure>

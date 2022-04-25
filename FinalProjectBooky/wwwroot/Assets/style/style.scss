@@ -292,7 +292,8 @@ section {
         justify-content: flex-end;
         align-items: center;
         height: 50px;
-        .login{
+
+        .login {
             width: 130px;
             height: 40px;
             background-color: #1f2335;
@@ -300,57 +301,63 @@ section {
             display: flex;
             justify-content: center;
             align-items: center;
-               .sign-in-btn{
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-                   width: 100%;
-                   height: 100%;
-                   span{
-                       font-size: 15px;
-                       font-weight: 500;
-                       color: #f4f7ff;
-                   }
-                   i{
-                       margin-left: 5px;
-                       font-size: 20px;
-                       color: #4371f7;
-                   }
-               }
-           }
-       .register{
-        width: 130px;
-        height: 40px;
-        background-color: #1f2335;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-           .register-btn{
-               display: flex;
-               justify-content: center;
-               align-items: center;
-               width: 100%;
-               height: 100%;
-               span{
-                   font-size: 15px;
-                   font-weight: 500;
-                   color: #f4f7ff;
-               }
-               i{
-                   margin-left: 5px;
-                   font-size: 15px;
-                   color: #4371f7;
-               }
-           }
-       }
+
+            .sign-in-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                span {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #f4f7ff;
+                }
+
+                i {
+                    margin-left: 5px;
+                    font-size: 20px;
+                    color: #4371f7;
+                }
+            }
+        }
+
+        .register {
+            width: 130px;
+            height: 40px;
+            background-color: #1f2335;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .register-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                span {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #f4f7ff;
+                }
+
+                i {
+                    margin-left: 5px;
+                    font-size: 15px;
+                    color: #4371f7;
+                }
+            }
+        }
 
         .logout {
             height: 100%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-
             // Colors
             $dark: #1f2335;
             $middle: #4371f7;
@@ -368,7 +375,6 @@ section {
                 --transform-calf1: none;
                 --transform-leg2: none;
                 --transform-calf2: none;
-
                 background: none;
                 border: 0;
                 color: $light;
@@ -385,7 +391,6 @@ section {
                 text-align: left;
                 width: 130px;
                 -webkit-tap-highlight-color: transparent;
-
                 // Background of button is independent of the button content
                 &::before {
                     background-color: $dark;
@@ -417,7 +422,6 @@ section {
                         transform: rotateY(28deg);
                     }
                 }
-
                 // button was clicked
                 &.clicked {
                     &::before {
@@ -428,7 +432,6 @@ section {
                         transform: rotateY(35deg);
                     }
                 }
-
                 // close the door
                 &.door-slammed {
                     .door {
@@ -436,7 +439,6 @@ section {
                         transition: transform 100ms ease-in 250ms;
                     }
                 }
-
                 // the figure is falling
                 &.falling {
                     animation: shake 200ms linear;
@@ -450,9 +452,7 @@ section {
                         bottom: -1080px;
                         opacity: 0;
                         right: 1px;
-                        transition: transform calc(var(--figure-duration) * 1ms) linear,
-                            bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms,
-                            opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
+                        transition: transform calc(var(--figure-duration) * 1ms) linear, bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms, opacity calc(var(--figure-duration) * 0.25ms) linear calc(var(--figure-duration) * 0.75ms);
                         z-index: 1;
                     }
                 }
@@ -612,11 +612,6 @@ section {
                     opacity: 0;
                 }
             }
-
-
-
-
-
         }
     }
 
@@ -772,7 +767,6 @@ section {
                     width: 398px;
                     border-bottom: 1px solid #d2d2d2;
                     display: flex;
-
                     font-family: 'Roboto Condensed', sans-serif;
 
                     .image-section {
@@ -785,7 +779,6 @@ section {
                             overflow: hidden;
                             display: table-cell;
                             vertical-align: middle;
-
                         }
                     }
 
@@ -825,10 +818,8 @@ section {
                                     background-color: #5D4C46 !important;
                                 }
                             }
-
                         }
                     }
-
                 }
             }
 
@@ -838,8 +829,6 @@ section {
                 line-height: 24px;
                 cursor: pointer;
             }
-
-
         }
 
         .icons {
@@ -880,14 +869,8 @@ section {
                     align-items: center;
                     font-size: 12px;
                 }
-
-
-
             }
-
-
         }
-
     }
 
     .header-2 {
@@ -915,7 +898,6 @@ section {
             left: 0;
             right: 0;
             z-index: 1000;
-
         }
     }
 }

@@ -27,7 +27,7 @@ namespace FinalProjectBooky.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 4);
            
-            List<Book> model = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt=>bt.Tag).Skip((page - 1) * 4).Take(4).ToList();
+            List<Book> model = _context.Books.Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt=>bt.Tag).ToList();
             ViewBag.Categories = _context.Categories.Include(c=>c.BookCategories).ThenInclude(bc=>bc.Book).ToList();
             ViewBag.Tags= _context.Tags.Include(b=>b.BookTags).ThenInclude(bt=>bt.Book).ToList();
             ViewBag.id = sortId;
@@ -44,10 +44,10 @@ namespace FinalProjectBooky.Controllers
                     model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(s => s.Name).ToList();
                     break;
                 case 4:
-                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(s => s.Price).ToList();
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderByDescending(s => s.CampaignId == null ? s.Price : (s.Price * (100 - s.Campaign.DiscountPercent) / 100)).ToList();
                     break;
                 case 5:
-                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(s => s.Price).ToList(); 
+                    model = _context.Books.Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(f => f.BookCategories).ThenInclude(fc => fc.Category).Include(f => f.Campaign).Include(f => f.BookTags).ThenInclude(bt => bt.Tag).OrderBy(s => s.CampaignId == null ? s.Price : (s.Price * (100 - s.Campaign.DiscountPercent) / 100)).ToList(); 
                     break;
                 default:
                     

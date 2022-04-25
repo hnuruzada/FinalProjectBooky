@@ -64,13 +64,19 @@
                     </td>
 
                     <td style="text-align:center;">
-                        @book.Name
+                        @if(book.Name.Length>20){
+                            @(book.Name.Substring(0,20) + "...")
+                        }
+                        else
+                        {
+                            @book.Name
+                        }
                     </td>
                     <td style="text-align:center;">
                         @book.Price
                     </td>
                     <td style="text-align:center;">
-                        @book.Date
+                        @book.Date.ToString("MMMM dd,yyyy")
                     </td>
                     <td style="text-align:center;">
                         @book.PageCount
@@ -98,7 +104,7 @@
 
 
                     <td style="text-align:center;">
-                        <a asp-controller="book" asp-action="edit" asp-route-id="@book.Id" style="margin-right:3rem;text-decoration:none;">
+                        <a asp-controller="book" asp-action="edit" asp-route-id="@book.Id" style="text-decoration:none;">
                             <i style="font-size:20px;" class="fa-solid fa-pen-to-square"></i>
 
 

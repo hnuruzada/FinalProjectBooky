@@ -2,6 +2,7 @@
 using FinalProjectBooky.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FinalProjectBooky.Areas.Manage.Controllers
@@ -21,11 +22,9 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             _signInResult = signInResult;
 
         }
-        //[Authorize(Roles = "SuperAdmin,Admin")]
 
         public IActionResult Index()
         {
-            //List<AppUser> user = _userManager.Users.Where(u => u.IsAdmin).ToList();
 
             return View();
         }
@@ -70,7 +69,18 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                 return View();
             }
 
-            return RedirectToAction("index", "book");
+            if(User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                return RedirectToAction("index", "dashboard");
+            }
+            else if(User.IsInRole("Publisher"))
+            {
+                return RedirectToAction("index", "blog");
+            }
+
+            return StatusCode(200);
+
+            
 
         }
         public async Task<IActionResult> Logout()

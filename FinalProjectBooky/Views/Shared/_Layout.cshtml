@@ -35,20 +35,20 @@
     <!-- header section starts  -->
 
     <header class="header">
-        <div class="header-0">
+        <div class="header-0" >
           
             @if (!(User.Identity.IsAuthenticated && User.IsInRole("Member")))
             {
-                <div class="login">
-                    <a asp-controller="account" asp-action="login" class="sign-in-btn">
-                        <span>Login</span>
-                        <i class="fas fa-sign-in-alt"></i>
+                <div class="login" style="margin-right:5px;">
+                    <a asp-controller="account" asp-action="login" class="sign-in-btn" style="text-decoration:none; background-color:white;border:1px solid #27AE60;border-radius:5px;">
+                        <span style="color:#27AE60;">Login</span>
+                        <i style="color:#27AE60;" class="fas fa-sign-in-alt"></i>
                     </a>
                 </div>
-                <div class="register">
-                    <a asp-controller="account" asp-action="register" class="register-btn">
-                        <span>Sign Up</span>
-                        <i class="fas fa-user-plus"></i>
+                <div class="register"  style="margin-right:5px;">
+                    <a asp-controller="account" asp-action="register" class="register-btn" style="text-decoration:none; background-color:white;border:1px solid #27AE60;border-radius:5px;">
+                        <span style="color:#27AE60;">Sign Up</span>
+                        <i style="color:#27AE60;" class="fas fa-user-plus"></i>
 
                     </a>
                 </div>
@@ -56,9 +56,9 @@
             }
             else
             {
-                <div class="logout">
+                <div class="logout" style="margin-right:5px;">
 
-                    <a asp-controller="account" asp-action="logout" class="logoutButton logoutButton--dark">
+                    <a asp-controller="account" asp-action="logout" class="logoutButton logoutButton--dark" style="text-decoration:none;">
                         <svg class="doorway" viewBox="0 0 100 100">
                             <path d="M93.4 86.3H58.6c-1.9 0-3.4-1.5-3.4-3.4V17.1c0-1.9 1.5-3.4 3.4-3.4h34.8c1.9 0 3.4 1.5 3.4 3.4v65.8c0 1.9-1.5 3.4-3.4 3.4z" />
                             <path class="bang" d="M40.5 43.7L26.6 31.4l-2.5 6.7zM41.9 50.4l-19.5-4-1.4 6.3zM40 57.4l-17.7 3.9 3.9 5.7z" />
@@ -132,7 +132,7 @@
             <form method="post" class="search-form">
                 <input type="search" class="typeahead " placeholder="search here..." id="keyword" autocomplete="off">
                 <label for="search-box" class="fas fa-search"></label>
-                <div class="tt-menu tt-open" style="top:130px; left:38.57%;">
+                <div class="tt-menu tt-open" style="top:130px; left:38.57%; max-height:310px;overflow-y:scroll;overflow-x:hidden">
                 </div>
             </form>
 
@@ -154,7 +154,7 @@
                 </a>
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                 {
-                    <a>
+                    <a asp-controller="account" asp-action="edit">
                         <i class="fas fa-user" style="color:green;" data-toggle="tooltip" data-placement="top" title="@User.Identity.Name"></i>
                     </a>
 

@@ -51,7 +51,16 @@ else
                     <img src="~/Assets/images/@item.Book.Image" alt="">
                 </div>
                 <div class="info">
-                    <h5>@item.Book.Name</h5>
+                    <h5>@if(item.Book.Name.Length>20)
+                        {
+                            @(item.Book.Name.Substring(0,20) + "...")
+                        }
+                        else
+                        {
+                            @item.Book.Name
+                        }
+
+                    </h5>
                     @if (item.Book.CampaignId == null)
                     {
                         <span>@item.Count x $@(item.Book.Price*item.Count)</span>

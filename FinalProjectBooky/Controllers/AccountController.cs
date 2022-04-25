@@ -223,6 +223,8 @@ namespace FinalProjectBooky.Controllers
         
         public async Task<IActionResult> Edit()
         {
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("login", "account");
+
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             UserEditVM editedUser = new UserEditVM
@@ -241,8 +243,9 @@ namespace FinalProjectBooky.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UserEditVM editedUser)
         {
-            if (!ModelState.IsValid) return View();
+            if (!User.Identity.IsAuthenticated) return RedirectToAction("login", "account");
 
+            if (!ModelState.IsValid) return View();
             AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEditVM eUser = new UserEditVM
             {

@@ -80,12 +80,15 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
+                    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                    {
+                         <li class="nav-item">
                         <a class="nav-link" asp-controller="dashboard" asp-action="index">
                             <i class="mdi mdi-home menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
+                    }
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="mdi mdi-circle-outline menu-icon"></i>
@@ -95,7 +98,9 @@
                         <div class="collapse" id="ui-basic">
                             <ul style="list-style-type:none;" class="nav flex-column sub-menu">
 
-                                <li class="nav-item"> <a class="nav-link" asp-controller="book" asp-action="index">Books</a></li>
+                                @if(User.IsInRole("SuperAdmin"))
+                                {
+                                     <li class="nav-item"> <a class="nav-link" asp-controller="book" asp-action="index">Books</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="category" asp-action="index">Categories</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="author" asp-action="index">Authors</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="blog" asp-action="index">Blog</a></li>
@@ -106,8 +111,28 @@
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Order" asp-action="index">Orders</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="Publisher" asp-action="index">Publisher</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-controller="setting" asp-action="index">Setting</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-controller="Tag" asp-action="index">Tag</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-controller="comment" asp-action="index">Comments</a></li>
+                                    <li class="nav-item"> <a class="nav-link" asp-controller="Tag" asp-action="index">Tag</a></li>
+                                }
+                                else if (User.IsInRole("Admin"))
+                                {
+                                     <li class="nav-item"> <a class="nav-link" asp-controller="book" asp-action="index">Books</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="category" asp-action="index">Categories</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="author" asp-action="index">Authors</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="contact" asp-action="index">Contact</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Campaign" asp-action="index">Campaign</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="iconcontainer" asp-action="index">Icon Container</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="language" asp-action="index">Language</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Order" asp-action="index">Orders</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="setting" asp-action="index">Setting</a></li>
+                                    <li class="nav-item"> <a class="nav-link" asp-controller="Tag" asp-action="index">Tag</a></li>
+                                }
+                                else if(User.IsInRole("Publisher"))
+                                {
+                                   <li class="nav-item"> <a class="nav-link" asp-controller="blog" asp-action="index">Blog</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-controller="Publisher" asp-action="index">Publisher</a></li>
+                               
+                                }
+
 
                             </ul>
                         </div>
@@ -116,7 +141,9 @@
                     
 
 
-                    <li class="nav-item">
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <li class="nav-item">
                         <a class="nav-link" asp-controller="user" asp-action="index">
                             <i class="mdi mdi-account menu-icon"></i>
                             <span class="menu-title">User Pages</span>
@@ -124,6 +151,7 @@
                         </a>
 
                     </li>
+                    }
 
                 </ul>
             </nav>

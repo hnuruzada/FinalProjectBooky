@@ -1,7 +1,7 @@
 ﻿@model List<Book>
 @{
     ViewData["Title"] = "Index";
-    
+
 }
 
 
@@ -56,13 +56,13 @@
                     <div class="dropdowns">
 
                         <span class="dropbtn"><i class="las la-filter"></i></span>
-                               <p class="d-none" id="getvalue">@ViewBag.id</p>
+                        <p class="d-none" id="getvalue">@ViewBag.id</p>
                         <select name="" id="select">
-                            <option  value="1">Default</option>
+                            <option value="1">Default</option>
                             <option value="5">Low to high</option>
                             <option value="4">High to low</option>
                             <option value="3">A to Z</option>
-                            <option  value="2">Z to A</option>
+                            <option value="2">Z to A</option>
 
                         </select>
                     </div>
@@ -71,50 +71,11 @@
 
                 <div class="row items">
                     @await Html.PartialAsync("_BookPartialView",Model)
-                </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-
-                        <nav aria-label="...">
-                            <ul class="pagination" style="justify-content:center">
-                                @if (ViewBag.CurrentPage == 1)
-                                {
-                                    <li class="page-item disabled">
-
-                                        <a class="page-link" asp-controller="book" asp-action="index" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
-                                    </li>
-
-                                }
-
-                                else
-                                {
-                                    <li class="page-item ">
-                                        <a class="page-link" asp-controller="book" asp-action="index" asp-route-page="@(ViewBag.CurrentPage - 1)">Previous</a>
-                                    </li>
-                                }
-                                @for (int i = 1; i <= ViewBag.TotalPage; i++)
-                                {
-                                    <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")" style="@(ViewBag.CurrentPage == i ? "pointer-events:none" : "")"><a asp-controller="book" asp-action="index" asp-route-page="@i" class="page-link">@i</a></li>
-                                }
-
-                                @if (ViewBag.CurrentPage == ViewBag.TotalPage)
-                                {
-                                    <li class="page-item disabled">
-                                        <a class="page-link" asp-controller="book" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage)">Next</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="page-item">
-                                        <a class="page-link" asp-controller="book" asp-action="Index" asp-route-page="@(ViewBag.CurrentPage+1)">Next</a>
-                                    </li>
-                                }
-
-
-                            </ul>
-                        </nav>
+                    <div class="loadMore">
+                        <a href="#"  style="font-size:12px;text-decoration:none;border:1px solid aqua;padding:4px;border-radius:5px;">LOAD MORE BOOKS</a>
                     </div>
                 </div>
+                
             </div>
             <div class="col-lg-3 sidebars">
 
@@ -124,7 +85,7 @@
                     <ul class="category-tab">
                         @foreach (Category category in ViewBag.Categories)
                         {
-                            <li><a href="@category.Name">@category.Name (@category.BookCategories.Count)</a></li>
+                            <li><a href="@category.Name" >@category.Name (@category.BookCategories.Count)</a></li>
                         }
 
                     </ul>
@@ -150,63 +111,78 @@
 
 @section Scripts{
     <script>
-       $(".tag-links div a").click(function(e) {  
-          e.preventDefault();
-    
-    var id=$(this).attr("href")
-   
-    var items=document.querySelectorAll(".items2")
-    items.forEach(item=>{
-        item.style.display="none"
-        var a=item.getAttribute("data-tag")
-   
-        if(a.includes(id)){
-            item.style.display="block"
+       $( document ).ready(function () {
+    $(".moreBox").slice(0, 4).show();
+      if ($(".blogBox:hidden").length != 0) {
+        $(".loadMore").show();
+      }   
+      $(".loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".moreBox:hidden").slice(0, 4).slideDown();
+        if ($(".moreBox:hidden").length == 0) {
+          $(".loadMore").fadeOut('slow');
         }
-    })
-   
-
-});
+      });
+    });
     </script>
-    <script>
-       $(".category-tab a").click(function(e) {  
-          e.preventDefault();
-    
-    var id=$(this).attr("href")
-   
-    var items=document.querySelectorAll(".items2")
-    items.forEach(item=>{
-        item.style.display="none"
-        var a=item.getAttribute("data-id")
-   
-        if(a.includes(id)){
-            item.style.display="block"
-        }
-    })
-   
+<script>
+           $(".tag-links div a").click(function(e) {
+              e.preventDefault();
 
-});
-    </script>
-    <script>
-        var option=document.querySelectorAll("#select option")
-        var id=document.getElementById("getvalue").innerHTML
-        console.log(id)
-             for(i=0;i<=option.length-1;i++){
-                 if(option[i].value==id){
-                     option[i].setAttribute("selected","true")
+        var id=$(this).attr("href")
+
+        var items=document.querySelectorAll(".items2")
+        items.forEach(item=>{
+            item.style.display="none"
+            var a=item.getAttribute("data-tag")
+
+            if(a.includes(id)){
+                item.style.display="block"
+            }
+        })
+
+
+    });
+</script>
+<script>
+           $(".category-tab a").click(function(e) {
+              e.preventDefault();
+
+        var id=$(this).attr("href")
+
+        var items=document.querySelectorAll(".items2")
+        items.forEach(item=>{
+            item.style.display="none"
+            var a=item.getAttribute("data-id")
+
+            if(a.includes(id)){
+                item.style.display="block"
+            }
+        })
+
+
+    });
+</script>
+<script>
+            var option=document.querySelectorAll("#select option")
+            var id=document.getElementById("getvalue").innerHTML
+            console.log(id)
+                 for(i=0;i<=option.length-1;i++){
+                     if(option[i].value==id){
+                         option[i].setAttribute("selected","true")
+                     }
                  }
-             }
-        $(document).ready(function () {
+            $(document).ready(function () {
 
-  $(document).on("change","#select",function(e){
+      $(document).on("change","#select",function(e){
 
-      var base = window.location.origin;
-      var url = `${base}/book?sortId=${$(this).val()}`
-      window.location.replace(url)
+          var base = window.location.origin;
+          var url = `${base}/book?sortId=${$(this).val()}`
+          window.location.replace(url)
 
-  })
-});
-    </script>
+      })
+    });
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

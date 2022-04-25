@@ -185,8 +185,8 @@ namespace FinalProjectBooky.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1500)")
-                        .HasMaxLength(1500);
+                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(5000);
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");

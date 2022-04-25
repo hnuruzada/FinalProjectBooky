@@ -39,7 +39,7 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             List<Campaign> percent = _context.Campaigns.Where(hs => hs.DiscountPercent==campaign.DiscountPercent).ToList();
             if (!ModelState.IsValid)
             {
-                return Content("Name must be max 50");
+                return View();
             }
             foreach (var item in percent)
             {

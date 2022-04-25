@@ -27,9 +27,9 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         }
         public IActionResult Index(int page=1)
         {
-            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 2);
+            ViewBag.TotalPage = Math.Ceiling((decimal)_context.Books.Count() / 10);
             ViewBag.CurrentPage = page;
-            List<Book> books = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl=>bl.Language).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b=>b.Contents).Include(b=>b.Campaign).Skip((page - 1) * 2).Take(2).ToList();
+            List<Book> books = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl=>bl.Language).Include(b=>b.AuthorBooks).ThenInclude(ab=>ab.Author).Include(b=>b.Contents).Include(b=>b.Campaign).Skip((page - 1) * 10).Take(10).ToList();
 
             return View(books);
         }
@@ -61,10 +61,6 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             
             book.BookTags = new List<BookTag>();
             book.BookCategories = new List<BookCategory>();
-
-           
-            
-
             if (book.ImageFile != null)
             {
                 if (!book.ImageFile.IsImage())
@@ -78,6 +74,11 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                     return View();
                 }
                 book.Image = book.ImageFile.SaveImg(_env.WebRootPath, "assets/images");
+            }
+            else
+            {
+                ModelState.AddModelError("ImageFile", "Choose Image");
+                return View();
             }
             if (book.AuthorIds != null)
             {
@@ -117,7 +118,17 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
                     _context.BookTags.Add(bookTag);
                 }
             }
-           
+            if (book.CampaignId == 0)
+            {
+                ModelState.AddModelError("CampaignId", "Select Discount Percent");
+                return View();
+
+            }
+            if (book.LanguageId == 0)
+            {
+                ModelState.AddModelError("LanguageId", "Select Language");
+                return View();
+            }
 
             _context.Books.Add(book);
             _context.SaveChanges();
@@ -303,6 +314,15 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
             {
                 _context.Contents.RemoveRange(existContent);
             }
+            if (book.CampaignId == 0)
+            {
+                book.CampaignId = null;
+
+            }
+            if (book.LanguageId == 0)
+            {
+                book.LanguageId = existBook.LanguageId;
+            }
 
             existBook.Name = book.Name;
             existBook.PageCount = book.PageCount;
@@ -326,9 +346,18 @@ namespace FinalProjectBooky.Areas.Manage.Controllers
         public IActionResult Delete(int id)
         {
 
-            Book book = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).FirstOrDefault(b => b.Id == id);
-            Book existBook = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).FirstOrDefault(s => s.Id == book.Id);
-
+            Book book = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).Include(b=>b.Comments).FirstOrDefault(b => b.Id == id);
+            Book existBook = _context.Books.Include(b => b.BookCategories).ThenInclude(bc => bc.Category).Include(b => b.BookTags).ThenInclude(bt => bt.Tag).Include(bl => bl.Language).Include(b => b.AuthorBooks).ThenInclude(ab => ab.Author).Include(b => b.Contents).Include(b => b.Campaign).Include(b=>b.Comments).FirstOrDefault(s => s.Id == book.Id);
+            List<Comment> comments= _context.Comments.Include(c=>c.Book).Where(c=>c.BookId==id).ToList();
+            foreach(Comment comment in comments)
+            {
+                _context.Comments.Remove(comment);
+            }
+            List<OrderItem> orderItems = _context.OrderItems.Include(o => o.Book).ThenInclude(o => o.AuthorBooks).ThenInclude(ab => ab.Author).Where(o => o.BookId == id).ToList();
+            foreach (OrderItem orderItem in orderItems)
+            {
+                _context.OrderItems.Remove(orderItem);
+            }
             if (existBook == null) return NotFound();
             if (book == null) return Json(new { status = 404 });
 
