@@ -60,20 +60,7 @@
                 </div>
             </div>
         </div>
-       @* <div class="row">
-            
-            <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-title">Total sales</p>
-                        <h1>$@total</h1>
-                        <div id="total-sales-chart-legend"></div>
-                    </div>
-                </div>
-            </div>
-           
-
-        </div>*@
+    
         <div class="row">
             <div class="col-md-12 stretch-card">
                 <div class="card">
@@ -100,7 +87,7 @@
                                             <td>@item.State</td>
                                             <td>@item.Address</td>
                                             <td>@item.Date</td>
-                                            <td>$@item.TotalPrice</td>
+                                            <td>$@item.TotalPrice.ToString("f2")</td>
                                         </tr>
                                     }
 

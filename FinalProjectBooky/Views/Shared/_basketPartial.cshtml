@@ -81,7 +81,7 @@ else
     <div class="view-cart-checkout">
         <div class="total-price">
             <h5>Total Price</h5>
-            <span>$@basket.TotalPrice</span>
+            <span>$@basket.TotalPrice.ToString("f2")</span>
         </div>
         <div class="view-check">
             @if (User.Identity.IsAuthenticated)

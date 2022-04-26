@@ -100,7 +100,7 @@
                                         }
                                         else
                                         {
-                                            <span>@((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count)</span>
+                                            <span>@(((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)*item.Count).ToString("f2"))</span>
 
                                         }
                                     </span>

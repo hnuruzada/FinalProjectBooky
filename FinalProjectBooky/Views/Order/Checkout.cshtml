@@ -90,7 +90,7 @@
                                 }
                                 else
                                 {
-                                    @((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)* item.Count)
+                                    @(((item.Book.Price*(100-item.Book.Campaign.DiscountPercent)/100)* item.Count).ToString("f2"))
                                 }</span>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                
                 <div class="total-price">
                     <span class="text">Total Price</span>
-                    <span>$@total</span>
+                    <span>$@total.ToString("f2")</span>
                 </div>
             </div>
         </div>
